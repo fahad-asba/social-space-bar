@@ -1,0 +1,447 @@
+'use client';
+import { ArrowUpRight } from 'lucide-react';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { PhoneInput } from 'react-international-phone';
+import 'react-international-phone/style.css';
+
+interface ContactFormProps {
+  compact?: boolean;
+  title?: string;
+  subtitle?: string;
+  dark?: boolean;
+}
+
+export default function ContactForm({
+  compact = false,
+  title = 'Get in Touch',
+  subtitle = 'GET 30% OFF — Limited Time Offer',
+  dark = false,
+}: ContactFormProps) {
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
+  const [phone, setPhone] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (loading) return;
+    
+    // Simple basic validation for phone length beyond just dial code
+    if (phone.length < 5) {
+      alert('Please enter a valid phone number');
+      return;
+    }
+
+    setLoading(true);
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    data.set('phone', phone);
+
+    try {
+      await fetch('https://formsubmit.co/ajax/info@socialspacebar.com', {
+        method: 'POST',
+        body: data,
+      });
+      router.push('/thank-you');
+    } catch {
+      router.push('/thank-you');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div
+      className={`cf-card${compact ? ' cf-compact' : ''}`}
+      style={{
+        background: 'var(--card-bg)',
+        border: '1px solid var(--border)',
+        borderRadius: compact ? '20px' : '24px',
+        backdropFilter: 'blur(24px)',
+        width: '100%',
+        maxWidth: compact ? '480px' : '520px',
+        boxShadow: dark
+          ? '0 24px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08)'
+          : '0 24px 60px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.5)',
+        position: 'relative',
+        transition: 'background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease',
+      }}
+    >
+      {/* Gradient top bar */}
+      <div style={{
+        position: 'absolute', top: 0, left: 0, right: 0,
+        height: '3px',
+        background: 'linear-gradient(90deg, #7c3aed, #66C7C0, #06b6d4)',
+        borderRadius: compact ? '20px 20px 0 0' : '24px 24px 0 0',
+      }} />
+
+      <div className="cf-body">
+        <div className="cf-badge">{subtitle}</div>
+        <h2 className="cf-title">{title}</h2>
+
+        <form onSubmit={handleSubmit} className="cf-form">
+          <input type="hidden" name="_captcha" value="false" />
+
+          <input
+            className="form-input"
+            type="text"
+            name="name"
+            placeholder="Full Name *"
+            required
+            disabled={loading}
+          />
+
+          <input
+            className="form-input"
+            type="email"
+            name="email"
+            placeholder="Email Address *"
+            required
+            disabled={loading}
+          />
+
+          {/* Phone input wrapper */}
+          <div className="cf-phone-wrap">
+            <PhoneInput
+              value={phone}
+              onChange={(val) => setPhone(val)}
+              defaultCountry="us"
+              placeholder="Phone Number *"
+              inputClassName="cf-phone-input"
+              countrySelectorStyleProps={{
+                buttonClassName: 'cf-country-btn',
+              }}
+              disabled={loading}
+            />
+          </div>
+
+          <div className="cf-select-wrap">
+            <select
+              name="service"
+              className="cf-service-select"
+              required
+              disabled={loading}
+              defaultValue=""
+            >
+              <option value="" disabled>Please choose a service</option>
+              <option value="facebook marketing">Facebook Marketing</option>
+              <option value="youtube marketing">YouTube Marketing</option>
+              <option value="instagram marketing">Instagram Marketing</option>
+              <option value="tiktok marketing">TikTok Marketing</option>
+              <option value="linkdein marketing">LinkedIn Marketing</option>
+              <option value="x marketing">X Marketing</option>
+              <option value="seo services">SEO Services</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <textarea
+            className="form-input"
+            name="message"
+            placeholder="Your Message (optional)"
+            rows={3}
+            disabled={loading}
+          />
+
+          <button
+            type="submit"
+            disabled={loading}
+            className="form-submit-btn"
+            style={{ width: '100%' }}
+          >
+            {loading ? (
+              <>
+                <span className="cf-spinner" />
+                Sending…
+              </>
+            ) : (
+              <>
+                Get Started
+                <ArrowUpRight size={14} />
+              </>
+            )}
+          </button>
+        </form>
+
+        <p className="cf-privacy">No spam. We respect your privacy.</p>
+      </div>
+
+      <style>{`
+        /* ── Card body padding ── */
+        .cf-card .cf-body { padding: 28px 28px 24px; }
+        .cf-compact .cf-body { padding: 24px 24px 20px; }
+
+        /* ── Badge ── */
+        .cf-badge {
+          display: inline-block;
+          padding: 4px 11px;
+          border-radius: 100px;
+          background: rgba(102,199,192,0.15);
+          border: 1px solid rgba(102,199,192,0.3);
+          font-size: 0.7rem;
+          font-weight: 700;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: #66C7C0;
+          margin-bottom: 10px;
+        }
+
+        /* ── Title ── */
+        .cf-title {
+          font-family: 'Playfair Display', serif;
+          font-size: 1.45rem;
+          font-weight: 700;
+          color: var(--foreground);
+          margin-bottom: 16px;
+          line-height: 1.25;
+          transition: color 0.3s ease;
+        }
+        .cf-compact .cf-title { font-size: 1.3rem; }
+
+        /* ── Form layout ── */
+        .cf-form {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+        .cf-form textarea.form-input {
+          min-height: 68px;
+          resize: vertical;
+        }
+
+        /* ── Service Select ── */
+        .cf-select-wrap { width: 100%; position: relative; }
+        .cf-select-wrap::after {
+          content: ''; position: absolute; right: 16px; top: 50%;
+          transform: translateY(-50%);
+          width: 0; height: 0;
+          border-left: 5px solid transparent;
+          border-right: 5px solid transparent;
+          border-top: 5px solid var(--foreground-muted);
+          pointer-events: none;
+          z-index: 1;
+        }
+        .cf-service-select {
+          width: 100%; padding: 14px 18px; padding-right: 40px;
+          background: var(--card-hover);
+          border: 1px solid var(--border); border-radius: var(--radius-sm);
+          color: var(--foreground); font-size: 0.95rem; font-family: var(--font-body);
+          transition: all 0.3s; outline: none;
+          appearance: none; -webkit-appearance: none; -moz-appearance: none;
+          cursor: pointer;
+        }
+        .cf-service-select:focus {
+          border-color: var(--gold);
+          box-shadow: 0 0 0 3px rgba(102,199,192,0.12);
+        }
+        .cf-service-select option {
+          background: var(--background-secondary);
+          color: var(--foreground);
+        }
+        .cf-service-select:disabled { opacity: 0.6; cursor: not-allowed; }
+
+        /* ── Disabled state ── */
+        .cf-form input:disabled,
+        .cf-form textarea:disabled {
+          opacity: 0.6;
+          cursor: not-allowed;
+        }
+
+        /* ── Phone Input Wrapper ── */
+        .cf-phone-wrap {
+          width: 100%;
+          position: relative; /* Fixed: Context for absolute dropdown */
+        }
+        
+        .cf-phone-wrap .react-international-phone-input-container {
+          display: flex !important;
+          align-items: stretch !important;
+          width: 100% !important;
+          border: 1px solid var(--border) !important;
+          border-radius: 8px !important;
+          background: var(--card-hover) !important;
+          overflow: visible !important;
+          transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
+        }
+        .cf-phone-wrap .react-international-phone-input-container:focus-within {
+          border-color: var(--gold) !important;
+          background: var(--card-bg) !important;
+          box-shadow: 0 0 0 3px rgba(102,199,192,0.15) !important;
+        }
+
+        /* Country selector button */
+        .cf-phone-wrap .cf-country-btn,
+        .cf-phone-wrap .react-international-phone-country-selector-button {
+          all: unset !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          gap: 4px !important;
+          padding: 0 10px !important;
+          border-right: 1px solid var(--border) !important;
+          background: transparent !important;
+          cursor: pointer !important;
+          min-width: 56px !important;
+          flex-shrink: 0 !important;
+          border-radius: 8px 0 0 8px !important;
+          transition: background 0.2s !important;
+          box-sizing: border-box !important;
+        }
+        .cf-phone-wrap .cf-country-btn:hover,
+        .cf-phone-wrap .react-international-phone-country-selector-button:hover {
+          background: rgba(102,199,192,0.08) !important;
+        }
+
+        /* Flag & Arrow */
+        .cf-phone-wrap .react-international-phone-flag-emoji {
+          font-size: 1.15rem !important;
+          line-height: 1 !important;
+          pointer-events: none;
+        }
+        .cf-phone-wrap .react-international-phone-country-selector-button__dropdown-arrow {
+          font-size: 0.5rem !important;
+          color: var(--foreground-muted) !important;
+          pointer-events: none;
+          border-top-color: var(--foreground-muted) !important;
+        }
+
+        /* Phone input field */
+        .cf-phone-wrap .cf-phone-input,
+        .cf-phone-wrap .react-international-phone-input {
+          flex: 1 1 0% !important;
+          width: 100% !important;
+          min-width: 0 !important;
+          padding: 13px 14px !important;
+          background: transparent !important;
+          border: none !important;
+          border-radius: 0 8px 8px 0 !important;
+          color: var(--foreground) !important;
+          font-size: 0.95rem !important;
+          font-family: var(--font-body) !important;
+          outline: none !important;
+          box-shadow: none !important;
+          transition: color 0.3s !important;
+        }
+        .cf-phone-wrap .cf-phone-input::placeholder,
+        .cf-phone-wrap .react-international-phone-input::placeholder {
+          color: var(--foreground-muted) !important;
+        }
+
+        /* ── Dropdown Fix: Positioned Absolute relative to .cf-phone-wrap ── */
+        .react-international-phone-country-selector-dropdown {
+          position: absolute !important;
+          top: 105% !important; /* Positions it exactly below the input */
+          left: 0 !important;
+          z-index: 99999 !important;
+          background: var(--card-bg) !important;
+          border: 1px solid var(--border) !important;
+          border-radius: 12px !important;
+          box-shadow: 0 20px 50px rgba(0,0,0,0.28) !important;
+          max-height: 200px !important;
+          overflow-y: auto !important;
+          width: 360px !important;
+          padding: 6px !important;
+          scrollbar-width: thin;
+          scrollbar-color: var(--gold) transparent;
+        }
+        [data-theme="dark"] .react-international-phone-country-selector-dropdown {
+          background: #0d1526 !important;
+        }
+        .react-international-phone-country-selector-dropdown::-webkit-scrollbar { width: 4px; }
+        .react-international-phone-country-selector-dropdown::-webkit-scrollbar-thumb {
+          background: var(--gold);
+          border-radius: 2px;
+        }
+
+        /* Dropdown search */
+        .react-international-phone-country-selector-dropdown__search-wrapper {
+          padding: 4px 4px 8px !important;
+          position: sticky !important;
+          top: 0 !important;
+          background: var(--card-bg) !important;
+          z-index: 1 !important;
+        }
+        [data-theme="dark"] .react-international-phone-country-selector-dropdown__search-wrapper {
+          background: #0d1526 !important;
+        }
+        .react-international-phone-country-selector-dropdown__search {
+          width: 100% !important;
+          padding: 9px 12px !important;
+          background: var(--card-hover) !important;
+          border: 1px solid var(--border) !important;
+          border-radius: 8px !important;
+          color: var(--foreground) !important;
+          font-size: 0.88rem !important;
+          outline: none !important;
+          box-sizing: border-box !important;
+        }
+        .react-international-phone-country-selector-dropdown__search:focus {
+          border-color: var(--gold) !important;
+        }
+
+        /* List items inside dropdown */
+        .react-international-phone-country-selector-dropdown__list-item {
+          display: flex !important;
+          align-items: center !important;
+          gap: 10px !important;
+          padding: 9px 12px !important;
+          border-radius: 8px !important;
+          cursor: pointer !important;
+          border: 1px solid transparent !important;
+          transition: all 0.15s !important;
+          color: var(--foreground) !important;
+          font-size: 0.88rem !important;
+          width: 100% !important;
+          box-sizing: border-box !important;
+        }
+        .react-international-phone-country-selector-dropdown__list-item:hover {
+          background: var(--card-hover) !important;
+        }
+        .react-international-phone-country-selector-dropdown__list-item--selected {
+          background: rgba(102,199,192,0.1) !important;
+          border-color: rgba(102,199,192,0.25) !important;
+        }
+
+        /* Loading spinner */
+        .cf-spinner {
+          display: inline-block;
+          width: 14px;
+          height: 14px;
+          border: 2px solid rgba(13,21,38,0.3);
+          border-top-color: #0d1526;
+          border-radius: 50%;
+          animation: cf-spin 0.7s linear infinite;
+        }
+        @keyframes cf-spin { to { transform: rotate(360deg); } }
+
+        /* Privacy note */
+        .cf-privacy {
+          font-size: 0.72rem;
+          color: var(--foreground-muted);
+          text-align: center;
+          margin-top: 12px;
+        }
+
+        /* Responsive */
+        @media (max-width: 560px) {
+          .react-international-phone-country-selector-dropdown {
+            width: 300px !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .cf-card .cf-body, .cf-compact .cf-body { padding: 22px 16px 18px; }
+          .cf-title { font-size: 1.2rem !important; margin-bottom: 14px !important; }
+          .react-international-phone-country-selector-dropdown {
+            width: 260px !important;
+          }
+        }
+        @media (max-width: 360px) {
+          .react-international-phone-country-selector-dropdown {
+            width: 220px !important;
+            max-height: 180px !important;
+          }
+        }
+      `}</style>
+    </div>
+  );
+}
