@@ -3,8 +3,11 @@ import Image from 'next/image';
 import { books, newBooks } from '@/data/portfolio';
 import ArrowIcon from '@/components/ui/ArrowIcon';
 import SectionHeader from '@/components/ui/SectionHeader';
+import PhoneLink from '@/components/ui/PhoneLink';
+import { useModal } from './ModalProvider';
 
 export default function Portfolio() {
+  const { openModal } = useModal();
   return (
     <section id="portfolio" className="portfolio-section">
       <div className="container portfolio-header">
@@ -50,10 +53,10 @@ export default function Portfolio() {
       </div>
 
       <div className="portfolio-cta">
-        <a href="#contact" className="btn-primary">
+        <button type="button" onClick={openModal} className="btn-primary">
           Get Started Today <ArrowIcon />
-        </a>
-        <a href="tel:+12104938277" className="btn-ghost">{'\u{1F4DE}'} Call Now</a>
+        </button>
+        <PhoneLink className="btn-ghost" label="Call Now" iconSize={16} />
       </div>
 
       <style>{`
@@ -110,8 +113,8 @@ export default function Portfolio() {
           .portfolio-marquee-fade-left, .portfolio-marquee-fade-right { width: 35px; }
           .portfolio-track { gap: 16px; }
           .portfolio-track-pulse { gap: 16px; }
-          .portfolio-cta { flex-direction: column; align-items: center; }
-          .portfolio-cta a { width: 100%; max-width: 300px; justify-content: center; }
+          .portfolio-cta { flex-direction: column; align-items: center; gap: 12px; }
+          .portfolio-cta a, .portfolio-cta button { width: 100%; max-width: 300px; justify-content: center; box-sizing: border-box; }
         }
         @media (max-width: 420px) {
           .portfolio-section { padding: 40px 0; }

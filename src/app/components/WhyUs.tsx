@@ -3,6 +3,9 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { reasons } from '@/data/why-us';
 import ArrowIcon from '@/components/ui/ArrowIcon';
+import SectionHeader from '@/components/ui/SectionHeader';
+import PhoneLink from '@/components/ui/PhoneLink';
+import FadeInView from '@/components/ui/FadeInView';
 
 export default function WhyUs() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -20,13 +23,9 @@ export default function WhyUs() {
 
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         <div className="whyus-header">
-          <div className="section-label">Why Choose Us</div>
-          <h2 className="section-heading" style={{ marginBottom: '20px' }}>
+          <SectionHeader label="Why Choose Us" description="Increase brand visibility, engagement, and growth with expert social media strategies tailored to your unique story." descriptionClass="whyus-desc">
             Strategy To <span className="accent">Outperform</span><br />Your Competitors
-          </h2>
-          <p className="whyus-desc">
-            Increase brand visibility, engagement, and growth with expert social media strategies tailored to your unique story.
-          </p>
+          </SectionHeader>
         </div>
 
         <div className="whyus-grid">
@@ -54,14 +53,7 @@ export default function WhyUs() {
           ))}
         </div>
 
-        <motion.div
-          className="whyus-banner"
-          initial={{ opacity: 0, y: 40 }}
-          style={{ border: '2px solid rgba(102,199,192,0.3)' }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
+        <FadeInView className="whyus-banner" y={40} duration={0.6} delay={0.3} style={{ border: '2px solid rgba(102,199,192,0.3)' }}>
           <div className="whyus-banner-glow" style={{border:"2px solid var(--gold)"}} />
           <div className="whyus-banner-content" >
             <h3 className="whyus-banner-title">
@@ -73,9 +65,9 @@ export default function WhyUs() {
             <a href="#contact" className="btn-primary">
               Schedule Appointment <ArrowIcon />
             </a>
-            <a href="tel:+12104938277" className="btn-outline">{'\u{1F4DE}'} Call Us</a>
+            <PhoneLink className="btn-outline" label="Call Us" iconSize={16} />
           </div>
-        </motion.div>
+        </FadeInView>
       </div>
 
       <style>{`
@@ -136,10 +128,10 @@ export default function WhyUs() {
           border-radius: 50%; z-index: 2;
         }
         .whyus-banner-title {
-          font-family: 'Playfair Display', serif; font-size: 1.8rem;
+          font-family: var(--font-display); font-size: 1.8rem;
           font-weight: 700; color: var(--foreground); margin-bottom: 8px;
         }
-        .whyus-banner-desc { color: var(--foreground); font-size: 1rem; }
+        .whyus-banner-desc { color: white; font-size: 1rem; }
         .whyus-banner-cta { display: flex; gap: 16px; flex-wrap: wrap; flex-shrink: 0; }
 
         @media (max-width: 1100px) { .whyus-section { padding: 80px 0; } .whyus-banner { padding: 40px 32px; } }

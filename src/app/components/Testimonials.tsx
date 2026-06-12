@@ -3,6 +3,7 @@ import { useState, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
 import { testimonials, stats } from '@/data/testimonials';
+import SectionHeader from '@/components/ui/SectionHeader';
 
 export default function Testimonials() {
   const [active, setActive] = useState(0);
@@ -22,10 +23,9 @@ export default function Testimonials() {
 
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         <div className="testimonial-header">
-          <div className="section-label">Testimonials</div>
-          <h2 className="section-heading" style={{ marginBottom: '16px' }}>
+          <SectionHeader label="Testimonials" headingStyle={{ marginBottom: '16px' }}>
             What Clients <span className="accent">Say About Us</span>
-          </h2>
+          </SectionHeader>
         </div>
 
         <div className="testimonial-slider">
@@ -143,7 +143,7 @@ export default function Testimonials() {
         .testimonial-stars { display: flex; justify-content: center; gap: 4px; margin-bottom: 24px; }
         .testimonial-quote {
           font-size: 1.15rem; line-height: 1.8; color: var(--foreground-secondary);
-          font-style: italic; margin-bottom: 32px; font-family: 'Playfair Display', serif;
+          font-style: italic; margin-bottom: 32px; font-family: var(--font-display);
         }
         .testimonial-author { display: flex; align-items: center; justify-content: center; gap: 16px; }
         .testimonial-avatar {
@@ -167,7 +167,7 @@ export default function Testimonials() {
           padding: 32px 24px; text-align: center; background: var(--background);
         }
         .testimonial-stat-value {
-          font-family: 'Playfair Display', serif; font-size: 2.2rem;
+          font-family: var(--font-display); font-size: 2.2rem;
           font-weight: 800; color: #66C7C0; margin-bottom: 6px;
         }
         .testimonial-stat-label { font-size: 0.8rem; color: var(--foreground-muted); letter-spacing: 0.05em; }

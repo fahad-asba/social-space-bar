@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronDown } from 'lucide-react';
 import ArrowIcon from '@/components/ui/ArrowIcon';
+import SectionHeader from '@/components/ui/SectionHeader';
+import FadeInView from '@/components/ui/FadeInView';
 
 const faqs = [
   {
@@ -41,24 +43,20 @@ export default function FAQ() {
       <div className="faq-glow" />
       <div className="container">
         <div className="faq-header">
-          <div className="section-label">FAQ</div>
-          <h2 className="section-heading" style={{ marginBottom: '20px' }}>
+          <SectionHeader label="FAQ" description="Everything you need to know about our social media marketing services." descriptionClass="faq-desc">
             Frequently Asked <span className="accent">Questions</span>
-          </h2>
-          <p className="faq-desc">
-            Everything you need to know about our social media marketing services.
-          </p>
+          </SectionHeader>
         </div>
 
         <div className="faq-list">
           {faqs.map((faq, i) => (
-            <motion.div
+            <FadeInView
               key={i}
               className={`faq-item ${openIndex === i ? 'faq-item-open' : ''}`}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-30px' }}
-              transition={{ duration: 0.4, delay: i * 0.06 }}
+              y={20}
+              duration={0.4}
+              delay={i * 0.06}
+              margin="-30px"
             >
               <button className="faq-question" onClick={() => toggle(i)}>
                 <span>{faq.q}</span>
@@ -83,7 +81,7 @@ export default function FAQ() {
                   </motion.div>
                 )}
               </AnimatePresence>
-            </motion.div>
+            </FadeInView>
           ))}
         </div>
 

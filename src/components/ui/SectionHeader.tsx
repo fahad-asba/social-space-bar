@@ -5,8 +5,9 @@ interface SectionHeaderProps {
   children: ReactNode;
   description?: string;
   descriptionClass?: string;
-  labelClass?: string;
+  className?: string;
   headingStyle?: React.CSSProperties;
+  labelDot?: boolean;
 }
 
 export default function SectionHeader({
@@ -14,12 +15,16 @@ export default function SectionHeader({
   children,
   description,
   descriptionClass = 'section-desc',
-  labelClass = 'section-label',
+  className,
   headingStyle,
+  labelDot,
 }: SectionHeaderProps) {
   return (
     <>
-      <div className={labelClass}>{label}</div>
+      <div className={`section-label${className ? ` ${className}` : ''}`}>
+        {labelDot && <span className="badge-dot" />}
+        {label}
+      </div>
       <h2 className="section-heading" style={{ marginBottom: '20px', ...headingStyle }}>
         {children}
       </h2>

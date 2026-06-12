@@ -2,6 +2,8 @@
 import { motion } from 'motion/react';
 import { Search, ClipboardCheck, Users, BarChart3, Rocket, Star } from 'lucide-react';
 import ArrowIcon from '@/components/ui/ArrowIcon';
+import SectionHeader from '@/components/ui/SectionHeader';
+import FadeInView from '@/components/ui/FadeInView';
 
 const processSteps = [
   {
@@ -48,10 +50,9 @@ export default function Process() {
       <div className="process-glow" />
       <div className="container">
         <div className="process-header">
-          <div className="section-label">How It Works</div>
-          <h2 className="section-heading" style={{ marginBottom: '20px' }}>
+          <SectionHeader label="How It Works">
             Your Path To <span className="accent">Market</span><br />Dominance
-          </h2>
+          </SectionHeader>
           <p className="process-desc">
             A proven 6-step process that takes your brand from obscurity to industry leader.
           </p>
@@ -59,14 +60,7 @@ export default function Process() {
 
         <div className="process-timeline">
           {processSteps.map((step, i) => (
-            <motion.div
-              key={step.step}
-              className="process-step"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-            >
+            <FadeInView key={step.step} className="process-step" y={40} duration={0.5} delay={i * 0.1}>
               <div className="process-step-connector">
                 {i < processSteps.length - 1 && <div className="process-connector-line" />}
               </div>
@@ -85,21 +79,15 @@ export default function Process() {
                 <h3 className="process-step-title">{step.title}</h3>
                 <p className="process-step-desc">{step.desc}</p>
               </motion.div>
-            </motion.div>
+            </FadeInView>
           ))}
         </div>
 
-        <motion.div
-          className="process-cta"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-        >
+        <FadeInView className="process-cta" y={20} delay={0.4} margin="-30px">
           <a href="#contact" className="btn-primary">
             Start Your Journey <ArrowIcon />
           </a>
-        </motion.div>
+        </FadeInView>
       </div>
 
       <style>{`
@@ -154,7 +142,7 @@ export default function Process() {
           font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em;
           text-transform: uppercase; color: var(--gold); margin-bottom: 8px;
         }
-        .process-step-title { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: var(--foreground); margin-bottom: 8px; }
+        .process-step-title { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--foreground); margin-bottom: 8px; }
         .process-step-desc { font-size: 0.84rem; color: var(--foreground-muted); line-height: 1.65; }
         .process-cta { text-align: center; margin-top: 56px; }
 

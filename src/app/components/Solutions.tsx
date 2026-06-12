@@ -2,6 +2,7 @@
 import { motion } from 'motion/react';
 import { offerings } from '@/data/solutions';
 import ArrowIcon from '@/components/ui/ArrowIcon';
+import SectionHeader from '@/components/ui/SectionHeader';
 
 export default function Solutions() {
   return (
@@ -18,11 +19,10 @@ export default function Solutions() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.7 }}
           >
-            <div className="section-label">Services We Offer</div>
-            <h2 className="section-heading" style={{ marginBottom: '16px' }}>
+            <SectionHeader label="Services We Offer" headingStyle={{ marginBottom: '16px' }}>
               Complete Marketing<br />
               <span className="accent">Solutions for Your Brand</span>
-            </h2>
+            </SectionHeader>
             <p className="solutions-desc">
               From your first campaign to market dominance — we provide end-to-end social media marketing solutions that deliver real, measurable results.
             </p>

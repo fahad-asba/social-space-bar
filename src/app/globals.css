@@ -15,7 +15,7 @@
   --teal: #00c6b9;
   --teal-light: #66C7C0;
   --teal-dark: #00998e;
-  --font-display: 'Playfair Display', serif;
+  --font-display: var(--font-sans);
   --font-body: 'Inter', sans-serif;
   --radius-sm: 8px;
   --radius-md: 12px;
@@ -55,6 +55,10 @@
   --hero-heading-color: #f8fafc;
   --hero-subtitle-color: rgba(255,255,255,0.85);
   --hero-premier-color: rgba(255,255,255,0.6);
+  --mobile-overlay: rgba(0, 0, 0, 0.55);
+  --mobile-menu-bg: #0d1526;
+  --mobile-menu-foreground: #ffffff;
+  --mobile-menu-muted: rgba(255, 255, 255, 0.6);
 }
 
 [data-theme="dark"] {
@@ -84,6 +88,10 @@
   --hero-heading-color: #ffffff;
   --hero-subtitle-color: var(--foreground-secondary);
   --hero-premier-color: var(--foreground-muted);
+  --mobile-overlay: rgba(0, 0, 0, 0.55);
+  --mobile-menu-bg: #0d1526;
+  --mobile-menu-foreground: #ffffff;
+  --mobile-menu-muted: rgba(255, 255, 255, 0.6);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }

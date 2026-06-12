@@ -5,14 +5,16 @@ import Link from 'next/link';
 import ThemeToggle from './ThemeToggle';
 import { useScrollPosition } from '@/hooks/useScrollPosition';
 import { navLinks } from '@/data/navigation';
-import { Phone, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import ArrowIcon from '@/components/ui/ArrowIcon';
-
+import PhoneLink from '@/components/ui/PhoneLink';
+import { useRouter } from 'next/navigation';
 export default function Navbar() {
   const scrolled = useScrollPosition(40);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
 
+  const router= useRouter();
   useEffect(() => {
     const sectionIds = navLinks.map(l => l.href.replace('#', ''));
     const observer = new IntersectionObserver(
@@ -66,14 +68,11 @@ export default function Navbar() {
             ))}
           </ul>
           <ThemeToggle />
-          <a href="tel:+12104938277" aria-label="Call +1 (210) 493-8277" className="nav-phone">
-            <Phone size={16} />
-            <span>+1 (210) 493-8277</span>
-          </a>
-          <a href="#contact" className="btn-primary nav-cta-btn">
+          <PhoneLink className="nav-phone" ariaLabel="Call +1 (210) 493-8277" iconSize={16} />
+          <Link href="/thank-you" className="btn-primary nav-cta-btn">
             Schedule Appointment
             <ArrowIcon />
-          </a>
+          </Link>
         </div>
 
         <div className="nav-mobile-right">
@@ -98,6 +97,13 @@ export default function Navbar() {
             height={32}
             className="nav-logo-img"
           />
+          <button
+            className="mobile-menu-close"
+            onClick={() => setMenuOpen(false)}
+            aria-label="Close menu"
+          >
+            <X size={20} />
+          </button>
         </div>
         <ul className="mobile-menu-links">
           {navLinks.map(link => (
@@ -113,10 +119,7 @@ export default function Navbar() {
           ))}
         </ul>
         <div className="mobile-menu-footer">
-          <a href="tel:+12104938277" aria-label="Call +1 (210) 493-8277" className="mobile-menu-phone">
-            <Phone size={16} />
-            +1 (210) 493-8277
-          </a>
+          <PhoneLink className="mobile-menu-phone" ariaLabel="Call +1 (210) 493-8277" iconSize={16} />
           <a href="#contact" onClick={() => setMenuOpen(false)} className="btn-primary mobile-menu-cta" style={{ display: 'inline-flex', justifyContent: 'center' }}>
             Schedule Appointment
             <ArrowIcon />
@@ -167,43 +170,63 @@ export default function Navbar() {
         .nav-cta-btn { padding: 10px 22px; font-size: 0.85rem; }
         .nav-mobile-right { display: none; align-items: center; gap: 10px; }
         .hamburger-btn {
-          display: none; background: transparent; border: none; cursor: pointer;
-          padding: 8px; color: var(--foreground); transition: color 0.3s;
+          display: none; align-items: center; justify-content: center;
+          background: var(--card-bg); border: 1px solid var(--border);
+          border-radius: 10px; cursor: pointer;
+          width: 36px; height: 36px;
+          color: var(--foreground-secondary); transition: all 0.3s;
+          flex-shrink: 0;
         }
-        .hamburger-btn:hover { color: var(--gold); }
+        .hamburger-btn:hover { border-color: var(--gold); color: var(--gold); background: rgba(102,199,192,0.1); }
 
         .mobile-menu-overlay {
           position: fixed; inset: 0; z-index: 998;
-          background: rgba(0,0,0,0.5); backdrop-filter: blur(4px);
+          background: var(--mobile-overlay);
+          backdrop-filter: blur(4px);
           opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
         }
         .mobile-menu-overlay-open { opacity: 1; pointer-events: auto; }
 
         .mobile-menu {
           position: fixed; top: 0; right: 0; bottom: 0; z-index: 999;
-          width: min(85vw, 380px); background: var(--card-bg);
+          width: min(85vw, 380px); background: var(--mobile-menu-bg);
           border-left: 1px solid var(--border);
           display: flex; flex-direction: column;
           transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
           box-shadow: -20px 0 60px rgba(0,0,0,0.2);
         }
         .mobile-menu-open { transform: translateX(0); }
-        .mobile-menu-header { padding: 24px 24px 16px; border-bottom: 1px solid var(--border); }
+        .mobile-menu-header {
+          padding: 24px 24px 16px; border-bottom: 1px solid rgba(255,255,255,0.08);
+          display: flex; align-items: center; justify-content: space-between;
+        }
+        .mobile-menu-header .nav-logo-img { filter: brightness(0) invert(1); }
+        .mobile-menu-close {
+          display: flex; align-items: center; justify-content: center;
+          width: 36px; height: 36px; border-radius: 10px;
+          background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+          color: var(--mobile-menu-foreground); cursor: pointer;
+          transition: all 0.2s; flex-shrink: 0;
+        }
+        .mobile-menu-close:hover { background: rgba(102,199,192,0.15); border-color: #66C7C0; color: #66C7C0; }
         .mobile-menu-links { list-style: none; padding: 16px 24px; flex: 1; display: flex; flex-direction: column; gap: 4px; }
         .mobile-menu-link {
-          display: block; padding: 14px 16px; color: var(--foreground); text-decoration: none;
+          display: block; padding: 14px 16px; color: var(--mobile-menu-foreground); text-decoration: none;
           font-size: 1.05rem; font-weight: 500; border-radius: var(--radius-sm);
           transition: all 0.2s;
         }
         .mobile-menu-link:hover { background: rgba(102,199,192,0.08); color: #66C7C0; }
         .mobile-menu-link-active { background: rgba(102,199,192,0.1); color: #66C7C0; font-weight: 600; }
-        .mobile-menu-footer { padding: 16px 24px 32px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 12px; }
+        .mobile-menu-footer { padding: 16px 24px 32px; border-top: 1px solid rgba(255,255,255,0.08); display: flex; flex-direction: column; gap: 12px; }
         .mobile-menu-phone {
-          display: flex; align-items: center; gap: 8px; color: var(--foreground);
+          display: flex; align-items: center; gap: 8px; color: var(--mobile-menu-foreground);
           text-decoration: none; font-weight: 500; font-size: 0.95rem; padding: 12px 16px;
           border-radius: var(--radius-sm); transition: all 0.2s;
         }
         .mobile-menu-phone:hover { background: rgba(102,199,192,0.08); color: #66C7C0; }
+        .mobile-menu-cta { width: 100%; justify-content: center; }
+        .mobile-menu-cta.btn-primary { background: #66C7C0; color: #0d1526; }
+        .mobile-menu-cta.btn-primary:hover { background: #4db8b0; }
         .mobile-menu-cta { width: 100%; justify-content: center; }
 
         @media (max-width: 1100px) { .nav-links { gap: 24px; } }

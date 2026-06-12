@@ -16,6 +16,7 @@ import FAQ from './components/FAQ';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import MobileFloatingCallBtn from './components/MobileFloatingCallBtn';
+import ModalProvider from './components/ModalProvider';
 
 export const metadata: Metadata = {
   title: 'Social Media Marketing Agency',
@@ -29,6 +30,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
+      <ModalProvider>
       <main>
         <Hero />
         <StatsCounter />
@@ -45,6 +47,7 @@ export default function Home() {
         <FAQ />
         <ContactSection />
       </main>
+      </ModalProvider>
       <Footer />
       <MobileFloatingCallBtn />
 

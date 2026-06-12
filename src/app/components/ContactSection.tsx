@@ -1,6 +1,7 @@
 'use client';
 import ContactForm from './ContactForm';
 import { contactLinks } from '@/data/contact';
+import SectionHeader from '@/components/ui/SectionHeader';
 
 export default function ContactSection() {
   return (
@@ -11,14 +12,10 @@ export default function ContactSection() {
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         <div className="contact-grid">
           <div className="contact-info">
-            <div className="section-label">Get In Touch</div>
-            <h2 className="section-heading" style={{ marginBottom: '20px' }}>
+            <SectionHeader label="Get In Touch" description="Take the first step toward market leadership. Our team will craft a personalized social media strategy for your brand — completely free." descriptionClass="contact-desc">
               Ready To Grow Your<br />
               <span className="accent">Brand Growth?</span>
-            </h2>
-            <p className="contact-desc">
-              Take the first step toward market leadership. Our team will craft a personalized social media strategy for your brand — completely free.
-            </p>
+            </SectionHeader>
 
             <div className="contact-links">
               {contactLinks.map(item => (

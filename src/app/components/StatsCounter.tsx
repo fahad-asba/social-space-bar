@@ -115,7 +115,7 @@ export default function StatsCounter() {
           color: var(--gold); transition: all 0.3s ease;
         }
         .stats-value {
-          font-family: 'Playfair Display', serif; font-size: 2.6rem;
+          font-family: var(--font-display); font-size: 2.6rem;
           font-weight: 800; color: var(--gold); line-height: 1; margin-bottom: 6px;
         }
         .stats-label { font-size: 0.85rem; color: var(--foreground-muted); letter-spacing: 0.04em; }

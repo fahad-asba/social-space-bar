@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import ArrowIcon from '@/components/ui/ArrowIcon';
+import SectionHeader from '@/components/ui/SectionHeader';
 import { plans } from '@/data/pricing';
 
 export default function Pricing() {
@@ -12,13 +13,9 @@ export default function Pricing() {
 
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         <div className="pricing-header">
-          <div className="section-label">Pricing Plans</div>
-          <h2 className="section-heading" style={{ marginBottom: '20px' }}>
+          <SectionHeader label="Pricing Plans" description="Every brand deserves the right strategy. Our packages support businesses with powerful promotion, stronger visibility, and tools for growth." descriptionClass="pricing-desc">
             Choose the Right <span className="accent">Plan</span> for Your Brand
-          </h2>
-          <p className="pricing-desc">
-            Every brand deserves the right strategy. Our packages support businesses with powerful promotion, stronger visibility, and tools for growth.
-          </p>
+          </SectionHeader>
         </div>
 
         <div className="pricing-grid">
@@ -73,7 +70,7 @@ export default function Pricing() {
                   }}
                 >
                   Get Price Estimate
-                  <ArrowUpRight size={13} />
+                  <ArrowIcon size={13} />
                 </a>
 
                 <ul className="pricing-features">
@@ -150,7 +147,7 @@ export default function Pricing() {
           letter-spacing: 0.08em;
         }
         .pricing-plan-name {
-          font-family: 'Playfair Display', serif;
+          font-family: var(--font-display);
           font-size: 1.6rem;
           font-weight: 800;
           margin-bottom: 8px;

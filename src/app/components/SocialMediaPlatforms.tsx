@@ -1,6 +1,8 @@
 'use client';
 import { motion } from 'motion/react';
 import Image from 'next/image';
+import SectionHeader from '@/components/ui/SectionHeader';
+import FadeInView from '@/components/ui/FadeInView';
 
 const platforms = [
   { name: 'Facebook', src: '/facebook_icon.webp', w: 100, h: 100 },
@@ -17,13 +19,9 @@ export default function SocialMediaPlatforms() {
       <div className="smp-glow" />
       <div className="container">
         <div className="smp-header">
-          <div className="section-label section-label-teal">Platforms We Master</div>
-          <h2 className="section-heading" style={{ marginBottom: '16px' }}>
+          <SectionHeader label="Platforms We Master" className="section-label-teal" description="We dominate every major social channel to put your brand in front of the right audience at the right time." descriptionClass="smp-desc" headingStyle={{ marginBottom: '16px' }}>
             Social Media <span className="accent-teal">Platforms</span>
-          </h2>
-          <p className="smp-desc">
-            We dominate every major social channel to put your brand in front of the right audience at the right time.
-          </p>
+          </SectionHeader>
         </div>
 
         <div className="smp-grid">
@@ -47,17 +45,11 @@ export default function SocialMediaPlatforms() {
           ))}
         </div>
 
-        <motion.div
-          className="smp-cta"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-        >
+        <FadeInView className="smp-cta" y={20} duration={0.5} delay={0.6} margin="-30px">
           <a href="#contact" className="btn-teal">
             Get Your Social Strategy
           </a>
-        </motion.div>
+        </FadeInView>
       </div>
 
       <style>{`

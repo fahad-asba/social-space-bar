@@ -46,7 +46,7 @@ export default function ServicesMarquee() {
         .marquee-track-clone { position: absolute; left: 100%; top: 0; }
         .marquee-item {
           display: inline-flex; align-items: center; gap: 8px;
-          font-family: 'Playfair Display', serif;
+          font-family: var(--font-display);
           font-size: 1.1rem; font-weight: 600; color: var(--foreground-muted);
           letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap;
           transition: color 0.3s ease;

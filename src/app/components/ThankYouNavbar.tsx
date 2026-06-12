@@ -1,8 +1,9 @@
 'use client';
-import { CalendarDays, Home, Phone } from 'lucide-react';
+import { CalendarDays, Home } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import ThemeToggle from './ThemeToggle';
+import PhoneLink from '@/components/ui/PhoneLink';
 
 function scrollToConsultation(e: React.MouseEvent) {
   e.preventDefault();
@@ -18,10 +19,7 @@ export default function ThankYouNavbar() {
         </Link>
 
         <div className="ty-nav-right">
-          <a href="tel:+12104938277" aria-label="Call +1 (210) 493-8277" className="ty-nav-phone">
-            <Phone size={16} />
-+1 (210) 493-8277
-          </a>
+          <PhoneLink className="ty-nav-phone" ariaLabel="Call +1 (210) 493-8277" iconSize={16} />
           <span className="ty-nav-divider" />
           <ThemeToggle />
           <span className="ty-nav-divider" />

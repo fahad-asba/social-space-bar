@@ -1,7 +1,8 @@
 'use client';
 import { motion } from 'motion/react';
-import { Home, Phone } from 'lucide-react';
+import { Home } from 'lucide-react';
 import Link from 'next/link';
+import PhoneLink from '@/components/ui/PhoneLink';
 
 export default function ThankYouCTA() {
   return (
@@ -45,9 +46,7 @@ export default function ThankYouCTA() {
             <Link href="/" className="btn-primary">
               <Home size={16} /> Back To Home
             </Link>
-            <a href="tel:+12104938277" className="btn-outline">
-              <Phone size={16} /> Call Now
-            </a>
+            <PhoneLink className="btn-outline" label="Call Now" iconSize={16} />
           </motion.div>
         </motion.div>
 

@@ -1,6 +1,7 @@
 'use client';
 import { motion } from 'motion/react';
-import { ArrowUpRight, CalendarDays, MessageCircle, Phone } from 'lucide-react';
+import { CalendarDays, MessageCircle, Phone } from 'lucide-react';
+import ArrowIcon from '@/components/ui/ArrowIcon';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -72,7 +73,7 @@ export default function HeroContent({ onOpenModal }: HeroContentProps) {
           whileTap={{ scale: 0.97 }}
         >
           Get Started Today
-          <ArrowUpRight size={14} />
+          <ArrowIcon />
         </motion.button>
         <Link href="/thank-you" className="btn-outline">
           <CalendarDays size={16} />
@@ -112,7 +113,7 @@ export default function HeroContent({ onOpenModal }: HeroContentProps) {
         .hero-badge span:last-child { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #66C7C0; }
         .hero-badge-dot { width: 8px; height: 8px; border-radius: 50%; background: #66C7C0; display: inline-block; animation: pulse-teal 2s ease-in-out infinite; }
         .hero-title {
-          font-family: 'Playfair Display', serif;
+          font-family: var(--font-display);
           font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 800; line-height: 1.08;
           color: var(--hero-heading-color); margin-bottom: 24px;
         }
@@ -130,7 +131,7 @@ export default function HeroContent({ onOpenModal }: HeroContentProps) {
           margin-bottom: 40px; max-width: 520px;
         }
         .hero-stats { display: flex; gap: 40px; margin-bottom: 40px; flex-wrap: wrap; }
-        .hero-stat-value { font-size: 2rem; font-weight: 800; color: #66C7C0; font-family: 'Playfair Display', serif; cursor: default; }
+        .hero-stat-value { font-size: 2rem; font-weight: 800; color: #66C7C0; font-family: var(--font-display); cursor: default; }
         .hero-stat-label { font-size: 0.78rem; color: var(--gold); letter-spacing: 0.05em; text-transform: uppercase; }
         .hero-cta-row { display: flex; gap: 16px; flex-wrap: wrap; }
         .hero-trust-row { display: flex; align-items: center; gap: 14px; margin-top: 40px; }
@@ -175,8 +176,9 @@ export default function HeroContent({ onOpenModal }: HeroContentProps) {
           .hero-title { font-size: 1.6rem !important; }
           .hero-subtitle { font-size: 0.85rem !important; }
           .hero-stat-value { font-size: 1.1rem !important; }
-          .hero-cta-row { flex-direction: column; }
-          .hero-cta-row a, .hero-cta-row button { width: 100%; }
+          .hero-cta-row { flex-direction: column; gap: 10px; }
+          .hero-cta-row a, .hero-cta-row button { width: 100%; box-sizing: border-box; }
+          .hero-cta-row .btn-outline { white-space: normal; font-size: 0.82rem; padding: 10px 16px; }
         }
       `}</style>
     </div>

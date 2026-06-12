@@ -1,5 +1,5 @@
 'use client';
-import { ArrowUpRight } from 'lucide-react';
+import ArrowIcon from '@/components/ui/ArrowIcon';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
@@ -128,26 +128,6 @@ export default function HeroModal({ isOpen, onClose }: HeroModalProps) {
                   />
                 </div>
 
-                <div className="modal-select-wrap">
-                  <select
-                    name="service"
-                    className="modal-service-select"
-                    required
-                    disabled={formLoading}
-                    defaultValue=""
-                  >
-                    <option value="" disabled>Please choose a service</option>
-                    <option value="facebook marketing">Facebook Marketing</option>
-                    <option value="youtube marketing">YouTube Marketing</option>
-                    <option value="instagram marketing">Instagram Marketing</option>
-                    <option value="tiktok marketing">TikTok Marketing</option>
-                    <option value="linkdein marketing">LinkedIn Marketing</option>
-                    <option value="x marketing">X Marketing</option>
-                    <option value="seo services">SEO Services</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-
                 <textarea
                   className="form-input"
                   name="message"
@@ -169,7 +149,7 @@ export default function HeroModal({ isOpen, onClose }: HeroModalProps) {
                   ) : (
                     <>
                       Get Started
-                      <ArrowUpRight size={14} />
+                      <ArrowIcon />
                     </>
                   )}
                 </button>
@@ -247,7 +227,7 @@ export default function HeroModal({ isOpen, onClose }: HeroModalProps) {
           text-transform: uppercase; color: #66C7C0; margin-bottom: 16px;
         }
         .modal-heading {
-          font-family: 'Playfair Display', serif; font-size: 1.6rem;
+          font-family: var(--font-display); font-size: 1.6rem;
           font-weight: 800; color: var(--foreground); margin-bottom: 8px;
         }
         .modal-subheading {
@@ -256,35 +236,10 @@ export default function HeroModal({ isOpen, onClose }: HeroModalProps) {
         }
         .modal-form { display: flex; flex-direction: column; gap: 14px; }
         .modal-phone-wrap { width: 100%; }
-        .modal-select-wrap { width: 100%; position: relative; }
-        .modal-select-wrap::after {
-          content: ''; position: absolute; right: 16px; top: 50%;
-          transform: translateY(-50%);
-          width: 0; height: 0;
-          border-left: 5px solid transparent;
-          border-right: 5px solid transparent;
-          border-top: 5px solid var(--foreground-muted);
-          pointer-events: none;
-          z-index: 1;
+        .modal-phone-wrap .react-international-phone-input-container {
+          display: flex !important;
+          gap: 0 !important;
         }
-        .modal-service-select {
-          width: 100%; padding: 14px 18px; padding-right: 40px;
-          background: var(--card-hover);
-          border: 1px solid var(--border); border-radius: var(--radius-sm);
-          color: var(--foreground); font-size: 0.95rem; font-family: var(--font-body);
-          transition: all 0.3s; outline: none;
-          appearance: none; -webkit-appearance: none; -moz-appearance: none;
-          cursor: pointer;
-        }
-        .modal-service-select:focus {
-          border-color: var(--gold);
-          box-shadow: 0 0 0 3px rgba(102,199,192,0.12);
-        }
-        .modal-service-select option {
-          background: var(--background-secondary);
-          color: var(--foreground);
-        }
-        .modal-service-select:disabled { opacity: 0.6; cursor: not-allowed; }
         .modal-phone-input {
           width: 100% !important; padding: 14px 18px !important;
           background: var(--card-hover) !important; border: 1px solid var(--border) !important;
@@ -299,7 +254,7 @@ export default function HeroModal({ isOpen, onClose }: HeroModalProps) {
           padding: 0 12px !important; height: auto !important;
         }
         .modal-success { text-align: center; padding: 40px 0; }
-        .modal-success-title { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 800; color: var(--foreground); margin-bottom: 12px; }
+        .modal-success-title { font-family: var(--font-display); font-size: 1.6rem; font-weight: 800; color: var(--foreground); margin-bottom: 12px; }
         .modal-success-desc { font-size: 0.9rem; color: var(--foreground-muted); line-height: 1.6; }
         .modal-spinner {
           width: 18px; height: 18px; border: 2px solid rgba(255,255,255,0.3);
@@ -309,6 +264,19 @@ export default function HeroModal({ isOpen, onClose }: HeroModalProps) {
           text-align: center; font-size: 0.75rem; color: var(--foreground-muted);
           margin-top: 20px;
         }
+        .react-international-phone-country-selector-dropdown {
+          max-height: 220px !important;
+        }
+        @media (max-width: 480px) {
+          .react-international-phone-country-selector-dropdown {
+            max-height: 180px !important; width: 280px !important;
+          }
+        }
+        @media (max-width: 380px) {
+          .react-international-phone-country-selector-dropdown {
+            max-height: 150px !important; width: 240px !important;
+          }
+        }
 
         @media (max-width: 900px) {
           .modal-content { grid-template-columns: 1fr; max-width: 520px; }
@@ -317,9 +285,36 @@ export default function HeroModal({ isOpen, onClose }: HeroModalProps) {
         }
         @media (max-width: 600px) {
           .modal-overlay { padding: 12px; }
-          .modal-content { border-radius: 18px; max-height: 85vh; }
+          .modal-content { border-radius: 18px; max-height: 90vh; }
           .modal-form-side { padding: 28px 20px; }
           .modal-heading { font-size: 1.3rem; }
+          .modal-form { gap: 12px; }
+          .modal-subheading { font-size: 0.85rem; margin-bottom: 20px; }
+          .modal-phone-input { padding: 12px 14px !important; font-size: 0.9rem !important; }
+          .modal-country-btn { padding: 0 10px !important; }
+        }
+        @media (max-width: 480px) {
+          .modal-overlay { padding: 8px; align-items: flex-end; }
+          .modal-content { border-radius: 16px 16px 0 0; max-height: 92vh; }
+          .modal-form-side { padding: 24px 18px; }
+          .modal-close-btn { top: 10px; right: 10px; width: 32px; height: 32px; font-size: 1.2rem; }
+          .modal-heading { font-size: 1.15rem; }
+          .modal-subheading { font-size: 0.82rem; margin-bottom: 16px; }
+          .modal-badge { font-size: 0.65rem; padding: 3px 10px; }
+          .modal-form { gap: 10px; }
+          .modal-form .form-input { padding: 12px 14px; font-size: 0.9rem; }
+          .modal-phone-input { padding: 10px 12px !important; font-size: 0.9rem !important; }
+          .modal-country-btn { padding: 0 8px !important; min-width: 48px !important; }
+          .modal-privacy { font-size: 0.7rem; margin-top: 14px; }
+        }
+        @media (max-width: 380px) {
+          .modal-overlay { padding: 4px; }
+          .modal-form-side { padding: 20px 14px; }
+          .modal-heading { font-size: 1.05rem; }
+          .modal-form .form-input { padding: 10px 12px; font-size: 0.85rem; }
+          .modal-phone-input { padding: 8px 10px !important; font-size: 0.85rem !important; }
+          .modal-country-btn { padding: 0 6px !important; min-width: 42px !important; }
+          .modal-subheading { font-size: 0.78rem; }
         }
       `}</style>
     </>

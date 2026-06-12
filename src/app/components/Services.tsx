@@ -1,7 +1,7 @@
 'use client';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Autoplay, EffectCoverflow } from 'swiper/modules';
+import { Autoplay, EffectCoverflow } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -10,10 +10,14 @@ import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { services } from '@/data/services';
 import ArrowIcon from '@/components/ui/ArrowIcon';
+import SectionHeader from '@/components/ui/SectionHeader';
+import PhoneLink from '@/components/ui/PhoneLink';
+import { useModal } from './ModalProvider';
 
 export default function Services() {
-  const prevRef = useRef<HTMLButtonElement>(null);
-  const nextRef = useRef<HTMLButtonElement>(null);
+  const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
+
+  const { openModal } = useModal();
 
   return (
     <section id="services" className="services-section">
@@ -22,16 +26,15 @@ export default function Services() {
 
       <div className="container">
         <div className="services-header">
-          <div className="section-label">Precision in Every Pixel</div>
-          <h2 className="section-heading" style={{ marginBottom: '20px' }}>
+          <SectionHeader label="Precision in Every Pixel">
             Drive Real Results with Our Targeted{' '}
             <span className="accent">Social Media Services</span>
-          </h2>
+          </SectionHeader>
         </div>
 
         <div className="services-carousel-outer">
           <button
-            ref={prevRef}
+            onClick={() => swiperInstance?.slidePrev()}
             className="services-nav services-nav-left"
             aria-label="Previous service"
           >
@@ -39,23 +42,14 @@ export default function Services() {
           </button>
 
           <Swiper
-            modules={[Navigation, Autoplay, EffectCoverflow]}
+            modules={[Autoplay, EffectCoverflow]}
             effect="coverflow"
             centeredSlides
             loop
             speed={800}
             grabCursor
             autoplay={{ delay: 5000, disableOnInteraction: false }}
-            navigation={{
-              prevEl: prevRef.current,
-              nextEl: nextRef.current,
-            }}
-            onBeforeInit={(swiper) => {
-              if (typeof swiper.params.navigation === 'object') {
-                swiper.params.navigation.prevEl = prevRef.current;
-                swiper.params.navigation.nextEl = nextRef.current;
-              }
-            }}
+            onSwiper={setSwiperInstance}
             coverflowEffect={{
               rotate: 15,
               stretch: 0,
@@ -65,6 +59,15 @@ export default function Services() {
             }}
             slidesPerView="auto"
             className="services-swiper"
+            breakpoints={{
+              769: { slidesPerView: 'auto' as const },
+              0: {
+                slidesPerView: 1,
+                spaceBetween: 0,
+                centeredSlides: true,
+                coverflowEffect: { rotate: 0, stretch: 0, depth: 0, modifier: 1, slideShadows: false },
+              },
+            }}
           >
             {services.map((svc) => (
               <SwiperSlide key={svc.id} className="services-slide">
@@ -91,7 +94,7 @@ export default function Services() {
           </Swiper>
 
           <button
-            ref={nextRef}
+            onClick={() => swiperInstance?.slideNext()}
             className="services-nav services-nav-right"
             aria-label="Next service"
           >
@@ -100,10 +103,10 @@ export default function Services() {
         </div>
 
         <div className="services-cta">
-          <a href="#contact" className="btn-primary">
+          <button type="button" onClick={openModal} className="btn-primary">
             Get Started Today <ArrowIcon />
-          </a>
-          <a href="tel:+12104938277" className="btn-ghost">{'\u{1F4DE}'} +1 (210) 493-8277</a>
+          </button>
+          <PhoneLink className="btn-ghost" iconSize={16} />
         </div>
       </div>
 
@@ -165,7 +168,7 @@ export default function Services() {
           background: var(--card-bg);
         }
         .service-card-title {
-          font-family: 'Playfair Display', serif; font-size: 1.15rem;
+          font-family: var(--font-display); font-size: 1.15rem;
           font-weight: 700; color: var(--foreground); margin-bottom: 8px; line-height: 1.3;
         }
         .service-card-desc {
@@ -195,18 +198,18 @@ export default function Services() {
         }
         @media (max-width: 768px) {
           .services-nav { width: 40px; height: 40px; }
-          .services-carousel-outer { padding: 0 0; }
-          .services-nav-left { left: 4px; }
-          .services-nav-right { right: 4px; }
-          .services-slide { width: 380px !important; }
-          .services-slide.swiper-slide-active { width: 340px !important; }
+          .services-carousel-outer { padding: 0 0; overflow: hidden; }
+          .services-nav-left { left: 12px; }
+          .services-nav-right { right: 12px; }
+          .services-swiper { overflow: hidden !important; }
+          .services-slide { width: 100% !important; margin-right: 0 !important; }
         }
         @media (max-width: 600px) {
           .services-section { padding: 50px 0; }
           .services-header { margin-bottom: 32px; }
           .services-header h2 { font-size: 1.9rem; }
-          .services-slide { width: 320px !important; }
-          .services-slide.swiper-slide-active { width: 280px !important; }
+          .services-slide { width: 100% !important; margin-right: 0 !important; }
+          .services-swiper { overflow: hidden !important; }
           .service-card-image { height: 150px; }
           .service-card-content { padding: 18px; }
           .service-card-title { font-size: 1rem; }
@@ -216,26 +219,10 @@ export default function Services() {
         }
         @media (max-width: 480px) {
           .services-nav { width: 36px; height: 36px; }
-          .services-nav-left { left: 2px; }
-          .services-nav-right { right: 2px; }
-          .services-slide { width: 280px !important; }
-          .services-slide.swiper-slide-active { width: 260px !important; }
+          .services-nav-left { left: 10px; }
+          .services-nav-right { right: 10px; }
           .service-card-image { height: 130px; }
           .service-card-content { padding: 14px; }
-        }
-        @media (max-width: 420px) {
-          .services-section { padding: 40px 0; }
-          .services-header h2 { font-size: 1.6rem; }
-          .services-slide { width: 240px !important; }
-          .services-slide.swiper-slide-active { width: 220px !important; }
-        }
-        @media (max-width: 360px) {
-          .services-slide { width: 200px !important; }
-          .services-slide.swiper-slide-active { width: 190px !important; }
-          .service-card-image { height: 110px; }
-          .services-nav { width: 32px; height: 32px; }
-          .services-nav-left { left: 0; }
-          .services-nav-right { right: 0; }
         }
       `}</style>
     </section>

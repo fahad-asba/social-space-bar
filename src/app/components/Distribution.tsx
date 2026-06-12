@@ -3,9 +3,13 @@ import { motion, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
 import { channels } from '@/data/distribution';
 import ArrowIcon from '@/components/ui/ArrowIcon';
+import SectionHeader from '@/components/ui/SectionHeader';
+import PhoneLink from '@/components/ui/PhoneLink';
 import { useState, useEffect } from 'react';
+import { useModal } from './ModalProvider';
 
 export default function Distribution() {
+  const { openModal } = useModal();
   const [partnerIndex, setPartnerIndex] = useState(0);
 
   useEffect(() => {
@@ -19,16 +23,10 @@ export default function Distribution() {
     <section className="distribution-section">
       <div className="container">
         <div className="dist-header">
-          <div className="section-label">Distribution Network</div>
-          <h2 className="section-heading" style={{ marginBottom: '20px' }}>
+          <SectionHeader label="Distribution Network" description={"We help your brand reach customers across " + "major social media platforms and digital channels" + " where your audience is actively engaging."} descriptionClass="dist-desc">
             Your Brand Everywhere<br />
             <span className="accent">Your Audience Awaits</span>
-          </h2>
-          <p className="dist-desc">
-            We help your brand reach customers across{' '}
-            <strong className="dist-strong">major social media platforms and digital channels</strong>{' '}
-            where your audience is actively engaging.
-          </p>
+          </SectionHeader>
         </div>
 
         <motion.div
@@ -126,10 +124,10 @@ export default function Distribution() {
                 We don&apos;t just <span style={{color: 'var(--accent)', fontWeight: 600}}>promise results</span>  we <span className="gold" style={{fontWeight: 600}}>guarantee</span> them. Your brand will appear on <span style={{color: 'var(--accent)', fontWeight: 600}}>every major platform</span> with <span style={{color: 'var(--foreground-secondary)'}}>optimized content</span> designed to <span style={{color: 'var(--accent)', fontWeight: 600}}>convert viewers into customers</span>.
               </p>
               <div className="dist-cta-buttons">
-                <a href="#contact" className="btn-primary">
+                <button type="button" onClick={openModal} className="btn-primary">
                   Get Started <ArrowIcon />
-                </a>
-                <a href="tel:+12104938277" className="btn-ghost">{'\u{1F4DE}'} Call Now</a>
+                </button>
+                <PhoneLink className="btn-ghost" label="Call Now" iconSize={16} />
               </div>
             </motion.div>
           </div>
@@ -160,7 +158,7 @@ export default function Distribution() {
         .dist-cta-image { display: flex; justify-content: center; animation: float 4s ease-in-out infinite; }
         .dist-tablet-img { object-fit: contain; max-width: 100%; height: auto; filter: drop-shadow(0 20px 40px rgba(102,199,192,0.2)); }
         .dist-cta-content { text-align: left; }
-        .dist-cta-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; color: var(--foreground-secondary); margin-bottom: 20px; line-height: 1.2; }
+        .dist-cta-title { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; color: var(--foreground-secondary); margin-bottom: 20px; line-height: 1.2; }
         .dist-cta-desc { color: var(--foreground-secondary); line-height: 1.8; margin-bottom: 32px; }
         .dist-cta-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
 
@@ -183,8 +181,8 @@ export default function Distribution() {
           .partner-logo-item img { max-width: 80px; }
           .dist-cta-title br { display: none; }
           .dist-cta-desc { font-size: 0.92rem; }
-          .dist-cta-buttons { flex-direction: column; align-items: center; width: 100%; }
-          .dist-cta-buttons a { width: 100%; max-width: 300px; justify-content: center; }
+          .dist-cta-buttons { flex-direction: column; align-items: center; width: 100%; gap: 12px; }
+          .dist-cta-buttons a, .dist-cta-buttons button { width: 100%; max-width: 300px; justify-content: center; box-sizing: border-box; }
         }
         @media (max-width: 420px) {
           .dist-tablet-img { width: 200px; }

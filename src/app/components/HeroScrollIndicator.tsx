@@ -43,7 +43,12 @@ export default function HeroScrollIndicator() {
           .rotate-arrow-center svg { width: 24px; height: 24px; }
         }
         @media (max-width: 600px) {
-          .hero-rotate-circle { display: none; }
+          .hero-rotate-circle {
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+            z-index: 999;
+          }
+          .rotate-wrap { width: 70px; height: 70px; }
+          .rotate-arrow-center svg { width: 20px; height: 20px; }
         }
       `}</style>
     </div>

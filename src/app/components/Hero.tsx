@@ -1,14 +1,13 @@
 'use client';
-import { useState } from 'react';
 import { motion } from 'motion/react';
 import ContactForm from './ContactForm';
 import ParticlesBackground from './ParticlesBackground';
 import HeroContent from './HeroContent';
-import HeroModal from './HeroModal';
 import HeroScrollIndicator from './HeroScrollIndicator';
+import { useModal } from './ModalProvider';
 
 export default function Hero() {
-  const [modalOpen, setModalOpen] = useState(false);
+  const { openModal } = useModal();
 
   return (
     <section id="hero" className="hero-section">
@@ -33,7 +32,7 @@ export default function Hero() {
       />
 
       <div className="container hero-grid">
-        <HeroContent onOpenModal={() => setModalOpen(true)} />
+        <HeroContent onOpenModal={openModal} />
         <motion.div
           className="hero-form-wrapper"
           initial={{ opacity: 0, x: 40 }}
@@ -45,8 +44,6 @@ export default function Hero() {
       </div>
 
       <HeroScrollIndicator />
-
-      <HeroModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
 
       <style>{`
         .hero-section {

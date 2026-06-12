@@ -1,5 +1,5 @@
 'use client';
-import { ArrowUpRight } from 'lucide-react';
+import ArrowIcon from '@/components/ui/ArrowIcon';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { PhoneInput } from 'react-international-phone';
@@ -115,26 +115,6 @@ export default function ContactForm({
             />
           </div>
 
-          <div className="cf-select-wrap">
-            <select
-              name="service"
-              className="cf-service-select"
-              required
-              disabled={loading}
-              defaultValue=""
-            >
-              <option value="" disabled>Please choose a service</option>
-              <option value="facebook marketing">Facebook Marketing</option>
-              <option value="youtube marketing">YouTube Marketing</option>
-              <option value="instagram marketing">Instagram Marketing</option>
-              <option value="tiktok marketing">TikTok Marketing</option>
-              <option value="linkdein marketing">LinkedIn Marketing</option>
-              <option value="x marketing">X Marketing</option>
-              <option value="seo services">SEO Services</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-
           <textarea
             className="form-input"
             name="message"
@@ -157,7 +137,7 @@ export default function ContactForm({
             ) : (
               <>
                 Get Started
-                <ArrowUpRight size={14} />
+                <ArrowIcon />
               </>
             )}
           </button>
@@ -188,7 +168,7 @@ export default function ContactForm({
 
         /* ── Title ── */
         .cf-title {
-          font-family: 'Playfair Display', serif;
+          font-family: var(--font-display);
           font-size: 1.45rem;
           font-weight: 700;
           color: var(--foreground);
@@ -209,36 +189,7 @@ export default function ContactForm({
           resize: vertical;
         }
 
-        /* ── Service Select ── */
-        .cf-select-wrap { width: 100%; position: relative; }
-        .cf-select-wrap::after {
-          content: ''; position: absolute; right: 16px; top: 50%;
-          transform: translateY(-50%);
-          width: 0; height: 0;
-          border-left: 5px solid transparent;
-          border-right: 5px solid transparent;
-          border-top: 5px solid var(--foreground-muted);
-          pointer-events: none;
-          z-index: 1;
-        }
-        .cf-service-select {
-          width: 100%; padding: 14px 18px; padding-right: 40px;
-          background: var(--card-hover);
-          border: 1px solid var(--border); border-radius: var(--radius-sm);
-          color: var(--foreground); font-size: 0.95rem; font-family: var(--font-body);
-          transition: all 0.3s; outline: none;
-          appearance: none; -webkit-appearance: none; -moz-appearance: none;
-          cursor: pointer;
-        }
-        .cf-service-select:focus {
-          border-color: var(--gold);
-          box-shadow: 0 0 0 3px rgba(102,199,192,0.12);
-        }
-        .cf-service-select option {
-          background: var(--background-secondary);
-          color: var(--foreground);
-        }
-        .cf-service-select:disabled { opacity: 0.6; cursor: not-allowed; }
+        /* ── Service Select was removed ── */
 
         /* ── Disabled state ── */
         .cf-form input:disabled,
