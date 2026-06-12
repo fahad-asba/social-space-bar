@@ -19,7 +19,7 @@ import MobileFloatingCallBtn from './components/MobileFloatingCallBtn';
 import ModalProvider from './components/ModalProvider';
 
 export const metadata: Metadata = {
-  title: 'Social Media Marketing Agency',
+  title: 'Social Space Bar - Expert Social Media Marketing Services',
   description:
     'Professional social media marketing services to grow your brand, boost engagement, and build your online presence. Expert Facebook, Instagram, LinkedIn, Twitter, YouTube & TikTok marketing.',
   alternates: { canonical: 'https://www.socialspacebar.com/' },
