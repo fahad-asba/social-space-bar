@@ -57,16 +57,24 @@ export default function Testimonials() {
                   <p className="testimonial-quote">&ldquo;{testimonials[active].quote}&rdquo;</p>
 
                   <div className="testimonial-author">
-                    <div className="testimonial-avatar" style={{
-                      background: `linear-gradient(135deg, ${testimonials[active].color}, ${testimonials[active].color}80)`,
-                    }}>
-                      {testimonials[active].initials}
-                    </div>
+                    {testimonials[active].image ? (
+                      <div className="testimonial-avatar" style={{ overflow: 'hidden' }}>
+                        <img src={testimonials[active].image} alt={testimonials[active].name} className="testimonial-avatar-img" />
+                      </div>
+                    ) : (
+                      <div className="testimonial-avatar" style={{
+                        background: `linear-gradient(135deg, ${testimonials[active].color}, ${testimonials[active].color}80)`,
+                      }}>
+                        {testimonials[active].initials}
+                      </div>
+                    )}
                     <div style={{ textAlign: 'left' }}>
                       <div className="testimonial-name">{testimonials[active].name}</div>
                       <div className="testimonial-role">{testimonials[active].role}</div>
                     </div>
                   </div>
+
+                  <img src="https://sm.socialspacebar.com/wp-content/uploads/2025/06/Asset-1@300x-9-02-1.png" alt="SocialSpaceBar" className="testimonial-brand-logo" />
                 </div>
               </motion.div>
             </AnimatePresence>
@@ -151,8 +159,12 @@ export default function Testimonials() {
           display: flex; align-items: center; justify-content: center;
           font-weight: 800; font-size: 1rem; color: var(--background-secondary); flex-shrink: 0;
         }
+        .testimonial-avatar-img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .testimonial-name { font-weight: 700; color: var(--foreground); }
         .testimonial-role { font-size: 0.82rem; color: var(--foreground-muted); }
+        .testimonial-brand-logo {
+          display: block; margin: 24px auto 0; height: 28px; opacity: 0.5;
+        }
         .testimonial-tabs { display: flex; justify-content: center; gap: 16px; margin-bottom: 56px; flex-wrap: wrap; }
         .testimonial-tab {
           padding: 12px 24px; border-radius: 100px; font-weight: 600;

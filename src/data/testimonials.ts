@@ -5,6 +5,7 @@ export interface Testimonial {
   initials: string;
   color: string;
   stars: number;
+  image?: string;
 }
 
 export interface Stat {
@@ -44,6 +45,33 @@ export const testimonials: Testimonial[] = [
     initials: 'SM',
     color: '#10b981',
     stars: 5,
+  },
+  {
+    quote: 'Working with SocialSpaceBar has been a game-changer for us. Their understanding of social media trends and how to position our brand was outstanding. We\'ve gone from inconsistent posting to a fully managed, professional online presence.',
+    name: 'Vivian Richards',
+    role: 'Entrepreneur',
+    initials: 'VR',
+    color: '#f59e0b',
+    stars: 5,
+    image: 'https://sm.socialspacebar.com/wp-content/uploads/2025/10/team_8.jpg',
+  },
+  {
+    quote: 'The team at SocialSpaceBar truly knows how to deliver results. They designed campaigns that not only looked amazing but also brought in real business. Their professionalism and communication were top-notch.',
+    name: 'Edward Lawson',
+    role: 'Small Business Owner',
+    initials: 'EL',
+    color: '#ef4444',
+    stars: 5,
+    image: 'https://sm.socialspacebar.com/wp-content/uploads/2025/10/team_5.jpg',
+  },
+  {
+    quote: 'SocialSpaceBar transformed our online presence completely. From strategy to execution, everything was handled with precision and creativity. Our engagement rates have never been higher.',
+    name: 'Jonathan Chen',
+    role: 'Bank Executive',
+    initials: 'JC',
+    color: '#8b5cf6',
+    stars: 5,
+    image: 'https://sm.socialspacebar.com/wp-content/uploads/2025/10/team_8.jpg',
   },
 ];
 

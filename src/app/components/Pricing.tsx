@@ -13,8 +13,8 @@ export default function Pricing() {
 
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         <div className="pricing-header">
-          <SectionHeader label="Pricing Plans" description="Every brand deserves the right strategy. Our packages support businesses with powerful promotion, stronger visibility, and tools for growth." descriptionClass="pricing-desc">
-            Choose the Right <span className="accent">Plan</span> for Your Brand
+          <SectionHeader label="Pricing Plans" description="Choose the plan that fits your business goals" descriptionClass="pricing-desc">
+            Social Media Growth <span className="accent">Packages</span>
           </SectionHeader>
         </div>
 
@@ -43,7 +43,10 @@ export default function Pricing() {
                   }}>{plan.badge}</div>
                 )}
                 <h3 className="pricing-plan-name" style={{ color: plan.color }}>{plan.name}</h3>
-                <p className="pricing-plan-subtitle">{plan.subtitle}</p>
+                <div className="pricing-price-row">
+                  <span className="pricing-price" style={{ color: plan.color }}>${plan.price}</span>
+                  <span className="pricing-period">/ Month</span>
+                </div>
                 <p className="pricing-plan-desc">{plan.desc}</p>
               </div>
 
@@ -81,6 +84,10 @@ export default function Pricing() {
                     </li>
                   ))}
                 </ul>
+
+                <p className="pricing-ideal-for">
+                  <strong>Ideal For:</strong> {plan.idealFor}
+                </p>
               </div>
             </div>
           ))}
@@ -164,6 +171,21 @@ export default function Pricing() {
           color: var(--foreground-muted);
           transition: color 0.3s ease;
         }
+        .pricing-price-row {
+          display: flex;
+          align-items: baseline;
+          gap: 4px;
+          margin-bottom: 8px;
+        }
+        .pricing-price {
+          font-family: var(--font-display);
+          font-size: 2.2rem;
+          font-weight: 800;
+        }
+        .pricing-period {
+          font-size: 0.85rem;
+          color: var(--foreground-muted);
+        }
         .pricing-card-body {
           padding: 28px;
         }
@@ -201,6 +223,17 @@ export default function Pricing() {
           flex-shrink: 0;
           margin-top: 1px;
         }
+        .pricing-ideal-for {
+          margin-top: 20px;
+          padding-top: 16px;
+          border-top: 1px solid var(--border);
+          font-size: 0.78rem;
+          color: var(--foreground-muted);
+          line-height: 1.6;
+        }
+        .pricing-ideal-for strong {
+          color: var(--foreground-secondary);
+        }
         .pricing-footer {
           text-align: center;
           color: var(--foreground-muted);
@@ -235,8 +268,11 @@ export default function Pricing() {
           .pricing-card-header { padding: 24px 20px 20px; }
           .pricing-plan-name { font-size: 1.4rem; }
           .pricing-plan-subtitle { font-size: 0.85rem; }
+          .pricing-price { font-size: 1.9rem; }
+          .pricing-period { font-size: 0.8rem; }
           .pricing-card-body { padding: 22px 20px; }
           .pricing-cta-btn { padding: 13px 18px; font-size: 0.85rem; }
+          .pricing-ideal-for { font-size: 0.75rem; }
           .pricing-features { gap: 10px; }
           .pricing-feature { font-size: 0.84rem; line-height: 1.6; }
           .pricing-footer { margin-top: 28px; font-size: 0.8rem; padding: 0 10px; }
@@ -251,7 +287,10 @@ export default function Pricing() {
           .pricing-card-header { padding: 20px 16px 18px; }
           .pricing-plan-name { font-size: 1.2rem; }
           .pricing-plan-subtitle { font-size: 0.8rem; line-height: 1.5; }
+          .pricing-price { font-size: 1.6rem; }
+          .pricing-period { font-size: 0.75rem; }
           .pricing-card-body { padding: 18px 16px; }
+          .pricing-ideal-for { font-size: 0.7rem; }
           .pricing-cta-btn { padding: 12px 14px; font-size: 0.82rem; }
           .pricing-features { gap: 8px; }
           .pricing-feature { font-size: 0.8rem; line-height: 1.5; gap: 8px; }
