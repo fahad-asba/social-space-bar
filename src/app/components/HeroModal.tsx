@@ -72,15 +72,15 @@ export default function HeroModal({ isOpen, onClose }: HeroModalProps) {
           <div className="modal-glow-purple" />
           <div className="modal-glow-gold" />
           <div className="modal-tablet-wrap">
-            <Image
-              src="/social-media.webp"
-              alt="3D Tablet"
-              width={400}
-              height={400}
-              className="modal-tablet-img"
-              sizes="(max-width: 900px) 0px, (max-width: 1100px) 280px, 340px"
-              priority
-            />
+              <Image
+                src="/social-media.webp"
+                alt="3D Tablet"
+                width={340}
+                height={340}
+                className="modal-tablet-img"
+                sizes="(max-width: 900px) 0px, (max-width: 1100px) 240px, 300px"
+                priority
+              />
           </div>
           <div className="modal-brand">Social Space Bar</div>
         </div>
@@ -171,12 +171,12 @@ export default function HeroModal({ isOpen, onClose }: HeroModalProps) {
         }
         .modal-content {
           background: var(--card-bg); border: 1px solid var(--border);
-          border-radius: 24px; max-width: 920px; width: 100%;
+          border-radius: 24px; max-width: 780px; width: 100%;
           display: grid; grid-template-columns: 1fr 1fr;
           overflow: hidden; position: relative;
           box-shadow: 0 24px 60px rgba(0,0,0,0.4);
           animation: modalSlideUp 0.35s ease;
-          max-height: 90vh;
+          max-height: 80vh;
         }
         .modal-close-btn {
           position: absolute; top: 14px; right: 14px; z-index: 10;
@@ -189,7 +189,7 @@ export default function HeroModal({ isOpen, onClose }: HeroModalProps) {
         .modal-close-btn:hover { background: #66C7C0; color: #fff; border-color: #66C7C0; }
         .modal-image-side {
           position: relative; display: flex; flex-direction: column;
-          align-items: center; justify-content: center; padding: 40px;
+          align-items: center; justify-content: center; padding: 32px;
           background: linear-gradient(135deg, #0d1526, #080d1a);
           overflow: hidden;
         }
@@ -214,7 +214,7 @@ export default function HeroModal({ isOpen, onClose }: HeroModalProps) {
           letter-spacing: 0.15em; text-transform: uppercase;
         }
         .modal-form-side {
-          padding: 48px 36px; position: relative; overflow-y: auto;
+          padding: 24px 28px 48px; position: relative; overflow-y: auto;
         }
         .modal-top-bar {
           position: absolute; top: 0; left: 0; right: 0; height: 3px;
@@ -224,34 +224,41 @@ export default function HeroModal({ isOpen, onClose }: HeroModalProps) {
           display: inline-block; padding: 4px 12px; border-radius: 100px;
           background: rgba(102,199,192,0.12); border: 1px solid rgba(102,199,192,0.25);
           font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em;
-          text-transform: uppercase; color: #66C7C0; margin-bottom: 16px;
+          text-transform: uppercase; color: #66C7C0; margin-bottom: 8px;
         }
         .modal-heading {
-          font-family: var(--font-display); font-size: 1.6rem;
-          font-weight: 800; color: var(--foreground); margin-bottom: 8px;
+          font-family: var(--font-display); font-size: 1.4rem;
+          font-weight: 800; color: var(--foreground); margin-bottom: 6px;
         }
         .modal-subheading {
-          font-size: 0.9rem; color: var(--foreground-muted); margin-bottom: 28px;
-          line-height: 1.6;
+          font-size: 0.85rem; color: var(--foreground-muted); margin-bottom: 20px;
+          line-height: 1.5;
         }
-        .modal-form { display: flex; flex-direction: column; gap: 14px; }
-        .modal-phone-wrap { width: 100%; }
+        .modal-form { display: flex; flex-direction: column; gap: 10px; }
+        .modal-phone-wrap { width: 100%; position: relative; }
         .modal-phone-wrap .react-international-phone-input-container {
           display: flex !important;
           gap: 0 !important;
+          align-items: stretch !important;
+          border: none !important;
+          border-radius: var(--radius-sm) !important;
+          overflow: hidden !important;
         }
         .modal-phone-input {
-          width: 100% !important; padding: 14px 18px !important;
+          flex: 1 !important; width: 100% !important; padding: 14px 18px !important;
           background: var(--card-hover) !important; border: 1px solid var(--border) !important;
-          border-radius: var(--radius-sm) !important;
+          border-radius: 0 var(--radius-sm) var(--radius-sm) 0 !important;
           color: var(--foreground) !important; font-size: 0.95rem !important;
           font-family: var(--font-body) !important; outline: none !important;
+          height: 48px !important; box-sizing: border-box !important;
         }
         .modal-phone-input:focus { border-color: #66C7C0 !important; box-shadow: 0 0 0 3px rgba(102,199,192,0.12) !important; }
         .modal-country-btn {
           background: var(--card-hover) !important; border: 1px solid var(--border) !important;
+          border-right: none !important;
           border-radius: var(--radius-sm) 0 0 var(--radius-sm) !important;
-          padding: 0 12px !important; height: auto !important;
+          padding: 0 12px !important; height: 48px !important;
+          min-height: 48px !important; box-sizing: border-box !important;
         }
         .modal-success { text-align: center; padding: 40px 0; }
         .modal-success-title { font-family: var(--font-display); font-size: 1.6rem; font-weight: 800; color: var(--foreground); margin-bottom: 12px; }
@@ -262,14 +269,17 @@ export default function HeroModal({ isOpen, onClose }: HeroModalProps) {
         }
         .modal-privacy {
           text-align: center; font-size: 0.75rem; color: var(--foreground-muted);
-          margin-top: 20px;
+          margin-top: 14px;
         }
         .react-international-phone-country-selector-dropdown {
-          max-height: 220px !important;
+          max-height: 240px !important;
+          position: absolute !important;
+          top: 100% !important;
+          left: 0 !important;
         }
         @media (max-width: 480px) {
           .react-international-phone-country-selector-dropdown {
-            max-height: 180px !important; width: 280px !important;
+            max-height: 200px !important; width: 280px !important;
           }
         }
         @media (max-width: 380px) {
@@ -281,39 +291,39 @@ export default function HeroModal({ isOpen, onClose }: HeroModalProps) {
         @media (max-width: 900px) {
           .modal-content { grid-template-columns: 1fr; max-width: 520px; }
           .modal-image-side { display: none; }
-          .modal-form-side { padding: 36px 28px; }
+          .modal-form-side { padding: 24px 28px 48px; }
         }
         @media (max-width: 600px) {
           .modal-overlay { padding: 12px; }
           .modal-content { border-radius: 18px; max-height: 90vh; }
-          .modal-form-side { padding: 28px 20px; }
+          .modal-form-side { padding: 20px 20px 40px; }
           .modal-heading { font-size: 1.3rem; }
           .modal-form { gap: 12px; }
           .modal-subheading { font-size: 0.85rem; margin-bottom: 20px; }
-          .modal-phone-input { padding: 12px 14px !important; font-size: 0.9rem !important; }
-          .modal-country-btn { padding: 0 10px !important; }
+          .modal-phone-input { padding: 12px 14px !important; font-size: 0.9rem !important; height: 44px !important; }
+          .modal-country-btn { padding: 0 10px !important; height: 44px !important; min-height: 44px !important; }
         }
         @media (max-width: 480px) {
           .modal-overlay { padding: 8px; align-items: flex-end; }
           .modal-content { border-radius: 16px 16px 0 0; max-height: 92vh; }
-          .modal-form-side { padding: 24px 18px; }
+          .modal-form-side { padding: 18px 18px 40px; }
           .modal-close-btn { top: 10px; right: 10px; width: 32px; height: 32px; font-size: 1.2rem; }
           .modal-heading { font-size: 1.15rem; }
           .modal-subheading { font-size: 0.82rem; margin-bottom: 16px; }
           .modal-badge { font-size: 0.65rem; padding: 3px 10px; }
           .modal-form { gap: 10px; }
           .modal-form .form-input { padding: 12px 14px; font-size: 0.9rem; }
-          .modal-phone-input { padding: 10px 12px !important; font-size: 0.9rem !important; }
-          .modal-country-btn { padding: 0 8px !important; min-width: 48px !important; }
+          .modal-phone-input { padding: 10px 12px !important; font-size: 0.9rem !important; height: 44px !important; }
+          .modal-country-btn { padding: 0 8px !important; min-width: 48px !important; height: 44px !important; min-height: 44px !important; }
           .modal-privacy { font-size: 0.7rem; margin-top: 14px; }
         }
         @media (max-width: 380px) {
           .modal-overlay { padding: 4px; }
-          .modal-form-side { padding: 20px 14px; }
+          .modal-form-side { padding: 16px 14px 36px; }
           .modal-heading { font-size: 1.05rem; }
           .modal-form .form-input { padding: 10px 12px; font-size: 0.85rem; }
-          .modal-phone-input { padding: 8px 10px !important; font-size: 0.85rem !important; }
-          .modal-country-btn { padding: 0 6px !important; min-width: 42px !important; }
+          .modal-phone-input { padding: 8px 10px !important; font-size: 0.85rem !important; height: 40px !important; }
+          .modal-country-btn { padding: 0 6px !important; min-width: 42px !important; height: 40px !important; min-height: 40px !important; }
           .modal-subheading { font-size: 0.78rem; }
         }
       `}</style>

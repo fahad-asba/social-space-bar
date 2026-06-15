@@ -35,7 +35,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
+    <nav className={`navbar ${scrolled || menuOpen ? 'navbar-scrolled' : ''} ${menuOpen ? 'menu-open' : ''}`}>
       <div className="container navbar-inner">
         <Link
           href="/"
@@ -51,6 +51,7 @@ export default function Navbar() {
             width={150}
             height={40}
             className="nav-logo-img"
+            priority
           />
         </Link>
 
@@ -96,6 +97,7 @@ export default function Navbar() {
             width={120}
             height={32}
             className="nav-logo-img"
+            priority
           />
           <button
             className="mobile-menu-close"
@@ -139,6 +141,10 @@ export default function Navbar() {
           -webkit-backdrop-filter: blur(24px);
           border-bottom: 1px solid var(--nav-border);
           box-shadow: 0 4px 30px var(--nav-shadow);
+        }
+        .navbar.navbar-scrolled.menu-open {
+          background: #0d1526;
+          background: var(--mobile-menu-bg, #0d1526);
         }
         .navbar-inner {
           display: flex; align-items: center; justify-content: space-between; height: 80px;
@@ -189,7 +195,8 @@ export default function Navbar() {
 
         .mobile-menu {
           position: fixed; top: 0; right: 0; bottom: 0; z-index: 999;
-          width: min(85vw, 380px); background: var(--mobile-menu-bg);
+          width: min(85vw, 380px); background: #0d1526;
+          background: var(--mobile-menu-bg, #0d1526);
           border-left: 1px solid var(--border);
           display: flex; flex-direction: column;
           transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
@@ -209,7 +216,7 @@ export default function Navbar() {
           transition: all 0.2s; flex-shrink: 0;
         }
         .mobile-menu-close:hover { background: rgba(102,199,192,0.15); border-color: #66C7C0; color: #66C7C0; }
-        .mobile-menu-links { list-style: none; padding: 16px 24px; flex: 1; display: flex; flex-direction: column; gap: 4px; }
+        .mobile-menu-links { list-style: none; padding: 16px 24px; flex: 1; display: flex; flex-direction: column; gap: 4px; background: #0d1526; background: var(--mobile-menu-bg, #0d1526); }
         .mobile-menu-link {
           display: block; padding: 14px 16px; color: var(--mobile-menu-foreground); text-decoration: none;
           font-size: 1.05rem; font-weight: 500; border-radius: var(--radius-sm);
@@ -217,7 +224,7 @@ export default function Navbar() {
         }
         .mobile-menu-link:hover { background: rgba(102,199,192,0.08); color: #66C7C0; }
         .mobile-menu-link-active { background: rgba(102,199,192,0.1); color: #66C7C0; font-weight: 600; }
-        .mobile-menu-footer { padding: 16px 24px 32px; border-top: 1px solid rgba(255,255,255,0.08); display: flex; flex-direction: column; gap: 12px; }
+        .mobile-menu-footer { padding: 16px 24px 32px; border-top: 1px solid rgba(255,255,255,0.08); display: flex; flex-direction: column; gap: 12px; background: #0d1526; background: var(--mobile-menu-bg, #0d1526); }
         .mobile-menu-phone {
           display: flex; align-items: center; gap: 8px; color: var(--mobile-menu-foreground);
           text-decoration: none; font-weight: 500; font-size: 0.95rem; padding: 12px 16px;

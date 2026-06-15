@@ -64,8 +64,8 @@ export default function CountryPickerModal({ isOpen, onClose, onSelect, selected
 
       <div className="country-picker-modal" style={{
         position: 'relative',
-        width: '100%', maxWidth: '380px',
-        maxHeight: '85vh',
+        width: '100%', maxWidth: '440px',
+        maxHeight: '75vh',
         background: 'var(--card-bg)',
         border: '1px solid var(--border)',
         borderRadius: '20px',
@@ -90,14 +90,23 @@ export default function CountryPickerModal({ isOpen, onClose, onSelect, selected
             <button
               onClick={onClose}
               style={{
-                background: 'none', border: 'none',
-                color: 'var(--foreground-muted)',
-                cursor: 'pointer', fontSize: '1.3rem', padding: '4px',
-                lineHeight: 1, display: 'flex',
+                background: 'var(--card-hover)',
+                border: '1px solid var(--border)',
+                color: 'var(--foreground)',
+                cursor: 'pointer', fontSize: '1.2rem',
+                width: '36px', height: '36px',
+                borderRadius: '50%',
+                lineHeight: '36px', display: 'flex',
+                alignItems: 'center', justifyContent: 'center',
+                flexShrink: 0,
+                transition: 'all 0.2s',
+                zIndex: 1,
               }}
               aria-label="Close"
+              onMouseEnter={e => { e.currentTarget.style.background = '#66C7C0'; e.currentTarget.style.color = '#fff'; e.currentTarget.style.borderColor = '#66C7C0'; }}
+              onMouseLeave={e => { e.currentTarget.style.background = 'var(--card-hover)'; e.currentTarget.style.color = 'var(--foreground)'; e.currentTarget.style.borderColor = 'var(--border)'; }}
             >
-              ✕
+              ×
             </button>
           </div>
           <input
@@ -203,11 +212,17 @@ export default function CountryPickerModal({ isOpen, onClose, onSelect, selected
           background: var(--border);
           border-radius: 2px;
         }
-        @media (max-width: 420px) {
+        @media (max-width: 480px) {
           .country-picker-modal {
             max-width: 100% !important;
-            max-height: 90vh !important;
+            max-height: 85vh !important;
             border-radius: 16px !important;
+          }
+        }
+        @media (max-width: 380px) {
+          .country-picker-modal {
+            max-height: 90vh !important;
+            border-radius: 12px !important;
           }
         }
       `}</style>

@@ -28,7 +28,7 @@ export const reasons: Reason[] = [
   {
     icon: '\u{1F91D}',
     title: 'Dedicated Support',
-    desc: 'Your personal marketing team is always available — no bots, no delays, real experts.',
+    desc: 'Your personal marketing team is always available - no bots, no delays, real experts.',
   },
   {
     icon: '\u{1F52C}',

@@ -1,22 +1,23 @@
 import type { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import StatsCounter from './components/StatsCounter';
 import ServicesMarquee from './components/ServicesMarquee';
-import Services from './components/Services';
-import Solutions from './components/Solutions';
-import Portfolio from './components/Portfolio';
-import Process from './components/Process';
-import WhyUs from './components/WhyUs';
-import Pricing from './components/Pricing';
-import Testimonials from './components/Testimonials';
-import SocialMediaPlatforms from './components/SocialMediaPlatforms';
-import Distribution from './components/Distribution';
-import FAQ from './components/FAQ';
-import ContactSection from './components/ContactSection';
-import Footer from './components/Footer';
-import MobileFloatingCallBtn from './components/MobileFloatingCallBtn';
 import ModalProvider from './components/ModalProvider';
+
+const Services = dynamic(() => import('./components/Services'), { ssr: true });
+const Solutions = dynamic(() => import('./components/Solutions'), { ssr: true });
+const Portfolio = dynamic(() => import('./components/Portfolio'), { ssr: true });
+const Process = dynamic(() => import('./components/Process'), { ssr: true });
+const WhyUs = dynamic(() => import('./components/WhyUs'), { ssr: true });
+const Pricing = dynamic(() => import('./components/Pricing'), { ssr: true });
+const Testimonials = dynamic(() => import('./components/Testimonials'), { ssr: true });
+const SocialMediaPlatforms = dynamic(() => import('./components/SocialMediaPlatforms'), { ssr: true });
+const Distribution = dynamic(() => import('./components/Distribution'), { ssr: true });
+const FAQ = dynamic(() => import('./components/FAQ'), { ssr: true });
+const ContactSection = dynamic(() => import('./components/ContactSection'), { ssr: true });
+const Footer = dynamic(() => import('./components/Footer'), { ssr: true });
 
 export const metadata: Metadata = {
   title: 'Social Space Bar - Expert Social Media Marketing Services',
@@ -49,7 +50,6 @@ export default function Home() {
       </main>
       </ModalProvider>
       <Footer />
-      <MobileFloatingCallBtn />
 
       <div className="seo-links">
         <div className="container seo-links-inner">

@@ -4,7 +4,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectCoverflow } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
 import 'swiper/css';
-import 'swiper/css/navigation';
 import 'swiper/css/effect-coverflow';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
@@ -157,7 +156,7 @@ export default function Services() {
           transition: all 0.4s ease; box-shadow: var(--shadow-md);
           height: 100%; display: flex; flex-direction: column;
         }
-        .service-card:hover { box-shadow: var(--shadow-xl); transform: translateY(-4px); }
+        .service-card:hover { box-shadow: var(--shadow-xl); transform: translateY(-4px); cursor: pointer; }
         .service-card-image {
           position: relative; width: 100%; height: 200px; overflow: hidden; flex-shrink: 0;
         }

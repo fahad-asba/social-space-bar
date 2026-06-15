@@ -21,7 +21,7 @@ const faqs = [
   },
   {
     q: 'Can you help with content creation?',
-    a: 'Absolutely. Our content creation services include graphic design, short-form video production, copywriting, and brand storytelling — all tailored to your brand\'s voice and audience.',
+    a: 'Absolutely. Our content creation services include graphic design, short-form video production, copywriting, and brand storytelling - all tailored to your brand\'s voice and audience.',
   },
   {
     q: 'What information do you need to get started?',

@@ -59,7 +59,7 @@ export default function Testimonials() {
                   <div className="testimonial-author">
                     {testimonials[active].image ? (
                       <div className="testimonial-avatar" style={{ overflow: 'hidden' }}>
-                        <img src={testimonials[active].image} alt={testimonials[active].name} className="testimonial-avatar-img" />
+                        <img src={testimonials[active].image} alt={testimonials[active].name} className="testimonial-avatar-img" loading="lazy" />
                       </div>
                     ) : (
                       <div className="testimonial-avatar" style={{
@@ -74,7 +74,7 @@ export default function Testimonials() {
                     </div>
                   </div>
 
-                  <img src="https://sm.socialspacebar.com/wp-content/uploads/2025/06/Asset-1@300x-9-02-1.png" alt="SocialSpaceBar" className="testimonial-brand-logo" />
+                  <img src="https://sm.socialspacebar.com/wp-content/uploads/2025/06/Asset-1@300x-9-02-1.png" alt="SocialSpaceBar" className="testimonial-brand-logo" loading="lazy" />
                 </div>
               </motion.div>
             </AnimatePresence>

@@ -22,7 +22,7 @@ export default function Portfolio() {
         <div className="portfolio-track">
           {[...books, ...books].map((src, i) => (
             <div key={i} className="portfolio-marquee-book">
-              <Image src={src} alt={`Portfolio ${i + 1}`} fill style={{ objectFit: 'cover' }} />
+              <Image src={src} alt={`Portfolio ${i + 1}`} fill sizes="(max-width: 600px) 160px, (max-width: 1024px) 220px, 260px" style={{ objectFit: 'cover' }} />
             </div>
           ))}
         </div>
@@ -34,7 +34,7 @@ export default function Portfolio() {
         <div className="portfolio-track portfolio-track-reverse">
           {[...newBooks, ...newBooks].map((src, i) => (
             <div key={i} className="portfolio-marquee-book">
-              <Image src={src} alt={`Portfolio ${i + 1}`} fill style={{ objectFit: 'cover' }} />
+              <Image src={src} alt={`Portfolio ${i + 1}`} fill sizes="(max-width: 600px) 160px, (max-width: 1024px) 220px, 260px" style={{ objectFit: 'cover' }} />
             </div>
           ))}
         </div>
@@ -46,7 +46,7 @@ export default function Portfolio() {
         <div className="portfolio-track portfolio-track-pulse">
           {[...books, ...newBooks, ...books, ...newBooks].map((src, i) => (
             <div key={i} className="portfolio-marquee-book">
-              <Image src={src} alt={`Portfolio ${i + 1}`} fill style={{ objectFit: 'cover' }} />
+              <Image src={src} alt={`Portfolio ${i + 1}`} fill sizes="(max-width: 600px) 160px, (max-width: 1024px) 220px, 260px" style={{ objectFit: 'cover' }} />
             </div>
           ))}
         </div>
@@ -86,7 +86,7 @@ export default function Portfolio() {
           overflow: hidden; border: 1px solid var(--border);
           transition: all 0.3s; position: relative;
         }
-        .portfolio-marquee-book:hover { transform: scale(1.05) translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); z-index: 10; }
+        .portfolio-marquee-book:hover { transform: scale(1.05) translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); z-index: 10; cursor: pointer; }
         .portfolio-cta { display: flex; justify-content: center; gap: 16px; margin-top: 56px; flex-wrap: wrap; }
 
         @keyframes marquee-pulse {

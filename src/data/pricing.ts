@@ -16,6 +16,7 @@ export const plans: PricingPlan[] = [
     desc: 'For startups and local businesses building their online presence.',
     color: '#06b6d4',
     featured: false,
+    badge: 'BEST VALUE',
     features: [
       'Social Media Strategy Setup',
       'Management of 2 Platforms',

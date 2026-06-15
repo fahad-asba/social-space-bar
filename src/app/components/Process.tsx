@@ -122,7 +122,7 @@ export default function Process() {
           background: var(--card-bg); border: 1px solid var(--border);
           border-radius: 20px; transition: all 0.3s ease; height: 100%;
         }
-        .process-step-card:hover { border-color: rgba(102,199,192,0.3); box-shadow: var(--shadow-lg); cursor: default; }
+        .process-step-card:hover { border-color: rgba(102,199,192,0.3); box-shadow: var(--shadow-lg); cursor: pointer; }
         .process-step-number {
           position: absolute; top: 12px; right: 12px;
           width: 28px; height: 28px; border-radius: 50%;

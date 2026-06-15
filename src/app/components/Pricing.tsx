@@ -1,8 +1,15 @@
 'use client';
 import { useState } from 'react';
+import Image from 'next/image';
 import ArrowIcon from '@/components/ui/ArrowIcon';
 import SectionHeader from '@/components/ui/SectionHeader';
 import { plans } from '@/data/pricing';
+
+const planIcons: Record<string, string> = {
+  'Starter Growth': '/Starter-Growth.png',
+  'Pro Growth': '/Pro-Growth.png',
+  'Premium Domination': '/Premium-Domination.png',
+};
 
 export default function Pricing() {
   const [hoveredPlan, setHoveredPlan] = useState<string | null>(null);
@@ -30,12 +37,23 @@ export default function Pricing() {
                 background: plan.featured ? `linear-gradient(145deg, rgba(102,199,192,0.08), rgba(102,199,192,0.03))` : 'var(--card-bg)',
                 transform: plan.featured ? 'scale(1.03)' : hoveredPlan === plan.name ? 'scale(1.02)' : 'scale(1)',
                 boxShadow: plan.featured ? `0 0 40px rgba(102,199,192,0.15)` : hoveredPlan === plan.name ? '0 16px 40px rgba(0,0,0,0.3)' : 'none',
-              }}
+                cursor: 'pointer',
+                '--plan-color': plan.color,
+              } as React.CSSProperties}
             >
               <div className="pricing-card-header" style={{
                 background: `linear-gradient(135deg, ${plan.color}20, ${plan.color}08)`,
                 borderBottom: `1px solid ${plan.color}30`,
               }}>
+                <div className="pricing-card-icon">
+                  <Image
+                    src={planIcons[plan.name]}
+                    alt={plan.name}
+                    width={56}
+                    height={56}
+                    className="pricing-icon-img"
+                  />
+                </div>
                 {plan.badge && (
                   <div className="pricing-badge" style={{
                     background: plan.color,
@@ -85,7 +103,7 @@ export default function Pricing() {
                   ))}
                 </ul>
 
-                <p className="pricing-ideal-for">
+                <p className="pricing-ideal-for" style={{ borderLeftColor: plan.color }}>
                   <strong>Ideal For:</strong> {plan.idealFor}
                 </p>
               </div>
@@ -144,9 +162,27 @@ export default function Pricing() {
           padding: 32px 28px 24px;
           position: relative;
         }
+        .pricing-card-icon {
+          display: flex;
+          justify-content: center;
+          margin-bottom: 16px;
+        }
+        .pricing-icon-img {
+          object-fit: contain;
+          transition: filter 0.3s ease, transform 0.3s ease;
+          width: 56px;
+          height: 56px;
+        }
+        .pricing-card:hover .pricing-icon-img {
+          filter: drop-shadow(0 0 16px color-mix(in srgb, var(--plan-color) 60%, transparent));
+          transform: scale(1.08);
+        }
+        [data-theme="dark"] .pricing-card:hover .pricing-icon-img {
+          filter: brightness(1.2) drop-shadow(0 0 18px color-mix(in srgb, var(--plan-color) 50%, transparent));
+        }
         .pricing-badge {
           position: absolute;
-          top: 16px; right: 16px;
+          top: 16px; left: 16px;
           padding: 4px 12px;
           border-radius: 100px;
           font-size: 0.7rem;
@@ -225,8 +261,10 @@ export default function Pricing() {
         }
         .pricing-ideal-for {
           margin-top: 20px;
-          padding-top: 16px;
-          border-top: 1px solid var(--border);
+          padding: 12px 16px;
+          border-left: 4px solid var(--gold);
+          border-radius: 0 8px 8px 0;
+          background: var(--card-hover);
           font-size: 0.78rem;
           color: var(--foreground-muted);
           line-height: 1.6;
@@ -266,6 +304,9 @@ export default function Pricing() {
           .pricing-grid { gap: 16px; }
           .pricing-card { border-radius: 18px; transform: scale(1) !important; }
           .pricing-card-header { padding: 24px 20px 20px; }
+          .pricing-card-icon { margin-bottom: 12px; }
+          .pricing-icon-img { width: 48px; height: 48px; }
+          .pricing-badge { top: 12px; left: 12px; font-size: 0.65rem; padding: 3px 10px; }
           .pricing-plan-name { font-size: 1.4rem; }
           .pricing-plan-subtitle { font-size: 0.85rem; }
           .pricing-price { font-size: 1.9rem; }
@@ -285,6 +326,9 @@ export default function Pricing() {
           .pricing-grid { gap: 14px; }
           .pricing-card { border-radius: 16px; transform: scale(1) !important; }
           .pricing-card-header { padding: 20px 16px 18px; }
+          .pricing-card-icon { margin-bottom: 10px; }
+          .pricing-icon-img { width: 44px; height: 44px; }
+          .pricing-badge { top: 10px; left: 10px; font-size: 0.6rem; padding: 2px 8px; }
           .pricing-plan-name { font-size: 1.2rem; }
           .pricing-plan-subtitle { font-size: 0.8rem; line-height: 1.5; }
           .pricing-price { font-size: 1.6rem; }

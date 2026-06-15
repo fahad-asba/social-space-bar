@@ -15,7 +15,7 @@ interface ContactFormProps {
 export default function ContactForm({
   compact = false,
   title = 'Get in Touch',
-  subtitle = 'GET 30% OFF — Limited Time Offer',
+  subtitle = 'GET 30% OFF - Limited Time Offer',
   dark = false,
 }: ContactFormProps) {
   const router = useRouter();
@@ -26,7 +26,6 @@ export default function ContactForm({
     e.preventDefault();
     if (loading) return;
     
-    // Simple basic validation for phone length beyond just dial code
     if (phone.length < 5) {
       alert('Please enter a valid phone number');
       return;
@@ -147,11 +146,9 @@ export default function ContactForm({
       </div>
 
       <style>{`
-        /* ── Card body padding ── */
         .cf-card .cf-body { padding: 28px 28px 24px; }
         .cf-compact .cf-body { padding: 24px 24px 20px; }
 
-        /* ── Badge ── */
         .cf-badge {
           display: inline-block;
           padding: 4px 11px;
@@ -166,7 +163,6 @@ export default function ContactForm({
           margin-bottom: 10px;
         }
 
-        /* ── Title ── */
         .cf-title {
           font-family: var(--font-display);
           font-size: 1.45rem;
@@ -178,7 +174,6 @@ export default function ContactForm({
         }
         .cf-compact .cf-title { font-size: 1.3rem; }
 
-        /* ── Form layout ── */
         .cf-form {
           display: flex;
           flex-direction: column;
@@ -189,19 +184,15 @@ export default function ContactForm({
           resize: vertical;
         }
 
-        /* ── Service Select was removed ── */
-
-        /* ── Disabled state ── */
         .cf-form input:disabled,
         .cf-form textarea:disabled {
           opacity: 0.6;
           cursor: not-allowed;
         }
 
-        /* ── Phone Input Wrapper ── */
         .cf-phone-wrap {
           width: 100%;
-          position: relative; /* Fixed: Context for absolute dropdown */
+          position: relative;
         }
         
         .cf-phone-wrap .react-international-phone-input-container {
@@ -220,7 +211,6 @@ export default function ContactForm({
           box-shadow: 0 0 0 3px rgba(102,199,192,0.15) !important;
         }
 
-        /* Country selector button */
         .cf-phone-wrap .cf-country-btn,
         .cf-phone-wrap .react-international-phone-country-selector-button {
           all: unset !important;
@@ -243,7 +233,6 @@ export default function ContactForm({
           background: rgba(102,199,192,0.08) !important;
         }
 
-        /* Flag & Arrow */
         .cf-phone-wrap .react-international-phone-flag-emoji {
           font-size: 1.15rem !important;
           line-height: 1 !important;
@@ -256,7 +245,6 @@ export default function ContactForm({
           border-top-color: var(--foreground-muted) !important;
         }
 
-        /* Phone input field */
         .cf-phone-wrap .cf-phone-input,
         .cf-phone-wrap .react-international-phone-input {
           flex: 1 1 0% !important;
@@ -278,10 +266,9 @@ export default function ContactForm({
           color: var(--foreground-muted) !important;
         }
 
-        /* ── Dropdown Fix: Positioned Absolute relative to .cf-phone-wrap ── */
         .react-international-phone-country-selector-dropdown {
           position: absolute !important;
-          top: 105% !important; /* Positions it exactly below the input */
+          top: 105% !important;
           left: 0 !important;
           z-index: 99999 !important;
           background: var(--card-bg) !important;
@@ -304,7 +291,6 @@ export default function ContactForm({
           border-radius: 2px;
         }
 
-        /* Dropdown search */
         .react-international-phone-country-selector-dropdown__search-wrapper {
           padding: 4px 4px 8px !important;
           position: sticky !important;
@@ -330,7 +316,6 @@ export default function ContactForm({
           border-color: var(--gold) !important;
         }
 
-        /* List items inside dropdown */
         .react-international-phone-country-selector-dropdown__list-item {
           display: flex !important;
           align-items: center !important;
@@ -353,7 +338,6 @@ export default function ContactForm({
           border-color: rgba(102,199,192,0.25) !important;
         }
 
-        /* Loading spinner */
         .cf-spinner {
           display: inline-block;
           width: 14px;
@@ -365,7 +349,6 @@ export default function ContactForm({
         }
         @keyframes cf-spin { to { transform: rotate(360deg); } }
 
-        /* Privacy note */
         .cf-privacy {
           font-size: 0.72rem;
           color: var(--foreground-muted);
@@ -373,7 +356,6 @@ export default function ContactForm({
           margin-top: 12px;
         }
 
-        /* Responsive */
         @media (max-width: 560px) {
           .react-international-phone-country-selector-dropdown {
             width: 300px !important;

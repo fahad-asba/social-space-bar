@@ -134,6 +134,8 @@ export default function HeroContent({ onOpenModal }: HeroContentProps) {
         .hero-stat-value { font-size: 2rem; font-weight: 800; color: #66C7C0; font-family: var(--font-display); cursor: default; }
         .hero-stat-label { font-size: 0.78rem; color: var(--gold); letter-spacing: 0.05em; text-transform: uppercase; }
         .hero-cta-row { display: flex; gap: 16px; flex-wrap: wrap; }
+        .hero-cta-row .btn-outline { color: #ffffff; border-color: rgba(255,255,255,0.25); }
+        .hero-cta-row .btn-outline:hover { border-color: #66C7C0; color: #66C7C0; }
         .hero-trust-row { display: flex; align-items: center; gap: 14px; margin-top: 40px; }
         .hero-chat-icon { display: inline-block; }
         .hero-call-icon { display: none; }

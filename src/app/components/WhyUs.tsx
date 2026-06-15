@@ -129,7 +129,7 @@ export default function WhyUs() {
         }
         .whyus-banner-title {
           font-family: var(--font-display); font-size: 1.8rem;
-          font-weight: 700; color: var(--foreground); margin-bottom: 8px;
+          font-weight: 700; color: #ffffff; margin-bottom: 8px;
         }
         .whyus-banner-desc { color: white; font-size: 1rem; }
         .whyus-banner-cta { display: flex; gap: 16px; flex-wrap: wrap; flex-shrink: 0; }

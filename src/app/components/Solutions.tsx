@@ -24,7 +24,7 @@ export default function Solutions() {
               <span className="accent">Solutions for Your Brand</span>
             </SectionHeader>
             <p className="solutions-desc">
-              From your first campaign to market dominance — we provide end-to-end social media marketing solutions that deliver real, measurable results.
+              From your first campaign to market dominance - we provide end-to-end social media marketing solutions that deliver real, measurable results.
             </p>
             <div className="solutions-features">
               {['Data-driven campaigns', 'Multi-platform strategy', 'Dedicated support team', 'Proven ROI'].map((f, i) => (
@@ -109,7 +109,7 @@ export default function Solutions() {
           border-radius: 16px; transition: all 0.35s ease; cursor: default;
           backdrop-filter: blur(10px);
         }
-        .solution-item:hover { background: rgba(102,199,192,0.06); border-color: rgba(102,199,192,0.2); box-shadow: var(--shadow-md); }
+        .solution-item:hover { background: rgba(102,199,192,0.06); border-color: rgba(102,199,192,0.2); box-shadow: var(--shadow-md); cursor: pointer; }
         .solution-icon { font-size: 1.4rem; flex-shrink: 0; }
         .solution-item-title { font-weight: 700; color: var(--foreground); font-size: 0.95rem; }
         .solution-item-desc { font-size: 0.82rem; color: var(--foreground-muted); margin-top: 2px; }

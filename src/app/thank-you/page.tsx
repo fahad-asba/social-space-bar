@@ -36,14 +36,12 @@ export default function ThankYouPage() {
       <Footer />
 
       <style>{`
-        /* ─── Page Wrapper ─── */
         .ty-page {
           min-height: 100vh;
           background: var(--background);
           transition: background 0.3s ease;
         }
 
-        /* ─── Canvas ─── */
         .ty-canvas {
           position: absolute;
           inset: 0;
@@ -52,7 +50,6 @@ export default function ThankYouPage() {
           pointer-events: none;
         }
 
-        /* ─── Hero ─── */
         .ty-hero {
           position: relative;
           padding: 160px 0 90px;
@@ -91,7 +88,6 @@ export default function ThankYouPage() {
           align-items: center;
         }
 
-        /* Success badge */
         .ty-success-badge {
           display: inline-flex;
           align-items: center;
@@ -115,7 +111,6 @@ export default function ThankYouPage() {
           box-shadow: 0 0 0 0 rgba(16,185,129,0.4);
         }
 
-        /* Checkmark ring */
         .ty-check-ring {
           margin-bottom: 36px;
           position: relative;
@@ -150,7 +145,6 @@ export default function ThankYouPage() {
           box-shadow: 0 8px 24px rgba(102,199,192,0.4);
         }
 
-        /* Heading + gradient text */
         .ty-hero-heading {
           font-family: var(--font-display);
           font-size: clamp(2.2rem, 5vw, 3.8rem);
@@ -192,7 +186,6 @@ export default function ThankYouPage() {
           transition: color 0.3s ease;
         }
 
-        /* ─── Steps Timeline ─── */
         .ty-section-header {
           text-align: center;
           margin-bottom: 64px;
@@ -297,7 +290,6 @@ export default function ThankYouPage() {
           transition: color 0.3s ease;
         }
 
-        /* ─── Calendly Section ─── */
         .ty-cal-section {
           padding: 80px 0;
           background: var(--section-gradient);
@@ -392,7 +384,6 @@ export default function ThankYouPage() {
           font-size: 0.95rem;
         }
 
-        /* Calendar Preview */
         .ty-cal-preview {
           display: flex;
           justify-content: center;
@@ -485,7 +476,6 @@ export default function ThankYouPage() {
           transition: color 0.3s ease, border-color 0.3s ease;
         }
 
-        /* ─── Trust Section ─── */
         .ty-trust-header {
           text-align: center;
           margin-bottom: 56px;
@@ -554,7 +544,6 @@ export default function ThankYouPage() {
           transition: color 0.3s ease;
         }
 
-        /* ─── Bottom CTA ─── */
         .ty-cta-section {
           padding: 80px 0;
           background: var(--background);
@@ -616,7 +605,6 @@ export default function ThankYouPage() {
           flex-wrap: wrap;
         }
 
-        /* ─── Responsive ─── */
         @media (max-width: 1100px) {
           .ty-timeline { grid-template-columns: repeat(2, 1fr); }
           .ty-connector { display: none; }
@@ -658,7 +646,7 @@ export default function ThankYouPage() {
           .ty-cta-actions { flex-direction: column; align-items: stretch; }
           .ty-cta-actions a { justify-content: center; }
         }
-        /* ─── SEO Links ─── */
+
         .ty-seo-links {
           margin-top: 56px;
           text-align: center;

@@ -43,7 +43,7 @@ export default function ThankYouConsultation() {
                 Schedule Your Free <span className="gold">Consultation</span>
               </h2>
               <p className="ty-cal-desc">
-                Choose a convenient time and speak directly with our marketing experts. Get a custom strategy tailored to your brand&apos;s unique needs — no commitment required.
+                Choose a convenient time and speak directly with our marketing experts. Get a custom strategy tailored to your brand&apos;s unique needs - no commitment required.
               </p>
 
               <ul className="ty-cal-features">

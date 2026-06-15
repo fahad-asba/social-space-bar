@@ -1,6 +1,6 @@
 'use client';
 
-import { FiSun, FiMoon } from 'react-icons/fi';
+import { Sun, Moon } from 'lucide-react';
 import { useTheme } from '@/context/ThemeContext';
 
 export default function ThemeToggle() {
@@ -51,7 +51,7 @@ export default function ThemeToggle() {
           lineHeight: 1,
         }}
       >
-        {isDark ? <FiMoon /> : <FiSun />}
+        {isDark ? <Moon size={18} /> : <Sun size={18} />}
       </span>
 
       <style>{`

@@ -72,7 +72,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Social Space Bar",
     description: "Turn your brand into a powerhouse with expert social media marketing across Facebook, Instagram, LinkedIn, Twitter, YouTube & TikTok.",
-    images: ["/publishing-websites-icon.png"],
+    images: ["/footer-logo.webp"],
   },
   icons: {
     icon: "/footer-logo.webp",
@@ -117,13 +117,8 @@ export default function RootLayout({
       lang="en"
       className={`${playfair.variable} ${inter.variable}`}
       suppressHydrationWarning
-      style={{ scrollBehavior: 'smooth' }}
     >
       <head>
-        <link rel="icon" href="/publishing-websites-icon.png" />
-        <link rel="apple-touch-icon" href="/publishing-websites-icon.png" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -144,7 +139,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body style={{ margin: 0, padding: 0 }}>
+      <body>
         <ThemeProvider>{children}</ThemeProvider>
         <ScrollToTop />
         <PhoneLinkEnhancer />
