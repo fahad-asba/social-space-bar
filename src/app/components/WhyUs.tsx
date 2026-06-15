@@ -6,8 +6,11 @@ import ArrowIcon from '@/components/ui/ArrowIcon';
 import SectionHeader from '@/components/ui/SectionHeader';
 import PhoneLink from '@/components/ui/PhoneLink';
 import FadeInView from '@/components/ui/FadeInView';
+import { useModal } from './ModalProvider';
+import Link from 'next/link';
 
 export default function WhyUs() {
+  const { openModal } = useModal();
   const sectionRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -62,9 +65,19 @@ export default function WhyUs() {
             <p className="whyus-banner-desc">Join 500+ brands who&apos;ve transformed their social media presence with Social Space Bar.</p>
           </div>
           <div className="whyus-banner-cta">
-            <a href="#contact" className="btn-primary">
+            <motion.button
+              type="button"
+              onClick={openModal}
+              className="btn-primary whyus-modal-btn"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+            >
+              Get Started Today
+              <ArrowIcon />
+            </motion.button>
+            <Link href="/thank-you" className="btn-outline">
               Schedule Appointment <ArrowIcon />
-            </a>
+            </Link>
             <PhoneLink className="btn-outline" label="Call Us" iconSize={16} />
           </div>
         </FadeInView>

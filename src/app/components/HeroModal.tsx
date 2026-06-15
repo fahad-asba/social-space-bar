@@ -138,7 +138,7 @@ export default function HeroModal({ isOpen, onClose }: HeroModalProps) {
                 <button
                   type="submit"
                   disabled={formLoading}
-                  className="btn-primary"
+                  className="btn-primary modal-submit-btn"
                   style={{ width: '100%', justifyContent: 'center' }}
                 >
                   {formLoading ? (
@@ -208,13 +208,13 @@ export default function HeroModal({ isOpen, onClose }: HeroModalProps) {
         .modal-tablet-wrap {
           position: relative; z-index: 1; animation: float 4s ease-in-out infinite;
         }
-        .modal-tablet-img { object-fit: contain; filter: drop-shadow(0 20px 40px rgba(102,199,192,0.2)); }
+        .modal-tablet-img { object-fit: contain; filter: drop-shadow(0 20px 40px rgba(102,199,192,0.2)); max-height: 260px; width: auto; border-radius: 12px; }
         .modal-brand {
           margin-top: 24px; color: rgba(255,255,255,0.3); font-size: 0.75rem;
           letter-spacing: 0.15em; text-transform: uppercase;
         }
         .modal-form-side {
-          padding: 24px 28px 48px; position: relative; overflow-y: auto;
+          padding: 24px 28px 28px; position: relative; overflow-y: auto;
         }
         .modal-top-bar {
           position: absolute; top: 0; left: 0; right: 0; height: 3px;
@@ -228,13 +228,14 @@ export default function HeroModal({ isOpen, onClose }: HeroModalProps) {
         }
         .modal-heading {
           font-family: var(--font-display); font-size: 1.4rem;
-          font-weight: 800; color: var(--foreground); margin-bottom: 6px;
+          font-weight: 800; color: var(--foreground); margin-bottom: 3px;
         }
         .modal-subheading {
-          font-size: 0.85rem; color: var(--foreground-muted); margin-bottom: 20px;
+          font-size: 0.85rem; color: var(--foreground-muted); margin-bottom: 10px;
           line-height: 1.5;
         }
         .modal-form { display: flex; flex-direction: column; gap: 10px; }
+        .modal-submit-btn { margin-bottom: 12px; }
         .modal-phone-wrap { width: 100%; position: relative; }
         .modal-phone-wrap .react-international-phone-input-container {
           display: flex !important;
@@ -291,12 +292,12 @@ export default function HeroModal({ isOpen, onClose }: HeroModalProps) {
         @media (max-width: 900px) {
           .modal-content { grid-template-columns: 1fr; max-width: 520px; }
           .modal-image-side { display: none; }
-          .modal-form-side { padding: 24px 28px 48px; }
+          .modal-form-side { padding: 24px 28px 28px; }
         }
         @media (max-width: 600px) {
           .modal-overlay { padding: 12px; }
           .modal-content { border-radius: 18px; max-height: 90vh; }
-          .modal-form-side { padding: 20px 20px 40px; }
+          .modal-form-side { padding: 20px 20px 28px; }
           .modal-heading { font-size: 1.3rem; }
           .modal-form { gap: 12px; }
           .modal-subheading { font-size: 0.85rem; margin-bottom: 20px; }
@@ -306,7 +307,7 @@ export default function HeroModal({ isOpen, onClose }: HeroModalProps) {
         @media (max-width: 480px) {
           .modal-overlay { padding: 8px; align-items: flex-end; }
           .modal-content { border-radius: 16px 16px 0 0; max-height: 92vh; }
-          .modal-form-side { padding: 18px 18px 40px; }
+          .modal-form-side { padding: 18px 18px 28px; }
           .modal-close-btn { top: 10px; right: 10px; width: 32px; height: 32px; font-size: 1.2rem; }
           .modal-heading { font-size: 1.15rem; }
           .modal-subheading { font-size: 0.82rem; margin-bottom: 16px; }
@@ -319,7 +320,7 @@ export default function HeroModal({ isOpen, onClose }: HeroModalProps) {
         }
         @media (max-width: 380px) {
           .modal-overlay { padding: 4px; }
-          .modal-form-side { padding: 16px 14px 36px; }
+          .modal-form-side { padding: 16px 14px 24px; }
           .modal-heading { font-size: 1.05rem; }
           .modal-form .form-input { padding: 10px 12px; font-size: 0.85rem; }
           .modal-phone-input { padding: 8px 10px !important; font-size: 0.85rem !important; height: 40px !important; }
