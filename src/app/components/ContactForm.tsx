@@ -10,6 +10,7 @@ interface ContactFormProps {
   title?: string;
   subtitle?: string;
   dark?: boolean;
+  description?: string;
 }
 
 export default function ContactForm({
@@ -17,6 +18,7 @@ export default function ContactForm({
   title = 'Get in Touch',
   subtitle = 'GET 30% OFF - Limited Time Offer',
   dark = false,
+  description,
 }: ContactFormProps) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -76,7 +78,8 @@ export default function ContactForm({
 
       <div className="cf-body">
         <div className="cf-badge">{subtitle}</div>
-        <h2 className="cf-title">{title}</h2>
+          <h2 className="cf-title">{title}</h2>
+          {description && <p className="cf-desc">{description}</p>}
 
         <form onSubmit={handleSubmit} className="cf-form">
           <input type="hidden" name="_captcha" value="false" />
@@ -173,6 +176,13 @@ export default function ContactForm({
           transition: color 0.3s ease;
         }
         .cf-compact .cf-title { font-size: 1.3rem; }
+
+        .cf-desc {
+          font-size: 0.85rem;
+          color: var(--foreground-muted);
+          margin-bottom: 16px;
+          line-height: 1.6;
+        }
 
         .cf-form {
           display: flex;

@@ -1,6 +1,5 @@
 import type { ElementType } from 'react';
 import { createElement } from 'react';
-import { Phone, Mail } from 'lucide-react';
 
 export interface FooterLink {
   label: string;
@@ -23,7 +22,7 @@ export const footerColumns: FooterColumn[] = [
   {
     title: 'Company',
     items: [
-      { label: 'Who We Are', href: '#about' },
+      { label: 'About Us', href: '#services' },
       { label: 'Services', href: '#services' },
       { label: 'Portfolio', href: '#portfolio' },
       { label: 'Why Choose Us', href: '#why-us' },
@@ -41,9 +40,9 @@ export const footerColumns: FooterColumn[] = [
   {
     title: 'Contact',
     items: [
-      { label: '+1 (210) 493-8277', href: 'tel:+12104938277', icon: Phone },
-      { label: 'info@socialspacebar.com', href: 'mailto:info@socialspacebar.com', icon: Mail },
-      { label: 'Office Hours: 9 AM - 6 PM', href: '#' },
+      { label: '+1 (210) 493-8277', href: 'tel:+12104938277' },
+      { label: 'info@socialspacebar.com', href: 'mailto:info@socialspacebar.com' },
+      { label: 'Office Hours: 8 AM - 6 PM PST', href: '#' },
     ],
   },
 ];

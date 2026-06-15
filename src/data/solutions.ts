@@ -5,7 +5,7 @@ export interface SolutionOffering {
 }
 
 export const offerings: SolutionOffering[] = [
-  { icon: '\u{1F4F1}', title: 'Social Media Marketing', desc: 'Reach millions on Instagram, Facebook, TikTok & X' },
+  { icon: '\u{1F4F1}', title: 'Social Media Marketing', desc: 'Reach millions on Instagram, Facebook, Pinterest, TikTok & X' },
   { icon: '\u{1F50D}', title: 'Search Engine Optimization', desc: 'Rank higher on Google for brand-related searches' },
   { icon: '\u{1F4F9}', title: 'Video Marketing', desc: 'Engaging video content that captivates your audience' },
   { icon: '\u{270D}\u{FE0F}', title: 'Content Marketing', desc: 'Compelling content that converts followers into customers' },

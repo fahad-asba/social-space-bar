@@ -8,6 +8,13 @@ export interface Service {
 
 export const services: Service[] = [
   {
+    title: 'Pinterest Marketing',
+    desc: 'Drive traffic and sales with expert Pinterest marketing services. We create eye-catching Pins, optimize your boards, and develop strategies that maximize visibility and engagement on the world\'s top visual discovery platform.',
+    color: '#E60023',
+    id: 'svc-pinterest',
+    img: '/Pinterest-Marketing-Strategy.jpg',
+  },
+  {
     title: 'Facebook Marketing',
     desc: 'Boost your Facebook growth with expert social media marketing services. Using a huge user base, innovative targeting, customized strategies, and engaging content, we optimize your ads, eventually increasing your likes, followers, and revenue!',
     color: '#1877F2',

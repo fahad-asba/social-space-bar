@@ -3,8 +3,10 @@ import { motion } from 'motion/react';
 import { offerings } from '@/data/solutions';
 import ArrowIcon from '@/components/ui/ArrowIcon';
 import SectionHeader from '@/components/ui/SectionHeader';
+import { useModal } from './ModalProvider';
 
 export default function Solutions() {
+  const { openModal } = useModal();
   return (
     <section id="about" className="solutions-section">
       <div className="solutions-grid-bg" />
@@ -19,7 +21,7 @@ export default function Solutions() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.7 }}
           >
-            <SectionHeader label="Services We Offer" headingStyle={{ marginBottom: '16px' }}>
+            <SectionHeader label="Services" headingStyle={{ marginBottom: '16px' }}>
               Complete Marketing<br />
               <span className="accent">Solutions for Your Brand</span>
             </SectionHeader>
@@ -42,9 +44,9 @@ export default function Solutions() {
               ))}
             </div>
             <div className="solutions-cta">
-              <a href="#contact" className="btn-primary">
+              <button type="button" onClick={openModal} className="btn-primary">
                 Start Your Journey <ArrowIcon />
-              </a>
+              </button>
               <a href="#pricing" className="btn-outline">View Packages</a>
             </div>
           </motion.div>

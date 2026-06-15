@@ -1,23 +1,14 @@
 'use client';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion } from 'motion/react';
 import Image from 'next/image';
 import { channels } from '@/data/distribution';
 import ArrowIcon from '@/components/ui/ArrowIcon';
 import SectionHeader from '@/components/ui/SectionHeader';
 import PhoneLink from '@/components/ui/PhoneLink';
-import { useState, useEffect } from 'react';
 import { useModal } from './ModalProvider';
 
 export default function Distribution() {
   const { openModal } = useModal();
-  const [partnerIndex, setPartnerIndex] = useState(0);
-
-  useEffect(() => {
-    const t = setInterval(() => {
-      setPartnerIndex((p) => (p + 1) % channels.length);
-    }, 4000);
-    return () => clearInterval(t);
-  }, []);
 
   return (
     <section className="distribution-section">
@@ -62,34 +53,6 @@ export default function Distribution() {
         </motion.div>
       </div>
 
-      <div className="partners-section">
-        <div className="container">
-          <div className="partners-header">
-            <div className="section-label">Trusted Partners</div>
-          </div>
-          <div className="partners-slider">
-            <AnimatePresence mode="popLayout">
-              <motion.div
-                key={partnerIndex}
-                className="partner-logo-item"
-                initial={{ opacity: 0, x: 60 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -60 }}
-                transition={{ duration: 0.8, ease: 'easeInOut' }}
-              >
-                <Image
-                  src={channels[partnerIndex].src}
-                  alt={channels[partnerIndex].name}
-                  width={channels[partnerIndex].w}
-                  height={channels[partnerIndex].h}
-                  style={{ objectFit: 'contain', opacity: 0.6 }}
-                />
-              </motion.div>
-            </AnimatePresence>
-          </div>
-        </div>
-      </div>
-
       <div className="dist-cta-section">
         <div className="container">
           <div className="dist-cta-grid">
@@ -127,7 +90,7 @@ export default function Distribution() {
                 <button type="button" onClick={openModal} className="btn-primary">
                   Get Started <ArrowIcon />
                 </button>
-                <PhoneLink className="btn-ghost" label="Call Now" iconSize={16} />
+                <PhoneLink className="btn-ghost" label="Live Chat" mobileLabel="Call Now" iconSize={16} />
               </div>
             </motion.div>
           </div>
@@ -146,13 +109,6 @@ export default function Distribution() {
         }
         .dist-channel-card:hover { background: rgba(102,199,192,0.08); }
 
-        .partners-section { padding: 60px 0; }
-        .partners-header { text-align: center; margin-bottom: 40px; }
-        .partners-slider { overflow: hidden; display: flex; justify-content: center; align-items: center; min-height: 64px; }
-        .partner-logo-item { display: flex; align-items: center; justify-content: center; height: 48px; }
-        .partner-logo-item img { transition: opacity 0.3s; }
-        .partner-logo-item:hover img { opacity: 1 !important; }
-
         .dist-cta-section { background: var(--background); border-top: 1px solid var(--border-light); }
         .dist-cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; padding: 80px 0; }
         .dist-cta-image { display: flex; justify-content: center; animation: float 4s ease-in-out infinite; }
@@ -166,7 +122,6 @@ export default function Distribution() {
         @media (max-width: 900px) {
           .dist-header { margin-bottom: 40px; }
           .dist-channels { gap: 18px; margin-bottom: 40px; }
-          .partners-slider { min-height: 56px; }
           .dist-cta-grid { grid-template-columns: 1fr; gap: 40px; padding: 60px 0; }
           .dist-cta-content { text-align: center; display: flex; flex-direction: column; align-items: center; }
           .dist-cta-buttons { justify-content: center; }
@@ -176,9 +131,6 @@ export default function Distribution() {
           .dist-header h2 br { display: none; }
           .dist-header p { font-size: 0.92rem; }
           .dist-channel-card { padding: 12px 16px; }
-          .partners-slider { min-height: 48px; }
-          .partner-logo-item { height: 36px; }
-          .partner-logo-item img { max-width: 80px; }
           .dist-cta-title br { display: none; }
           .dist-cta-desc { font-size: 0.92rem; }
           .dist-cta-buttons { flex-direction: column; align-items: center; width: 100%; gap: 12px; }

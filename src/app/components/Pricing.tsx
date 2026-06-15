@@ -61,10 +61,10 @@ export default function Pricing() {
                   }}>{plan.badge}</div>
                 )}
                 <h3 className="pricing-plan-name" style={{ color: plan.color }}>{plan.name}</h3>
-                <div className="pricing-price-row">
+                {/* <div className="pricing-price-row">
                   <span className="pricing-price" style={{ color: plan.color }}>${plan.price}</span>
                   <span className="pricing-period">/ Month</span>
-                </div>
+                </div> */}
                 <p className="pricing-plan-desc">{plan.desc}</p>
               </div>
 

@@ -4,13 +4,12 @@ import { motion, useScroll, useTransform } from 'motion/react';
 import { reasons } from '@/data/why-us';
 import ArrowIcon from '@/components/ui/ArrowIcon';
 import SectionHeader from '@/components/ui/SectionHeader';
-import PhoneLink from '@/components/ui/PhoneLink';
 import FadeInView from '@/components/ui/FadeInView';
+import PhoneLink from '@/components/ui/PhoneLink';
 import { useModal } from './ModalProvider';
-import Link from 'next/link';
 
 export default function WhyUs() {
-  const { openModal } = useModal();
+  const { openModal, openScheduleModal } = useModal();
   const sectionRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -75,10 +74,10 @@ export default function WhyUs() {
               Get Started Today
               <ArrowIcon />
             </motion.button>
-            <Link href="/thank-you" className="btn-outline">
+            <button type="button" onClick={openScheduleModal} className="btn-outline">
               Schedule Appointment <ArrowIcon />
-            </Link>
-            <PhoneLink className="btn-outline" label="Call Us" iconSize={16} />
+            </button>
+            <PhoneLink className="btn-outline" label="Live Chat" mobileLabel="Call Now" iconSize={16} />
           </div>
         </FadeInView>
       </div>

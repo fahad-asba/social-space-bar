@@ -56,7 +56,7 @@ export default function Portfolio() {
         <button type="button" onClick={openModal} className="btn-primary">
           Get Started Today <ArrowIcon />
         </button>
-        <PhoneLink className="btn-ghost" label="Call Now" iconSize={16} />
+        <PhoneLink className="btn-ghost" label="Live Chat" mobileLabel="Call Now" iconSize={16} />
       </div>
 
       <style>{`

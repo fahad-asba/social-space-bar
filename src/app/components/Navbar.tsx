@@ -7,16 +7,17 @@ import { useScrollPosition } from '@/hooks/useScrollPosition';
 import { navLinks } from '@/data/navigation';
 import { Menu, X } from 'lucide-react';
 import ArrowIcon from '@/components/ui/ArrowIcon';
-import PhoneLink from '@/components/ui/PhoneLink';
-import { useRouter } from 'next/navigation';
+import { useModal } from './ModalProvider';
 export default function Navbar() {
+  const { openScheduleModal } = useModal();
   const scrolled = useScrollPosition(40);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
-
-  const router= useRouter();
   useEffect(() => {
-    const sectionIds = navLinks.map(l => l.href.replace('#', ''));
+    const sectionIds = navLinks.map(l => {
+      const i = l.href.indexOf('#');
+      return i !== -1 ? l.href.slice(i + 1) : '';
+    }).filter(Boolean);
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach(entry => {
@@ -61,7 +62,7 @@ export default function Navbar() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className={`nav-link ${activeSection === link.href.replace('#', '') ? 'nav-link-active' : ''}`}
+                  className={`nav-link ${activeSection && link.href.includes('#') && activeSection === link.href.split('#')[1] ? 'nav-link-active' : ''}`}
                 >
                   {link.label}
                 </a>
@@ -69,11 +70,10 @@ export default function Navbar() {
             ))}
           </ul>
           <ThemeToggle />
-          <PhoneLink className="nav-phone" ariaLabel="Call +1 (210) 493-8277" iconSize={16} />
-          <Link href="/thank-you" className="btn-primary nav-cta-btn">
+          <button type="button" onClick={openScheduleModal} className="btn-primary nav-cta-btn">
             Schedule Appointment
             <ArrowIcon />
-          </Link>
+          </button>
         </div>
 
         <div className="nav-mobile-right">
@@ -113,7 +113,7 @@ export default function Navbar() {
               <a
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className={`mobile-menu-link ${activeSection === link.href.replace('#', '') ? 'mobile-menu-link-active' : ''}`}
+                className={`mobile-menu-link ${activeSection && link.href.includes('#') && activeSection === link.href.split('#')[1] ? 'mobile-menu-link-active' : ''}`}
               >
                 {link.label}
               </a>
@@ -121,11 +121,10 @@ export default function Navbar() {
           ))}
         </ul>
         <div className="mobile-menu-footer">
-          <PhoneLink className="mobile-menu-phone" ariaLabel="Call +1 (210) 493-8277" iconSize={16} />
-          <a href="#contact" onClick={() => setMenuOpen(false)} className="btn-primary mobile-menu-cta" style={{ display: 'inline-flex', justifyContent: 'center' }}>
+          <button type="button" onClick={() => { openScheduleModal(); setMenuOpen(false); }} className="btn-primary mobile-menu-cta" style={{ display: 'inline-flex', justifyContent: 'center' }}>
             Schedule Appointment
             <ArrowIcon />
-          </a>
+          </button>
         </div>
       </div>
 

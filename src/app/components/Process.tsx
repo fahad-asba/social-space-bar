@@ -1,9 +1,10 @@
 'use client';
 import { motion } from 'motion/react';
-import { Search, ClipboardCheck, Users, BarChart3, Rocket, Star } from 'lucide-react';
+import { Search, ClipboardCheck, Users, BarChart3, Rocket, Star, CalendarDays } from 'lucide-react';
 import ArrowIcon from '@/components/ui/ArrowIcon';
 import SectionHeader from '@/components/ui/SectionHeader';
 import FadeInView from '@/components/ui/FadeInView';
+import { useModal } from './ModalProvider';
 
 const processSteps = [
   {
@@ -45,6 +46,7 @@ const processSteps = [
 ];
 
 export default function Process() {
+  const { openModal, openScheduleModal } = useModal();
   return (
     <section className="process-section">
       <div className="process-glow" />
@@ -84,9 +86,15 @@ export default function Process() {
         </div>
 
         <FadeInView className="process-cta" y={20} delay={0.4} margin="-30px">
-          <a href="#contact" className="btn-primary">
-            Start Your Journey <ArrowIcon />
-          </a>
+          <div className="process-cta-buttons">
+            <button type="button" onClick={openModal} className="btn-primary">
+              Start Your Journey <ArrowIcon />
+            </button>
+            <button type="button" onClick={openScheduleModal} className="btn-outline">
+              <CalendarDays size={16} />
+              Schedule Appointment
+            </button>
+          </div>
         </FadeInView>
       </div>
 
@@ -145,6 +153,7 @@ export default function Process() {
         .process-step-title { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--foreground); margin-bottom: 8px; }
         .process-step-desc { font-size: 0.84rem; color: var(--foreground-muted); line-height: 1.65; }
         .process-cta { text-align: center; margin-top: 56px; }
+        .process-cta-buttons { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
 
         @media (min-width: 901px) {
           .process-step:nth-child(3n) .process-step-connector { display: none; }
@@ -166,6 +175,8 @@ export default function Process() {
           .process-step-card { padding: 28px 20px; }
           .process-step-title { font-size: 1rem; }
           .process-cta { margin-top: 36px; }
+          .process-cta-buttons { flex-direction: column; align-items: center; width: 100%; }
+          .process-cta-buttons a, .process-cta-buttons button { width: 100%; max-width: 300px; justify-content: center; }
           .process-step-connector { display: none !important; }
         }
         @media (max-width: 420px) {

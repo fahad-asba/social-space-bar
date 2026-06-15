@@ -3,11 +3,12 @@ import { motion } from 'motion/react';
 import { CalendarDays, MessageCircle, Phone } from 'lucide-react';
 import ArrowIcon from '@/components/ui/ArrowIcon';
 import Image from 'next/image';
-import Link from 'next/link';
+import { useModal } from './ModalProvider';
 
 interface HeroContentProps { onOpenModal: () => void; }
 
 export default function HeroContent({ onOpenModal }: HeroContentProps) {
+  const { openScheduleModal } = useModal();
   return (
     <div className="hero-content">
       <motion.div
@@ -39,25 +40,7 @@ export default function HeroContent({ onOpenModal }: HeroContentProps) {
         Professional social media strategies to grow your brand, boost engagement, and build your online presence across every major platform.
       </motion.p>
 
-      <motion.div
-        className="hero-stats"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-      >
-        <div className="hero-stat">
-          <motion.div className="hero-stat-value" whileHover={{ scale: 1.1 }}>98%</motion.div>
-          <div className="hero-stat-label">Satisfaction Rate</div>
-        </div>
-        <div className="hero-stat">
-          <motion.div className="hero-stat-value" whileHover={{ scale: 1.1 }}>3x</motion.div>
-          <div className="hero-stat-label">Avg Sales Boost</div>
-        </div>
-        <div className="hero-stat">
-          <motion.div className="hero-stat-value" whileHover={{ scale: 1.1 }}>500+</motion.div>
-          <div className="hero-stat-label">Clients Served</div>
-        </div>
-      </motion.div>
+
 
       <motion.div
         className="hero-cta-row"
@@ -75,10 +58,10 @@ export default function HeroContent({ onOpenModal }: HeroContentProps) {
           Get Started Today
           <ArrowIcon />
         </motion.button>
-        <Link href="/thank-you" className="btn-outline">
+        <button type="button" onClick={openScheduleModal} className="btn-outline">
           <CalendarDays size={16} />
           Schedule Appointment
-        </Link>
+        </button>
         <a href="tel:+12104938277" aria-label="Contact us" className="btn-outline hero-chat-btn">
           <MessageCircle size={16} className="hero-chat-icon" />
           <Phone size={16} className="hero-call-icon" />

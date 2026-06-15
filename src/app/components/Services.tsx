@@ -25,7 +25,7 @@ export default function Services() {
 
       <div className="container">
         <div className="services-header">
-          <SectionHeader label="Precision in Every Pixel">
+          <SectionHeader label="About">
             Drive Real Results with Our Targeted{' '}
             <span className="accent">Social Media Services</span>
           </SectionHeader>

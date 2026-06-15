@@ -39,7 +39,7 @@ export default function ContactSection() {
           </div>
 
           <div className="contact-form-col">
-            <ContactForm title="Get Your Free Plan" subtitle="Claim 30% Off Today" />
+            <ContactForm title="Get Your Dedicated Consultant" subtitle="Claim 30% Off Today" description="Fill in your details and we'll create a custom social media marketing plan for your brand." />
           </div>
         </div>
       </div>

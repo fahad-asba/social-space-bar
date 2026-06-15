@@ -2,7 +2,7 @@
 import { useState, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
-import { testimonials, stats } from '@/data/testimonials';
+import { testimonials } from '@/data/testimonials';
 import SectionHeader from '@/components/ui/SectionHeader';
 
 export default function Testimonials() {
@@ -100,14 +100,7 @@ export default function Testimonials() {
           ))}
         </div>
 
-        <div className="testimonial-stats-grid">
-          {stats.map(stat => (
-            <div key={stat.label} className="testimonial-stat">
-              <div className="testimonial-stat-value">{stat.value}</div>
-              <div className="testimonial-stat-label">{stat.label}</div>
-            </div>
-          ))}
-        </div>
+
       </div>
 
       <style>{`

@@ -1,12 +1,16 @@
 'use client';
 import { motion } from 'motion/react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { MessageCircle, Phone, CalendarDays } from 'lucide-react';
 import SectionHeader from '@/components/ui/SectionHeader';
 import FadeInView from '@/components/ui/FadeInView';
+import { useModal } from './ModalProvider';
 
 const platforms = [
   { name: 'Facebook', src: '/facebook_icon.webp', w: 100, h: 100 },
   { name: 'Instagram', src: '/Instagram_icon.webp', w: 100, h: 100 },
+  { name: 'Pinterest', src: '/pintrest-logo.png', w: 100, h: 80 },
   { name: 'YouTube', src: '/Youtube_logo.webp', w: 120, h: 80 },
   { name: 'LinkedIn', src: '/linkdein_icon.webp', w: 100, h: 100 },
   { name: 'TikTok', src: '/tiktok_icon.webp', w: 100, h: 100 },
@@ -14,6 +18,7 @@ const platforms = [
 ];
 
 export default function SocialMediaPlatforms() {
+  const { openModal, openScheduleModal } = useModal();
   return (
     <section className="smp-section">
       <div className="smp-glow" />
@@ -46,9 +51,21 @@ export default function SocialMediaPlatforms() {
         </div>
 
         <FadeInView className="smp-cta" y={20} duration={0.5} delay={0.6} margin="-30px">
-          <a href="#contact" className="btn-teal">
-            Get Your Social Strategy
-          </a>
+          <div className="smp-cta-buttons">
+            <button type="button" onClick={openModal} className="btn-teal">
+              Get Your Social Strategy
+            </button>
+            <a href="tel:+12104938277" className="btn-outline smp-chat-btn">
+              <MessageCircle size={16} className="smp-chat-icon" />
+              <Phone size={16} className="smp-call-icon" />
+              <span className="smp-chat-text">Live Chat</span>
+              <span className="smp-call-text">Call Now</span>
+            </a>
+            <button type="button" onClick={openScheduleModal} className="btn-outline">
+              <CalendarDays size={16} />
+              Schedule Appointment
+            </button>
+          </div>
         </FadeInView>
       </div>
 
@@ -97,7 +114,12 @@ export default function SocialMediaPlatforms() {
           letter-spacing: 0.02em; text-align: center; white-space: nowrap;
         }
         .smp-card:hover .smp-name { color: var(--teal); }
-        .smp-cta { display: flex; justify-content: center; margin-top: 48px; }
+        .smp-cta { margin-top: 48px; }
+        .smp-cta-buttons { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+        .smp-chat-icon { display: inline; }
+        .smp-call-icon { display: none; }
+        .smp-chat-text { display: inline; }
+        .smp-call-text { display: none; }
 
         @media (max-width: 1024px) {
           .smp-section { padding: 80px 0; }
@@ -115,6 +137,12 @@ export default function SocialMediaPlatforms() {
           .smp-logo-wrap { width: 48px; height: 48px; }
           .smp-name { font-size: 0.7rem; }
           .smp-cta { margin-top: 32px; }
+          .smp-chat-icon { display: none; }
+          .smp-call-icon { display: inline; }
+          .smp-chat-text { display: none; }
+          .smp-call-text { display: inline; }
+          .smp-cta-buttons { flex-direction: column; align-items: center; width: 100%; }
+          .smp-cta-buttons a, .smp-cta-buttons button { width: 100%; max-width: 300px; justify-content: center; }
         }
         @media (max-width: 420px) {
           .smp-section { padding: 40px 0; }

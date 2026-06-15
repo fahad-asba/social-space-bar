@@ -1,10 +1,11 @@
 'use client';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, MessageCircle, Phone } from 'lucide-react';
 import ArrowIcon from '@/components/ui/ArrowIcon';
 import SectionHeader from '@/components/ui/SectionHeader';
 import FadeInView from '@/components/ui/FadeInView';
+import { useModal } from './ModalProvider';
 
 const faqs = [
   {
@@ -13,11 +14,11 @@ const faqs = [
   },
   {
     q: 'Which social media platforms do you market on?',
-    a: 'We market across Facebook, Instagram, LinkedIn, X (Twitter), YouTube, TikTok, and emerging platforms. Our team selects the best channels based on your brand\'s target audience and goals.',
+    a: 'We market across Facebook, Instagram, LinkedIn, Pinterest, X (Twitter), YouTube, TikTok, and emerging platforms. Our team selects the best channels based on your brand\'s target audience and goals.',
   },
   {
     q: 'Do you offer paid ad management services?',
-    a: 'Yes. Paid social advertising is a core part of our service. We create and manage ad campaigns on Facebook Ads, Instagram Ads, LinkedIn Ads, TikTok Ads, and YouTube Ads to maximize ROI.',
+    a: 'Yes. Paid social advertising is a core part of our service. We create and manage ad campaigns on Facebook Ads, Instagram Ads, LinkedIn Ads, Pinterest Ads, TikTok Ads, and YouTube Ads to maximize ROI.',
   },
   {
     q: 'Can you help with content creation?',
@@ -35,6 +36,7 @@ const faqs = [
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const { openModal } = useModal();
 
   const toggle = (i: number) => setOpenIndex(openIndex === i ? null : i);
 
@@ -87,9 +89,17 @@ export default function FAQ() {
 
         <div className="faq-cta">
           <p>Still have questions?</p>
-          <a href="#contact" className="btn-primary">
-            Contact Us <ArrowIcon />
-          </a>
+          <div className="faq-cta-buttons">
+            <button type="button" onClick={openModal} className="btn-primary">
+              Contact Us <ArrowIcon />
+            </button>
+            <a href="tel:+12104938277" className="btn-outline faq-chat-btn">
+              <MessageCircle size={16} className="faq-chat-icon" />
+              <Phone size={16} className="faq-call-icon" />
+              <span className="faq-chat-text">Live Chat</span>
+              <span className="faq-call-text">Call Now</span>
+            </a>
+          </div>
         </div>
       </div>
 
@@ -128,7 +138,12 @@ export default function FAQ() {
           color: var(--foreground-muted); line-height: 1.75;
         }
         .faq-cta { text-align: center; margin-top: 48px; }
-        .faq-cta p { color: var(--foreground-muted); margin-bottom: 16px; font-size: 0.95rem; }
+        .faq-cta p { color: var(--foreground-muted); margin-bottom: 20px; font-size: 0.95rem; }
+        .faq-cta-buttons { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+        .faq-chat-icon { display: inline; }
+        .faq-call-icon { display: none; }
+        .faq-chat-text { display: inline; }
+        .faq-call-text { display: none; }
 
         @media (max-width: 900px) {
           .faq-section { padding: 70px 0; }
@@ -138,6 +153,12 @@ export default function FAQ() {
           .faq-header h2 { font-size: 1.9rem; }
           .faq-question { padding: 16px 18px; font-size: 0.9rem; }
           .faq-answer p { padding: 0 18px 16px; font-size: 0.85rem; }
+          .faq-chat-icon { display: none; }
+          .faq-call-icon { display: inline; }
+          .faq-chat-text { display: none; }
+          .faq-call-text { display: inline; }
+          .faq-cta-buttons { flex-direction: column; align-items: center; width: 100%; }
+          .faq-cta-buttons a, .faq-cta-buttons button { width: 100%; max-width: 300px; justify-content: center; }
         }
         @media (max-width: 420px) {
           .faq-section { padding: 40px 0; }
