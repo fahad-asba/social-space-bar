@@ -7,7 +7,7 @@ import PhoneLink from '@/components/ui/PhoneLink';
 import { useModal } from './ModalProvider';
 
 export default function Portfolio() {
-  const { openModal } = useModal();
+  const { openModal, openLiveChat } = useModal();
   return (
     <section id="portfolio" className="portfolio-section">
       <div className="container portfolio-header">
@@ -56,7 +56,7 @@ export default function Portfolio() {
         <button type="button" onClick={openModal} className="btn-primary">
           Get Started Today <ArrowIcon />
         </button>
-        <PhoneLink className="btn-ghost" label="Live Chat" mobileLabel="Call Now" iconSize={16} />
+        <PhoneLink className="btn-ghost" label="Live Chat" mobileLabel="Call Now" iconSize={16} onClick={openLiveChat} />
       </div>
 
       <style>{`

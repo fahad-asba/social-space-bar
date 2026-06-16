@@ -36,7 +36,7 @@ const faqs = [
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const { openModal } = useModal();
+  const { openModal, openLiveChat } = useModal();
 
   const toggle = (i: number) => setOpenIndex(openIndex === i ? null : i);
 
@@ -93,12 +93,12 @@ export default function FAQ() {
             <button type="button" onClick={openModal} className="btn-primary">
               Contact Us <ArrowIcon />
             </button>
-            <a href="tel:+12104938277" className="btn-outline faq-chat-btn">
+            <button type="button" onClick={openLiveChat} className="btn-outline faq-chat-btn">
               <MessageCircle size={16} className="faq-chat-icon" />
               <Phone size={16} className="faq-call-icon" />
               <span className="faq-chat-text">Live Chat</span>
               <span className="faq-call-text">Call Now</span>
-            </a>
+            </button>
           </div>
         </div>
       </div>

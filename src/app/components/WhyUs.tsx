@@ -9,7 +9,7 @@ import PhoneLink from '@/components/ui/PhoneLink';
 import { useModal } from './ModalProvider';
 
 export default function WhyUs() {
-  const { openModal, openScheduleModal } = useModal();
+  const { openModal, openScheduleModal, openLiveChat } = useModal();
   const sectionRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -77,7 +77,7 @@ export default function WhyUs() {
             <button type="button" onClick={openScheduleModal} className="btn-outline">
               Schedule Appointment <ArrowIcon />
             </button>
-            <PhoneLink className="btn-outline" label="Live Chat" mobileLabel="Call Now" iconSize={16} />
+            <PhoneLink className="btn-outline" label="Live Chat" mobileLabel="Call Now" iconSize={16} onClick={openLiveChat} />
           </div>
         </FadeInView>
       </div>

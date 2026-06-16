@@ -1,7 +1,5 @@
 'use client';
-import { motion } from 'motion/react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { MessageCircle, Phone, CalendarDays } from 'lucide-react';
 import SectionHeader from '@/components/ui/SectionHeader';
 import FadeInView from '@/components/ui/FadeInView';
@@ -18,7 +16,7 @@ const platforms = [
 ];
 
 export default function SocialMediaPlatforms() {
-  const { openModal, openScheduleModal } = useModal();
+  const { openModal, openScheduleModal, openLiveChat } = useModal();
   return (
     <section className="smp-section">
       <div className="smp-glow" />
@@ -29,25 +27,31 @@ export default function SocialMediaPlatforms() {
           </SectionHeader>
         </div>
 
-        <div className="smp-grid">
-          {platforms.map((p, i) => (
-            <motion.div
-              key={p.name}
-              className="smp-card"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-30px' }}
-              transition={{ duration: 0.4, delay: i * 0.1, ease: 'easeOut' }}
-              whileHover={{ y: -6, scale: 1.04 }}
-            >
-              <div className="smp-card-inner">
-                <div className="smp-logo-wrap">
-                  <Image src={p.src} alt={p.name} width={p.w} height={p.h} className="smp-logo" />
+        <div className="smp-marquee-wrap">
+          <div className="smp-marquee-track">
+            {platforms.map((p, i) => (
+              <div key={p.name} className="smp-card">
+                <div className="smp-card-inner">
+                  <div className="smp-logo-wrap">
+                    <Image src={p.src} alt={p.name} width={p.w} height={p.h} className="smp-logo" />
+                  </div>
+                  <span className="smp-name">{p.name}</span>
                 </div>
-                <span className="smp-name">{p.name}</span>
               </div>
-            </motion.div>
-          ))}
+            ))}
+          </div>
+          <div className="smp-marquee-track smp-marquee-track-clone">
+            {platforms.map((p) => (
+              <div key={`clone-${p.name}`} className="smp-card">
+                <div className="smp-card-inner">
+                  <div className="smp-logo-wrap">
+                    <Image src={p.src} alt={p.name} width={p.w} height={p.h} className="smp-logo" />
+                  </div>
+                  <span className="smp-name">{p.name}</span>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         <FadeInView className="smp-cta" y={20} duration={0.5} delay={0.6} margin="-30px">
@@ -55,12 +59,12 @@ export default function SocialMediaPlatforms() {
             <button type="button" onClick={openModal} className="btn-teal">
               Get Your Social Strategy
             </button>
-            <a href="tel:+12104938277" className="btn-outline smp-chat-btn">
+            <button type="button" onClick={openLiveChat} className="btn-outline smp-chat-btn">
               <MessageCircle size={16} className="smp-chat-icon" />
               <Phone size={16} className="smp-call-icon" />
               <span className="smp-chat-text">Live Chat</span>
               <span className="smp-call-text">Call Now</span>
-            </a>
+            </button>
             <button type="button" onClick={openScheduleModal} className="btn-outline">
               <CalendarDays size={16} />
               Schedule Appointment
@@ -82,15 +86,23 @@ export default function SocialMediaPlatforms() {
         }
         .smp-header { text-align: center; margin-bottom: 56px; }
         .smp-desc { color: var(--foreground-muted); max-width: 520px; margin: 0 auto; line-height: 1.75; }
-        .smp-grid {
-          display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px;
-          max-width: 900px; margin: 0 auto;
+        .smp-marquee-wrap {
+          display: flex; white-space: nowrap; overflow: hidden; position: relative;
+          mask-image: linear-gradient(90deg, transparent 0%, #000 5%, #000 95%, transparent 100%);
+          -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 5%, #000 95%, transparent 100%);
         }
+        .smp-marquee-track {
+          display: flex; align-items: center; gap: 20px;
+          animation: smp-marquee 40s linear infinite;
+          flex-shrink: 0; min-width: 100%;
+        }
+        .smp-marquee-track-clone { position: absolute; left: 100%; top: 0; }
         .smp-card {
           background: var(--card-bg); border: 1px solid var(--border);
-          border-radius: 20px; padding: 28px 16px; cursor: pointer;
+          border-radius: 20px; padding: 28px 20px; cursor: pointer;
           transition: all 0.3s ease; position: relative; overflow: hidden;
           display: flex; align-items: center; justify-content: center;
+          flex-shrink: 0; min-width: 140px;
         }
         .smp-card::before {
           content: ''; position: absolute; inset: 0; opacity: 0;
@@ -114,6 +126,10 @@ export default function SocialMediaPlatforms() {
           letter-spacing: 0.02em; text-align: center; white-space: nowrap;
         }
         .smp-card:hover .smp-name { color: var(--teal); }
+        @keyframes smp-marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-100%); }
+        }
         .smp-cta { margin-top: 48px; }
         .smp-cta-buttons { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
         .smp-chat-icon { display: inline; }
@@ -121,19 +137,17 @@ export default function SocialMediaPlatforms() {
         .smp-chat-text { display: inline; }
         .smp-call-text { display: none; }
 
-        @media (max-width: 1024px) {
-          .smp-section { padding: 80px 0; }
-          .smp-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 600px; }
-        }
         @media (max-width: 900px) {
           .smp-section { padding: 65px 0; }
+          .smp-marquee-track { gap: 14px; animation-duration: 30s; }
+          .smp-card { padding: 22px 16px; min-width: 120px; }
         }
         @media (max-width: 600px) {
           .smp-section { padding: 50px 0; }
           .smp-header h2 { font-size: 1.9rem; }
           .smp-desc { font-size: 0.92rem; }
-          .smp-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 100%; }
-          .smp-card { padding: 20px 12px; border-radius: 16px; }
+          .smp-marquee-track { gap: 12px; animation-duration: 25s; }
+          .smp-card { padding: 18px 12px; border-radius: 16px; min-width: 100px; }
           .smp-logo-wrap { width: 48px; height: 48px; }
           .smp-name { font-size: 0.7rem; }
           .smp-cta { margin-top: 32px; }
@@ -146,8 +160,7 @@ export default function SocialMediaPlatforms() {
         }
         @media (max-width: 420px) {
           .smp-section { padding: 40px 0; }
-          .smp-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-          .smp-card { padding: 16px 10px; }
+          .smp-card { padding: 14px 10px; min-width: 85px; }
           .smp-logo-wrap { width: 40px; height: 40px; }
         }
       `}</style>

@@ -8,7 +8,7 @@ import PhoneLink from '@/components/ui/PhoneLink';
 import { useModal } from './ModalProvider';
 
 export default function Distribution() {
-  const { openModal } = useModal();
+  const { openModal, openLiveChat } = useModal();
 
   return (
     <section className="distribution-section">
@@ -90,7 +90,7 @@ export default function Distribution() {
                 <button type="button" onClick={openModal} className="btn-primary">
                   Get Started <ArrowIcon />
                 </button>
-                <PhoneLink className="btn-ghost" label="Live Chat" mobileLabel="Call Now" iconSize={16} />
+                <PhoneLink className="btn-ghost" label="Live Chat" mobileLabel="Call Now" iconSize={16} onClick={openLiveChat} />
               </div>
             </motion.div>
           </div>

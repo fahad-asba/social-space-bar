@@ -8,7 +8,7 @@ import { useModal } from './ModalProvider';
 interface HeroContentProps { onOpenModal: () => void; }
 
 export default function HeroContent({ onOpenModal }: HeroContentProps) {
-  const { openScheduleModal } = useModal();
+  const { openScheduleModal, openLiveChat } = useModal();
   return (
     <div className="hero-content">
       <motion.div
@@ -62,12 +62,12 @@ export default function HeroContent({ onOpenModal }: HeroContentProps) {
           <CalendarDays size={16} />
           Schedule Appointment
         </button>
-        <a href="tel:+12104938277" aria-label="Contact us" className="btn-outline hero-chat-btn">
+        <button type="button" onClick={openLiveChat} aria-label="Live Chat" className="btn-outline hero-chat-btn">
           <MessageCircle size={16} className="hero-chat-icon" />
           <Phone size={16} className="hero-call-icon" />
           <span className="hero-chat-text">Live Chat</span>
           <span className="hero-call-text">Call Now</span>
-        </a>
+        </button>
       </motion.div>
 
       <motion.div

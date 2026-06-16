@@ -1,6 +1,7 @@
 'use client';
 import { MessageCircle, Phone, ArrowUp } from 'lucide-react';
 import Link from 'next/link';
+import { useModal } from '@/app/components/ModalProvider';
 
 const sections = [
   {
@@ -30,6 +31,7 @@ const sections = [
 ];
 
 export default function TermsContent() {
+  const { openLiveChat } = useModal();
   return (
     <section className="terms-section">
       <div className="terms-glow" />
@@ -51,12 +53,12 @@ export default function TermsContent() {
 
         <div className="terms-cta">
           <p className="terms-cta-label">Let&apos;s Get Started with Us. Call Us Now!</p>
-          <a href="tel:+12104938277" className="btn-primary terms-cta-btn">
+          <button type="button" onClick={openLiveChat} className="btn-primary terms-cta-btn">
             <MessageCircle size={18} className="terms-cta-icon-chat" />
             <Phone size={18} className="terms-cta-icon-phone" />
             <span className="terms-cta-text-chat">Live Chat</span>
             <span className="terms-cta-text-call">Call Now</span>
-          </a>
+          </button>
           <Link href="/" className="btn-outline terms-cta-home">
             <ArrowUp size={16} />
             Back to Home

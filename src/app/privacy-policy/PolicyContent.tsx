@@ -1,6 +1,7 @@
 'use client';
 import { MessageCircle, Phone, ArrowUp } from 'lucide-react';
 import Link from 'next/link';
+import { useModal } from '@/app/components/ModalProvider';
 
 const sections = [
   {
@@ -34,6 +35,7 @@ const sections = [
 ];
 
 export default function PolicyContent() {
+  const { openLiveChat } = useModal();
   return (
     <section className="policy-section">
       <div className="policy-glow" />
@@ -55,12 +57,12 @@ export default function PolicyContent() {
 
         <div className="policy-cta">
           <p className="policy-cta-label">Let&apos;s Get Started with Us. Call Us Now!</p>
-          <a href="tel:+12104938277" className="btn-primary policy-cta-btn">
+          <button type="button" onClick={openLiveChat} className="btn-primary policy-cta-btn">
             <MessageCircle size={18} className="policy-cta-icon-chat" />
             <Phone size={18} className="policy-cta-icon-phone" />
             <span className="policy-cta-text-chat">Live Chat</span>
             <span className="policy-cta-text-call">Call Now</span>
-          </a>
+          </button>
           <Link href="/" className="btn-outline policy-cta-home">
             <ArrowUp size={16} />
             Back to Home
