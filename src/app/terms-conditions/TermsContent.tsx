@@ -2,6 +2,7 @@
 import { MessageCircle, Phone, ArrowUp } from 'lucide-react';
 import Link from 'next/link';
 import { useModal } from '@/app/components/ModalProvider';
+import { copyPhoneNumber } from '@/app/components/PhoneLinkEnhancer';
 
 const sections = [
   {
@@ -32,6 +33,10 @@ const sections = [
 
 export default function TermsContent() {
   const { openLiveChat } = useModal();
+  const handleLiveChat = () => {
+    if (window.innerWidth <= 600) { copyPhoneNumber(); }
+    else { openLiveChat(); }
+  };
   return (
     <section className="terms-section">
       <div className="terms-glow" />
@@ -53,7 +58,7 @@ export default function TermsContent() {
 
         <div className="terms-cta">
           <p className="terms-cta-label">Let&apos;s Get Started with Us. Call Us Now!</p>
-          <button type="button" onClick={openLiveChat} className="btn-primary terms-cta-btn">
+          <button type="button" onClick={handleLiveChat} className="btn-primary terms-cta-btn">
             <MessageCircle size={18} className="terms-cta-icon-chat" />
             <Phone size={18} className="terms-cta-icon-phone" />
             <span className="terms-cta-text-chat">Live Chat</span>

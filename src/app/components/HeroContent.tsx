@@ -4,11 +4,16 @@ import { CalendarDays, MessageCircle, Phone } from 'lucide-react';
 import ArrowIcon from '@/components/ui/ArrowIcon';
 import Image from 'next/image';
 import { useModal } from './ModalProvider';
+import { copyPhoneNumber } from './PhoneLinkEnhancer';
 
 interface HeroContentProps { onOpenModal: () => void; }
 
 export default function HeroContent({ onOpenModal }: HeroContentProps) {
   const { openScheduleModal, openLiveChat } = useModal();
+  const handleLiveChat = () => {
+    if (window.innerWidth <= 600) { copyPhoneNumber(); }
+    else { openLiveChat(); }
+  };
   return (
     <div className="hero-content">
       <motion.div
@@ -62,7 +67,7 @@ export default function HeroContent({ onOpenModal }: HeroContentProps) {
           <CalendarDays size={16} />
           Schedule Appointment
         </button>
-        <button type="button" onClick={openLiveChat} aria-label="Live Chat" className="btn-outline hero-chat-btn">
+        <button type="button" onClick={handleLiveChat} aria-label="Live Chat" className="btn-outline hero-chat-btn">
           <MessageCircle size={16} className="hero-chat-icon" />
           <Phone size={16} className="hero-call-icon" />
           <span className="hero-chat-text">Live Chat</span>

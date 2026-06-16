@@ -13,7 +13,7 @@ export default function ContactSection() {
         <div className="contact-grid">
           <div className="contact-info">
             <SectionHeader label="Get In Touch" description="Take the first step toward market leadership. Our team will craft a personalized social media strategy for your brand - completely free." descriptionClass="contact-desc">
-              Ready To Grow Your<br />
+              Ready To Grow Your <br />
               <span className="accent">Brand Growth?</span>
             </SectionHeader>
 

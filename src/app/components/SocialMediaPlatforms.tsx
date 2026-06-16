@@ -4,6 +4,7 @@ import { MessageCircle, Phone, CalendarDays } from 'lucide-react';
 import SectionHeader from '@/components/ui/SectionHeader';
 import FadeInView from '@/components/ui/FadeInView';
 import { useModal } from './ModalProvider';
+import { copyPhoneNumber } from './PhoneLinkEnhancer';
 
 const platforms = [
   { name: 'Facebook', src: '/facebook_icon.webp', w: 100, h: 100 },
@@ -17,6 +18,10 @@ const platforms = [
 
 export default function SocialMediaPlatforms() {
   const { openModal, openScheduleModal, openLiveChat } = useModal();
+  const handleLiveChat = () => {
+    if (window.innerWidth <= 600) { copyPhoneNumber(); }
+    else { openLiveChat(); }
+  };
   return (
     <section className="smp-section">
       <div className="smp-glow" />
@@ -47,7 +52,7 @@ export default function SocialMediaPlatforms() {
             <button type="button" onClick={openModal} className="btn-teal">
               Get Your Social Strategy
             </button>
-            <button type="button" onClick={openLiveChat} className="btn-outline smp-chat-btn">
+            <button type="button" onClick={handleLiveChat} className="btn-outline smp-chat-btn">
               <MessageCircle size={16} className="smp-chat-icon" />
               <Phone size={16} className="smp-call-icon" />
               <span className="smp-chat-text">Live Chat</span>

@@ -16,7 +16,7 @@ export default function Distribution() {
         <div className="dist-header">
           <SectionHeader label="Distribution Network" description={"We help your brand reach customers across " + "major social media platforms and digital channels" + " where your audience is actively engaging."} descriptionClass="dist-desc">
             Your Brand Everywhere<br />
-            <span className="accent">Your Audience Awaits</span>
+            <span className="accent"> Your Audience Awaits</span>
           </SectionHeader>
         </div>
 
@@ -107,6 +107,7 @@ export default function Distribution() {
           padding: 15px 12px; background: var(--card-hover); border: 1px solid var(--border);
           border-radius: 16px; display: flex; align-items: center; justify-content: center; cursor: pointer;
         }
+        .dist-channel-card img { max-width: 100%; height: auto; }
         .dist-channel-card:hover { background: rgba(102,199,192,0.08); }
 
         .dist-cta-section { background: var(--background); border-top: 1px solid var(--border-light); }
@@ -130,13 +131,15 @@ export default function Distribution() {
           .distribution-section { overflow: hidden; }
           .dist-header h2 br { display: none; }
           .dist-header p { font-size: 0.92rem; }
-          .dist-channel-card { padding: 12px 16px; }
+          .dist-channel-card { padding: 10px 14px; }
+          .dist-channel-card img { max-width: 60px; max-height: 48px; }
           .dist-cta-title br { display: none; }
           .dist-cta-desc { font-size: 0.92rem; }
           .dist-cta-buttons { flex-direction: column; align-items: center; width: 100%; gap: 12px; }
           .dist-cta-buttons a, .dist-cta-buttons button { width: 100%; max-width: 300px; justify-content: center; box-sizing: border-box; }
         }
         @media (max-width: 420px) {
+          .dist-channel-card img { max-width: 48px; max-height: 38px; }
           .dist-tablet-img { width: 200px; }
         }
       `}</style>

@@ -1,4 +1,5 @@
 import { Phone, MessageCircle } from 'lucide-react';
+import { copyPhoneNumber } from '@/app/components/PhoneLinkEnhancer';
 
 interface PhoneLinkProps {
   label?: string;
@@ -43,11 +44,21 @@ export default function PhoneLink({
     </>
   );
 
+  const handleClick = onClick && mobileLabel
+    ? () => {
+        if (window.innerWidth <= 600) {
+          copyPhoneNumber();
+        } else {
+          onClick();
+        }
+      }
+    : onClick;
+
   if (onClick) {
     return (
       <>
         {mobileLabel && <style>{chatStyles}</style>}
-        <button type="button" className={className} aria-label={ariaLabel || label} onClick={onClick}>
+        <button type="button" className={className} aria-label={ariaLabel || label} onClick={handleClick}>
           {content}
         </button>
       </>

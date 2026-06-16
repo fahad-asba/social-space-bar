@@ -179,10 +179,88 @@ export default function ScheduleModal({ isOpen, onClose }: ScheduleModalProps) {
           margin-top: 14px;
         }
         .react-international-phone-country-selector-dropdown {
-          max-height: 240px !important;
           position: absolute !important;
-          top: 100% !important;
+          top: 105% !important;
           left: 0 !important;
+          z-index: 99999 !important;
+          background: var(--card-bg) !important;
+          border: 1px solid var(--border) !important;
+          border-radius: 12px !important;
+          box-shadow: 0 20px 50px rgba(0,0,0,0.28) !important;
+          max-height: 200px !important;
+          overflow-y: auto !important;
+          width: 360px !important;
+          padding: 6px !important;
+          scrollbar-width: thin;
+          scrollbar-color: var(--gold) transparent;
+        }
+        [data-theme="dark"] .react-international-phone-country-selector-dropdown {
+          background: #0d1526 !important;
+        }
+        .react-international-phone-country-selector-dropdown::-webkit-scrollbar { width: 4px; }
+        .react-international-phone-country-selector-dropdown::-webkit-scrollbar-thumb {
+          background: var(--gold);
+          border-radius: 2px;
+        }
+        .react-international-phone-country-selector-dropdown__search-wrapper {
+          padding: 4px 4px 8px !important;
+          position: sticky !important;
+          top: 0 !important;
+          background: var(--card-bg) !important;
+          z-index: 1 !important;
+        }
+        [data-theme="dark"] .react-international-phone-country-selector-dropdown__search-wrapper {
+          background: #0d1526 !important;
+        }
+        .react-international-phone-country-selector-dropdown__search {
+          width: 100% !important;
+          padding: 9px 12px !important;
+          background: var(--card-hover) !important;
+          border: 1px solid var(--border) !important;
+          border-radius: 8px !important;
+          color: var(--foreground) !important;
+          font-size: 0.88rem !important;
+          outline: none !important;
+          box-sizing: border-box !important;
+        }
+        .react-international-phone-country-selector-dropdown__search:focus {
+          border-color: var(--gold) !important;
+        }
+        .react-international-phone-country-selector-dropdown__list-item {
+          display: flex !important;
+          align-items: center !important;
+          gap: 10px !important;
+          padding: 9px 12px !important;
+          border-radius: 8px !important;
+          cursor: pointer !important;
+          border: 1px solid transparent !important;
+          transition: all 0.15s !important;
+          color: var(--foreground) !important;
+          font-size: 0.88rem !important;
+          width: 100% !important;
+          box-sizing: border-box !important;
+        }
+        .react-international-phone-country-selector-dropdown__list-item:hover {
+          background: var(--card-hover) !important;
+        }
+        .react-international-phone-country-selector-dropdown__list-item--selected {
+          background: rgba(102,199,192,0.1) !important;
+          border-color: rgba(102,199,192,0.25) !important;
+        }
+        @media (max-width: 560px) {
+          .react-international-phone-country-selector-dropdown {
+            width: 300px !important; max-height: 150px !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .react-international-phone-country-selector-dropdown {
+            width: 260px !important; max-height: 150px !important;
+          }
+        }
+        @media (max-width: 380px) {
+          .react-international-phone-country-selector-dropdown {
+            width: 220px !important; max-height: 150px !important;
+          }
         }
         .sch-modal-cal-side {
           background: linear-gradient(135deg, #0d1526, #080d1a);
@@ -263,16 +341,6 @@ export default function ScheduleModal({ isOpen, onClose }: ScheduleModalProps) {
         .sch-subheading {
           font-size: 0.85rem; color: var(--foreground-muted); margin-bottom: 10px;
           line-height: 1.5;
-        }
-        @media (max-width: 480px) {
-          .react-international-phone-country-selector-dropdown {
-            max-height: 200px !important; width: 280px !important;
-          }
-        }
-        @media (max-width: 380px) {
-          .react-international-phone-country-selector-dropdown {
-            max-height: 150px !important; width: 240px !important;
-          }
         }
         @media (max-width: 900px) {
           .sch-modal-cal-side { display: none; }

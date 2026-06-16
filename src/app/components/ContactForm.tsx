@@ -68,7 +68,7 @@ export default function ContactForm({
         transition: 'background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease',
       }}
     >
-      {/* Gradient top bar */}
+    
       <div style={{
         position: 'absolute', top: 0, left: 0, right: 0,
         height: '3px',
@@ -102,7 +102,7 @@ export default function ContactForm({
             disabled={loading}
           />
 
-          {/* Phone input wrapper */}
+        
           <div className="cf-phone-wrap">
             <PhoneInput
               value={phone}
@@ -368,20 +368,20 @@ export default function ContactForm({
 
         @media (max-width: 560px) {
           .react-international-phone-country-selector-dropdown {
-            width: 300px !important;
+            width: 300px !important; max-height: 110px !important;
           }
         }
         @media (max-width: 480px) {
           .cf-card .cf-body, .cf-compact .cf-body { padding: 22px 16px 18px; }
           .cf-title { font-size: 1.2rem !important; margin-bottom: 14px !important; }
           .react-international-phone-country-selector-dropdown {
-            width: 260px !important;
+            width: 260px !important; max-height: 110px !important;
           }
         }
         @media (max-width: 360px) {
           .react-international-phone-country-selector-dropdown {
             width: 220px !important;
-            max-height: 180px !important;
+            max-height: 110px !important;
           }
         }
       `}</style>

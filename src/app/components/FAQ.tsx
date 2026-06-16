@@ -6,6 +6,7 @@ import ArrowIcon from '@/components/ui/ArrowIcon';
 import SectionHeader from '@/components/ui/SectionHeader';
 import FadeInView from '@/components/ui/FadeInView';
 import { useModal } from './ModalProvider';
+import { copyPhoneNumber } from './PhoneLinkEnhancer';
 
 const faqs = [
   {
@@ -37,6 +38,10 @@ const faqs = [
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const { openModal, openLiveChat } = useModal();
+  const handleLiveChat = () => {
+    if (window.innerWidth <= 600) { copyPhoneNumber(); }
+    else { openLiveChat(); }
+  };
 
   const toggle = (i: number) => setOpenIndex(openIndex === i ? null : i);
 
@@ -93,7 +98,7 @@ export default function FAQ() {
             <button type="button" onClick={openModal} className="btn-primary">
               Contact Us <ArrowIcon />
             </button>
-            <button type="button" onClick={openLiveChat} className="btn-outline faq-chat-btn">
+            <button type="button" onClick={handleLiveChat} className="btn-outline faq-chat-btn">
               <MessageCircle size={16} className="faq-chat-icon" />
               <Phone size={16} className="faq-call-icon" />
               <span className="faq-chat-text">Live Chat</span>
