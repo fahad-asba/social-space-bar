@@ -4,19 +4,20 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ServicesMarquee from './components/ServicesMarquee';
 import ModalProvider from './components/ModalProvider';
+import FloatingChatButton from './components/FloatingChatButton';
 
-const Services = dynamic(() => import('./components/Services'), { ssr: true });
-const Solutions = dynamic(() => import('./components/Solutions'), { ssr: true });
-const Portfolio = dynamic(() => import('./components/Portfolio'), { ssr: true });
-const Process = dynamic(() => import('./components/Process'), { ssr: true });
-const WhyUs = dynamic(() => import('./components/WhyUs'), { ssr: true });
-const Pricing = dynamic(() => import('./components/Pricing'), { ssr: true });
-const Testimonials = dynamic(() => import('./components/Testimonials'), { ssr: true });
-const SocialMediaPlatforms = dynamic(() => import('./components/SocialMediaPlatforms'), { ssr: true });
-const Distribution = dynamic(() => import('./components/Distribution'), { ssr: true });
-const FAQ = dynamic(() => import('./components/FAQ'), { ssr: true });
-const ContactSection = dynamic(() => import('./components/ContactSection'), { ssr: true });
-const Footer = dynamic(() => import('./components/Footer'), { ssr: true });
+const Services = dynamic(() => import('./components/Services'));
+const Solutions = dynamic(() => import('./components/Solutions'));
+const Portfolio = dynamic(() => import('./components/Portfolio'));
+const Process = dynamic(() => import('./components/Process'));
+const WhyUs = dynamic(() => import('./components/WhyUs'));
+const Pricing = dynamic(() => import('./components/Pricing'));
+const Testimonials = dynamic(() => import('./components/Testimonials'));
+const SocialMediaPlatforms = dynamic(() => import('./components/SocialMediaPlatforms'));
+const Distribution = dynamic(() => import('./components/Distribution'));
+const FAQ = dynamic(() => import('./components/FAQ'));
+const ContactSection = dynamic(() => import('./components/ContactSection'));
+const Footer = dynamic(() => import('./components/Footer'));
 
 export const metadata: Metadata = {
   title: 'Social Space Bar - Expert Social Media Marketing Services',
@@ -46,6 +47,7 @@ export default function Home() {
         <FAQ />
         <ContactSection />
       </main>
+      <FloatingChatButton />
       </ModalProvider>
       <Footer />
 

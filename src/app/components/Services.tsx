@@ -83,7 +83,7 @@ export default function Services() {
                   <div className="service-card-content">
                     <h3 className="service-card-title">{svc.title}</h3>
                     <p className="service-card-desc">{svc.desc}</p>
-                    <a href="#contact" className="service-card-cta">
+                    <a href="#faq" className="service-card-cta">
                       Learn More <ArrowIcon />
                     </a>
                   </div>

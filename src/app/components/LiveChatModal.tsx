@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import { Send, Bot, User } from 'lucide-react';
+import ModalOverlay from '@/components/ui/ModalOverlay';
 
 interface LiveChatModalProps {
   isOpen: boolean;
@@ -84,17 +85,11 @@ export default function LiveChatModal({ isOpen, onClose }: LiveChatModalProps) {
     }
   };
 
-  const handleOverlayClick = (e: React.MouseEvent) => {
-    if (e.target === e.currentTarget) onClose();
-  };
-
   if (!isOpen) return null;
 
   return (
-    <>
-      <div className="chat-overlay" onClick={handleOverlayClick}>
-        <div className="chat-modal">
-          <div className="chat-header">
+    <><ModalOverlay isOpen={isOpen} onClose={onClose} maxWidth="440px" className="chat-modal" hideClose>
+      <div className="chat-header">
             <div className="chat-header-left">
               <div className="chat-avatar">
                 <Bot size={20} />
@@ -145,24 +140,10 @@ export default function LiveChatModal({ isOpen, onClose }: LiveChatModalProps) {
               <Send size={18} />
             </button>
           </div>
-        </div>
-      </div>
+    </ModalOverlay>
 
       <style>{`
-        .chat-overlay {
-          position: fixed; inset: 0; z-index: 99999;
-          background: rgba(0,0,0,0.65); backdrop-filter: blur(8px);
-          display: flex; align-items: center; justify-content: center;
-          padding: 20px; animation: fadeIn 0.25s ease;
-        }
-        .chat-modal {
-          background: var(--card-bg); border: 1px solid var(--border);
-          border-radius: 24px; max-width: 440px; width: 100%;
-          display: flex; flex-direction: column;
-          box-shadow: 0 24px 60px rgba(0,0,0,0.4);
-          animation: modalSlideUp 0.35s ease;
-          max-height: 85vh; overflow: hidden;
-        }
+        .chat-modal { display: flex; flex-direction: column; overflow: hidden; }
         .chat-header {
           display: flex; align-items: center; justify-content: space-between;
           padding: 18px 20px; border-bottom: 1px solid var(--border);
@@ -189,10 +170,15 @@ export default function LiveChatModal({ isOpen, onClose }: LiveChatModalProps) {
         .chat-body {
           flex: 1; overflow-y: auto; padding: 20px;
           display: flex; flex-direction: column; gap: 14px;
-          scrollbar-width: thin;
+          scrollbar-width: thin; scrollbar-color: rgba(102,199,192,0.3) transparent;
         }
-        .chat-body::-webkit-scrollbar { width: 4px; }
-        .chat-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+        .chat-body::-webkit-scrollbar { width: 5px; }
+        .chat-body::-webkit-scrollbar-track { background: transparent; }
+        .chat-body::-webkit-scrollbar-thumb {
+          background: rgba(102,199,192,0.3); border-radius: 10px;
+          transition: background 0.2s;
+        }
+        .chat-body::-webkit-scrollbar-thumb:hover { background: rgba(102,199,192,0.5); }
         .chat-msg { display: flex; gap: 10px; max-width: 85%; animation: fadeIn 0.3s ease; }
         .chat-msg-agent { align-self: flex-start; }
         .chat-msg-user { align-self: flex-end; flex-direction: row-reverse; }
@@ -255,7 +241,6 @@ export default function LiveChatModal({ isOpen, onClose }: LiveChatModalProps) {
           .chat-footer { padding: 12px 16px; }
         }
         @media (max-width: 480px) {
-          .chat-overlay { padding: 8px; align-items: flex-end; }
           .chat-modal { border-radius: 16px 16px 0 0; max-height: 92vh; margin: 0; }
           .chat-close-btn { width: 28px; height: 28px; font-size: 1.1rem; }
           .chat-agent-name { font-size: 0.88rem; }

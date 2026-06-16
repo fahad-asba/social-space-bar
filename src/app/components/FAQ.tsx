@@ -41,7 +41,7 @@ export default function FAQ() {
   const toggle = (i: number) => setOpenIndex(openIndex === i ? null : i);
 
   return (
-    <section className="faq-section">
+    <section id="faq" className="faq-section">
       <div className="faq-glow" />
       <div className="container">
         <div className="faq-header">

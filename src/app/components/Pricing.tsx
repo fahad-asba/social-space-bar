@@ -4,6 +4,7 @@ import Image from 'next/image';
 import ArrowIcon from '@/components/ui/ArrowIcon';
 import SectionHeader from '@/components/ui/SectionHeader';
 import { plans } from '@/data/pricing';
+import { useModal } from './ModalProvider';
 
 const planIcons: Record<string, string> = {
   'Starter Growth': '/Starter-Growth.png',
@@ -12,6 +13,7 @@ const planIcons: Record<string, string> = {
 };
 
 export default function Pricing() {
+  const { openModal } = useModal();
   const [hoveredPlan, setHoveredPlan] = useState<string | null>(null);
 
   return (
@@ -69,13 +71,15 @@ export default function Pricing() {
               </div>
 
               <div className="pricing-card-body">
-                <a
-                  href="#contact"
+                <button
+                  type="button"
+                  onClick={openModal}
                   className="pricing-cta-btn"
                   style={{
                     background: plan.featured ? plan.color : 'transparent',
                     color: plan.featured ? 'var(--background-secondary)' : plan.color,
                     border: `2px solid ${plan.color}`,
+                    cursor: 'pointer',
                   }}
                   onMouseEnter={e => {
                     e.currentTarget.style.background = plan.color;
@@ -92,7 +96,7 @@ export default function Pricing() {
                 >
                   Get Price Estimate
                   <ArrowIcon size={13} />
-                </a>
+                </button>
 
                 <ul className="pricing-features">
                   {plan.features.map(feat => (

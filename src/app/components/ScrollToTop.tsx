@@ -10,51 +10,36 @@ export default function ScrollToTop() {
     const toggleVisibility = () => {
       setVisible(window.scrollY > 300);
     };
-
     window.addEventListener('scroll', toggleVisibility);
     return () => window.removeEventListener('scroll', toggleVisibility);
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   if (!visible) return null;
 
   return (
-    <button
-      onClick={scrollToTop}
-      className="
-        fixed bottom-6 right-6 z-50
-        group
-        flex items-center justify-center
-        w-12 h-12 md:w-14 md:h-14
-        rounded-full
-        bg-[var(--card-bg)]
-        border border-[var(--border)]
-        backdrop-blur-xl
-        shadow-lg
-        transition-all duration-300
-        hover:scale-110 hover:border-[var(--gold)]
-        hover:shadow-[0_0_25px_rgba(102,199,192,0.35)]
-        active:scale-95
-        animate-fade-in
-      "
-      aria-label="Scroll to top"
-    >
-      <ArrowUp
-        className="
-          text-[var(--gold)]
-          transition-all duration-300
-          group-hover:-translate-y-1
-          group-hover:scale-110
-          group-hover:animate-pulse
-        "
-        size={20}
-      />
-    </button>
+    <>
+      <button type="button" className="scroll-top-btn" onClick={scrollToTop} aria-label="Scroll to top">
+        <ArrowUp size={24} />
+      </button>
+      <style>{`
+        .scroll-top-btn {
+          position: fixed; bottom: 84px; right: 20px; z-index: 9998;
+          width: 56px; height: 56px; border-radius: 50%;
+          background: var(--card-bg); border: 1px solid var(--border);
+          color: #66C7C0; display: none; align-items: center; justify-content: center;
+          cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+          transition: all 0.3s ease;
+        }
+        .scroll-top-btn:hover { transform: scale(1.08); border-color: #66C7C0; box-shadow: 0 6px 28px rgba(102,199,192,0.35); }
+        .scroll-top-btn:active { transform: scale(0.95); }
+        @media (max-width: 768px) {
+          .scroll-top-btn { display: flex; }
+        }
+      `}</style>
+    </>
   );
 }

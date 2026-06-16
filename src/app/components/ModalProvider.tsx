@@ -1,8 +1,10 @@
 'use client';
 import { createContext, useContext, useState, ReactNode } from 'react';
-import HeroModal from './HeroModal';
-import ScheduleModal from './ScheduleModal';
-import LiveChatModal from './LiveChatModal';
+import dynamic from 'next/dynamic';
+
+const HeroModal = dynamic(() => import('./HeroModal'));
+const ScheduleModal = dynamic(() => import('./ScheduleModal'));
+const LiveChatModal = dynamic(() => import('./LiveChatModal'));
 
 interface ModalContextType {
   openModal: () => void;

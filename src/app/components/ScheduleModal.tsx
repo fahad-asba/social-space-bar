@@ -1,9 +1,10 @@
 'use client';
 import ArrowIcon from '@/components/ui/ArrowIcon';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { PhoneInput } from 'react-international-phone';
 import 'react-international-phone/style.css';
+import ModalOverlay from '@/components/ui/ModalOverlay';
 
 interface ScheduleModalProps {
   isOpen: boolean;
@@ -39,35 +40,9 @@ export default function ScheduleModal({ isOpen, onClose }: ScheduleModalProps) {
     }
   };
 
-  const handleOverlayClick = (e: React.MouseEvent) => {
-    if (e.target === e.currentTarget) onClose();
-  };
-
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => { document.body.style.overflow = ''; };
-  }, [isOpen]);
-
-  if (!isOpen) return null;
-
   return (
-    <>
-    <div className="modal-overlay" onClick={handleOverlayClick}>
-      <div className="sch-modal-content">
-        <button
-          type="button"
-          onClick={onClose}
-          className="modal-close-btn"
-          aria-label="Close modal"
-        >
-          ×
-        </button>
-
-        <div className="sch-modal-cal-side">
+    <><ModalOverlay isOpen={isOpen} onClose={onClose}>
+      <div className="sch-modal-cal-side">
           <div className="sch-cal-glow" />
           <div className="sch-cal-header">
             <div className="sch-cal-month">
@@ -159,25 +134,11 @@ export default function ScheduleModal({ isOpen, onClose }: ScheduleModalProps) {
 
           <p className="modal-privacy">We&apos;ll confirm your appointment within 24 hours.</p>
         </div>
-      </div>
-    </div>
+    </ModalOverlay>
 
       <style>{`
-        .modal-overlay {
-          position: fixed; inset: 0; z-index: 99999;
-          background: rgba(0,0,0,0.65); backdrop-filter: blur(8px);
-          display: flex; align-items: center; justify-content: center;
-          padding: 20px; animation: fadeIn 0.25s ease;
-        }
-        .modal-close-btn {
-          position: absolute; top: 14px; right: 14px; z-index: 10;
-          width: 36px; height: 36px; border-radius: 50%;
-          background: var(--card-bg); border: 1px solid var(--border);
-          color: var(--foreground); font-size: 1.4rem; line-height: 1;
-          cursor: pointer; display: flex; align-items: center; justify-content: center;
-          transition: all 0.3s;
-        }
-        .modal-close-btn:hover { background: #66C7C0; color: #fff; border-color: #66C7C0; }
+        .mo-content { display: grid; grid-template-columns: 1fr 1fr; max-width: 820px; }
+        @media (max-width: 900px) { .mo-content { grid-template-columns: 1fr; } }
         .modal-top-bar {
           position: absolute; top: 0; left: 0; right: 0; height: 3px;
           background: linear-gradient(90deg, #66C7C0, #7c3aed);
@@ -222,15 +183,6 @@ export default function ScheduleModal({ isOpen, onClose }: ScheduleModalProps) {
           position: absolute !important;
           top: 100% !important;
           left: 0 !important;
-        }
-        .sch-modal-content {
-          background: var(--card-bg); border: 1px solid var(--border);
-          border-radius: 24px; max-width: 820px; width: 100%;
-          display: grid; grid-template-columns: 1fr 1fr;
-          overflow: hidden; position: relative;
-          box-shadow: 0 24px 60px rgba(0,0,0,0.4);
-          animation: modalSlideUp 0.35s ease;
-          max-height: 85vh;
         }
         .sch-modal-cal-side {
           background: linear-gradient(135deg, #0d1526, #080d1a);
@@ -323,23 +275,17 @@ export default function ScheduleModal({ isOpen, onClose }: ScheduleModalProps) {
           }
         }
         @media (max-width: 900px) {
-          .sch-modal-content { grid-template-columns: 1fr; max-width: 520px; }
           .sch-modal-cal-side { display: none; }
           .sch-modal-form-side { padding: 24px 28px 28px; }
         }
         @media (max-width: 600px) {
-          .modal-overlay { padding: 12px; }
-          .sch-modal-content { border-radius: 18px; max-height: 90vh; }
           .sch-modal-form-side { padding: 20px 20px 28px; }
           .sch-heading { font-size: 1.3rem; }
           .modal-phone-input { padding: 12px 14px !important; font-size: 0.9rem !important; height: 44px !important; }
           .modal-country-btn { padding: 0 10px !important; height: 44px !important; min-height: 44px !important; }
         }
         @media (max-width: 480px) {
-          .modal-overlay { padding: 8px; align-items: flex-end; }
-          .sch-modal-content { border-radius: 16px 16px 0 0; max-height: 92vh; }
           .sch-modal-form-side { padding: 18px 18px 28px; }
-          .modal-close-btn { top: 10px; right: 10px; width: 32px; height: 32px; font-size: 1.2rem; }
           .sch-heading { font-size: 1.15rem; }
           .sch-subheading { font-size: 0.82rem; }
           .modal-form { gap: 10px; }
@@ -349,7 +295,6 @@ export default function ScheduleModal({ isOpen, onClose }: ScheduleModalProps) {
           .modal-privacy { font-size: 0.7rem; margin-top: 14px; }
         }
         @media (max-width: 380px) {
-          .modal-overlay { padding: 4px; }
           .sch-modal-form-side { padding: 16px 14px 24px; }
           .sch-heading { font-size: 1.05rem; }
           .modal-form .form-input { padding: 10px 12px; font-size: 0.85rem; }

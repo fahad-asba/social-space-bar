@@ -1,10 +1,12 @@
 'use client';
 import { motion } from 'motion/react';
-import ContactForm from './ContactForm';
-import ParticlesBackground from './ParticlesBackground';
+import dynamic from 'next/dynamic';
 import HeroContent from './HeroContent';
 import HeroScrollIndicator from './HeroScrollIndicator';
 import { useModal } from './ModalProvider';
+
+const ContactForm = dynamic(() => import('./ContactForm'));
+const ParticlesBackground = dynamic(() => import('./ParticlesBackground'));
 
 export default function Hero() {
   const { openModal } = useModal();

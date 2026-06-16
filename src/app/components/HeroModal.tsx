@@ -1,10 +1,11 @@
 'use client';
 import ArrowIcon from '@/components/ui/ArrowIcon';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { PhoneInput } from 'react-international-phone';
 import 'react-international-phone/style.css';
+import ModalOverlay from '@/components/ui/ModalOverlay';
 
 interface HeroModalProps {
   isOpen: boolean;
@@ -40,35 +41,9 @@ export default function HeroModal({ isOpen, onClose }: HeroModalProps) {
     }
   };
 
-  const handleOverlayClick = (e: React.MouseEvent) => {
-    if (e.target === e.currentTarget) onClose();
-  };
-
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => { document.body.style.overflow = ''; };
-  }, [isOpen]);
-
-  if (!isOpen) return null;
-
   return (
-    <>
-    <div className="modal-overlay" onClick={handleOverlayClick}>
-      <div className="modal-content">
-        <button
-          type="button"
-          onClick={onClose}
-          className="modal-close-btn"
-          aria-label="Close modal"
-        >
-          ×
-        </button>
-
-        <div className="modal-image-side">
+    <><ModalOverlay isOpen={isOpen} onClose={onClose}>
+      <div className="modal-image-side">
           <div className="modal-glow-purple" />
           <div className="modal-glow-gold" />
           <div className="modal-tablet-wrap">
@@ -159,34 +134,11 @@ export default function HeroModal({ isOpen, onClose }: HeroModalProps) {
             </>
           )}
         </div>
-      </div>
-    </div>
+    </ModalOverlay>
 
       <style>{`
-        .modal-overlay {
-          position: fixed; inset: 0; z-index: 99999;
-          background: rgba(0,0,0,0.65); backdrop-filter: blur(8px);
-          display: flex; align-items: center; justify-content: center;
-          padding: 20px; animation: fadeIn 0.25s ease;
-        }
-        .modal-content {
-          background: var(--card-bg); border: 1px solid var(--border);
-          border-radius: 24px; max-width: 780px; width: 100%;
-          display: grid; grid-template-columns: 1fr 1fr;
-          overflow: hidden; position: relative;
-          box-shadow: 0 24px 60px rgba(0,0,0,0.4);
-          animation: modalSlideUp 0.35s ease;
-          max-height: 80vh;
-        }
-        .modal-close-btn {
-          position: absolute; top: 14px; right: 14px; z-index: 10;
-          width: 36px; height: 36px; border-radius: 50%;
-          background: var(--card-bg); border: 1px solid var(--border);
-          color: var(--foreground); font-size: 1.4rem; line-height: 1;
-          cursor: pointer; display: flex; align-items: center; justify-content: center;
-          transition: all 0.3s;
-        }
-        .modal-close-btn:hover { background: #66C7C0; color: #fff; border-color: #66C7C0; }
+        .mo-content { display: grid; grid-template-columns: 1fr 1fr; }
+        @media (max-width: 900px) { .mo-content { grid-template-columns: 1fr; } }
         .modal-image-side {
           position: relative; display: flex; flex-direction: column;
           align-items: center; justify-content: center; padding: 32px;
@@ -290,13 +242,10 @@ export default function HeroModal({ isOpen, onClose }: HeroModalProps) {
         }
 
         @media (max-width: 900px) {
-          .modal-content { grid-template-columns: 1fr; max-width: 520px; }
           .modal-image-side { display: none; }
           .modal-form-side { padding: 24px 28px 28px; }
         }
         @media (max-width: 600px) {
-          .modal-overlay { padding: 12px; }
-          .modal-content { border-radius: 18px; max-height: 90vh; }
           .modal-form-side { padding: 20px 20px 28px; }
           .modal-heading { font-size: 1.3rem; }
           .modal-form { gap: 12px; }
@@ -305,10 +254,7 @@ export default function HeroModal({ isOpen, onClose }: HeroModalProps) {
           .modal-country-btn { padding: 0 10px !important; height: 44px !important; min-height: 44px !important; }
         }
         @media (max-width: 480px) {
-          .modal-overlay { padding: 8px; align-items: flex-end; }
-          .modal-content { border-radius: 16px 16px 0 0; max-height: 92vh; }
           .modal-form-side { padding: 18px 18px 28px; }
-          .modal-close-btn { top: 10px; right: 10px; width: 32px; height: 32px; font-size: 1.2rem; }
           .modal-heading { font-size: 1.15rem; }
           .modal-subheading { font-size: 0.82rem; margin-bottom: 16px; }
           .modal-badge { font-size: 0.65rem; padding: 3px 10px; }
@@ -319,7 +265,6 @@ export default function HeroModal({ isOpen, onClose }: HeroModalProps) {
           .modal-privacy { font-size: 0.7rem; margin-top: 14px; }
         }
         @media (max-width: 380px) {
-          .modal-overlay { padding: 4px; }
           .modal-form-side { padding: 16px 14px 24px; }
           .modal-heading { font-size: 1.05rem; }
           .modal-form .form-input { padding: 10px 12px; font-size: 0.85rem; }

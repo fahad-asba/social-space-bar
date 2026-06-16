@@ -29,20 +29,8 @@ export default function SocialMediaPlatforms() {
 
         <div className="smp-marquee-wrap">
           <div className="smp-marquee-track">
-            {platforms.map((p, i) => (
-              <div key={p.name} className="smp-card">
-                <div className="smp-card-inner">
-                  <div className="smp-logo-wrap">
-                    <Image src={p.src} alt={p.name} width={p.w} height={p.h} className="smp-logo" />
-                  </div>
-                  <span className="smp-name">{p.name}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="smp-marquee-track smp-marquee-track-clone">
-            {platforms.map((p) => (
-              <div key={`clone-${p.name}`} className="smp-card">
+            {[...platforms, ...platforms].map((p, i) => (
+              <div key={`${p.name}-${i}`} className="smp-card">
                 <div className="smp-card-inner">
                   <div className="smp-logo-wrap">
                     <Image src={p.src} alt={p.name} width={p.w} height={p.h} className="smp-logo" />
@@ -94,9 +82,8 @@ export default function SocialMediaPlatforms() {
         .smp-marquee-track {
           display: flex; align-items: center; gap: 20px;
           animation: smp-marquee 40s linear infinite;
-          flex-shrink: 0; min-width: 100%;
+          flex-shrink: 0;
         }
-        .smp-marquee-track-clone { position: absolute; left: 100%; top: 0; }
         .smp-card {
           background: var(--card-bg); border: 1px solid var(--border);
           border-radius: 20px; padding: 28px 20px; cursor: pointer;
@@ -128,7 +115,7 @@ export default function SocialMediaPlatforms() {
         .smp-card:hover .smp-name { color: var(--teal); }
         @keyframes smp-marquee {
           0% { transform: translateX(0); }
-          100% { transform: translateX(-100%); }
+          100% { transform: translateX(-50%); }
         }
         .smp-cta { margin-top: 48px; }
         .smp-cta-buttons { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }

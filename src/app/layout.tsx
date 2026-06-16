@@ -119,6 +119,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <link rel="preload" href="/hero-img4.webp" as="image" fetchPriority="high" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
