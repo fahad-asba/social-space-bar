@@ -9,7 +9,7 @@ import { copyPhoneNumber } from './PhoneLinkEnhancer';
 const platforms = [
   { name: 'Facebook', src: '/facebook_icon.webp', w: 100, h: 100 },
   { name: 'Instagram', src: '/Instagram_icon.webp', w: 100, h: 100 },
-  { name: 'Pinterest', src: '/pintrest-logo.png', w: 100, h: 80 },
+  { name: 'Pinterest', src: '/pintrest-logo.png', w: 100, h: 56 },
   { name: 'YouTube', src: '/Youtube_logo.webp', w: 120, h: 80 },
   { name: 'LinkedIn', src: '/linkdein_icon.webp', w: 100, h: 100 },
   { name: 'TikTok', src: '/tiktok_icon.webp', w: 100, h: 100 },
