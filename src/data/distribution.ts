@@ -8,7 +8,7 @@ export interface DistributionChannel {
 export const channels: DistributionChannel[] = [
   { src: '/facebook_icon.webp', name: 'Facebook', w: 100, h: 80 },
   { src: '/Instagram_icon.webp', name: 'Instagram', w: 100, h: 80 },
-  { src: '/pintrest-logo.png', name: 'pinterest', w: 100, h: 56 },
+  { src: '/pintrest-logo.png', name: 'pinterest', w: 100, h: 80 },
   { src: '/linkdein_icon.webp', name: 'LinkedIn', w: 100, h: 80 },
   { src: '/twitter-x_icon.webp', name: 'X (Twitter)', w: 100, h: 80 },
   { src: '/Youtube_logo.webp', name: 'YouTube', w: 120, h: 70 },
