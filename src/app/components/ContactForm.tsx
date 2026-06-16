@@ -171,7 +171,7 @@ export default function ContactForm({
           font-size: 1.45rem;
           font-weight: 700;
           color: var(--foreground);
-          margin-bottom: 16px;
+          margin-bottom: 8px;
           line-height: 1.25;
           transition: color 0.3s ease;
         }
