@@ -299,6 +299,17 @@ export default function Pricing() {
         @media (max-width: 700px) {
           .pricing-grid { grid-template-columns: 1fr; gap: 18px; }
           .pricing-card { max-width: 100%; }
+          .pricing-features {
+            max-height: 240px; overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--plan-color) transparent;
+          }
+          .pricing-features::-webkit-scrollbar { width: 6px; }
+          .pricing-features::-webkit-scrollbar-track { background: transparent; }
+          .pricing-features::-webkit-scrollbar-thumb {
+            background: var(--plan-color, #66C7C0);
+            border-radius: 3px;
+          }
         }
         @media (max-width: 600px) {
           .pricing-section { padding: 50px 0; overflow: hidden; }
