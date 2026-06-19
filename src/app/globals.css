@@ -52,9 +52,9 @@
   --hero-bg-opacity: 1.5;
   --banner-overlay: linear-gradient(135deg, rgb(78, 72, 72), rgba(5, 5, 5, 0));
   --banner-img-opacity: 0.6;
-  --hero-heading-color: #f8fafc;
-  --hero-subtitle-color: rgba(255,255,255,0.85);
-  --hero-premier-color: rgba(255,255,255,0.6);
+  --hero-heading-color: #ffffff;
+  --hero-subtitle-color: #ffffff;
+  --hero-premier-color: rgba(255,255,255,0.85);
   --mobile-overlay: rgba(0, 0, 0, 0.55);
   --mobile-menu-bg: #0d1526;
   --mobile-menu-foreground: #ffffff;

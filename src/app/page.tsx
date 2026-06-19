@@ -14,7 +14,7 @@ const WhyUs = dynamic(() => import('./components/WhyUs'));
 const Pricing = dynamic(() => import('./components/Pricing'));
 const Testimonials = dynamic(() => import('./components/Testimonials'));
 const SocialMediaPlatforms = dynamic(() => import('./components/SocialMediaPlatforms'));
-const Distribution = dynamic(() => import('./components/Distribution'));
+const OurGuarantee = dynamic(() => import('./components/OurGuarantee'));
 const FAQ = dynamic(() => import('./components/FAQ'));
 const ContactSection = dynamic(() => import('./components/ContactSection'));
 const Footer = dynamic(() => import('./components/Footer'));
@@ -43,7 +43,7 @@ export default function Home() {
         <Pricing />
         <Testimonials />
         <SocialMediaPlatforms />
-        <Distribution />
+        <OurGuarantee />
         <FAQ />
         <ContactSection />
       </main>

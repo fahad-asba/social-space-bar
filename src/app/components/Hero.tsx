@@ -56,7 +56,7 @@ export default function Hero() {
         }
         .hero-section::before {
           content: ''; position: absolute; inset: 0; z-index: 0;
-          background-image: url('/hero-img4.webp'); background-size: cover; background-position: center;
+          background-image: url('/social-icons-img.jpg'); background-size: cover; background-position: center;
           opacity: var(--hero-bg-opacity, 0.3);
         }
         .hero-section::after {
