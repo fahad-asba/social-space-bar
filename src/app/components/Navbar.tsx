@@ -131,15 +131,12 @@ export default function Navbar() {
       <style>{`
         .navbar {
           position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-          transition: all 0.4s ease;
-          background: transparent;
-        }
-        .navbar-scrolled {
           background: var(--nav-bg);
           backdrop-filter: blur(24px);
           -webkit-backdrop-filter: blur(24px);
           border-bottom: 1px solid var(--nav-border);
           box-shadow: 0 4px 30px var(--nav-shadow);
+          transition: all 0.4s ease;
         }
         .navbar.navbar-scrolled.menu-open {
           background: #0d1526;
@@ -149,24 +146,21 @@ export default function Navbar() {
           display: flex; align-items: center; justify-content: space-between; height: 80px;
         }
         .nav-logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
-        .nav-logo-img { object-fit: contain; width: 140px; max-width: 100%; height: auto; transition: all 0.3s ease; filter: brightness(0) invert(1); }
-        .navbar-scrolled .nav-logo-img { filter: brightness(0); }
-        [data-theme="dark"] .navbar-scrolled .nav-logo-img { filter: brightness(0) invert(1); }
+        .nav-logo-img { object-fit: contain; width: 140px; max-width: 100%; height: auto; transition: all 0.3s ease; filter: brightness(0); }
+        [data-theme="dark"] .nav-logo-img { filter: brightness(0) invert(1); }
         .desktop-nav { display: flex; align-items: center; gap: 28px; }
         .nav-links { display: flex; list-style: none; gap: 32px; align-items: center; }
         .nav-link {
-          color: #ffffff; text-decoration: none; font-size: 0.88rem;
+          color: var(--cyan); text-decoration: none; font-size: 0.88rem;
           font-weight: 500; letter-spacing: 0.02em; transition: all 0.3s;
           padding: 4px 0; position: relative;
         }
-        .navbar-scrolled .nav-link { color: var(--cyan); }
         .nav-link::after {
           content: ''; position: absolute; bottom: -2px; left: 0; right: 0;
           height: 2px; background: var(--gold); border-radius: 1px;
           transform: scaleX(0); transition: transform 0.3s ease;
         }
         .nav-link:hover { color: var(--gold); }
-        .navbar-scrolled .nav-link:hover { color: var(--gold); }
         .nav-link:hover::after { transform: scaleX(1); }
         .nav-link-active { color: var(--gold); }
         .nav-link-active::after { transform: scaleX(1); }
