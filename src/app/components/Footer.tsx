@@ -76,10 +76,10 @@ export default function Footer() {
         .footer-link { color: var(--footer-foreground-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; display: inline-flex; align-items: center; gap: 8px; }
         .footer-link:hover { color: #66C7C0; }
 
-        .footer-disclaimer { background: var(--section-gradient); padding: 24px 0; text-align: center; border-top: 1px solid var(--border-light); }
+        .footer-disclaimer { background: var(--footer-bg); padding: 24px 0; text-align: center; border-top: 1px solid var(--border-light); }
         .footer-disclaimer p { color: var(--footer-foreground-muted); font-size: 0.82rem; line-height: 1.6; max-width: 720px; margin: 0 auto; }
 
-        .footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 24px 0; background: var(--section-gradient); }
+        .footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 24px 0; background: var(--footer-bg); }
         .footer-bottom p { color: var(--footer-foreground-muted); font-size: 0.85rem; }
         .footer-bottom-links { display: flex; gap: 24px; flex-wrap: wrap; }
         .footer-bottom-link { color: var(--footer-foreground-muted); text-decoration: none; font-size: 0.85rem; transition: color 0.3s; }
