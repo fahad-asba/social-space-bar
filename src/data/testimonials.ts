@@ -52,13 +52,12 @@ export const testimonials: Testimonial[] = [
   },
   {
     quote: 'Working with SocialSpaceBar has been a game-changer for us. Their understanding of social media trends and how to position our brand was outstanding. We\'ve gone from inconsistent posting to a fully managed, professional online presence.',
+    image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=150&h=150&fit=crop&crop=face',
     name: 'Vivian Richards',
     role: 'Entrepreneur',
     initials: 'VR',
     color: '#f59e0b',
     stars: 5,
-        image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
-
   },
   {
     quote: 'The team at SocialSpaceBar truly knows how to deliver results. They designed campaigns that not only looked amazing but also brought in real business. Their professionalism and communication were top-notch.',
@@ -67,7 +66,7 @@ export const testimonials: Testimonial[] = [
     initials: 'EL',
     color: '#ef4444',
     stars: 5,
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
+    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face',
   },
   {
     quote: 'SocialSpaceBar transformed our online presence completely. From strategy to execution, everything was handled with precision and creativity. Our engagement rates have never been higher.',
@@ -76,7 +75,7 @@ export const testimonials: Testimonial[] = [
     initials: 'JC',
     color: '#8b5cf6',
     stars: 5,
-        image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
+    image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop&crop=face',
   },
 ];
 
