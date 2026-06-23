@@ -21,6 +21,7 @@ export const testimonials: Testimonial[] = [
     initials: 'JW',
     color: '#66C7C0',
     stars: 5,
+    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
   },
   {
     quote: 'The team was professional and very supportive throughout our campaign. We saw a noticeable boost in engagement and conversions. They truly understand the social media landscape.',
@@ -29,6 +30,7 @@ export const testimonials: Testimonial[] = [
     initials: 'EC',
     color: '#7c3aed',
     stars: 5,
+    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
   },
   {
     quote: 'Social Space Bar knows how to position a brand in front of the right audience. Their campaign helped us gain the attention we truly deserved. Highly recommended!',
@@ -37,6 +39,7 @@ export const testimonials: Testimonial[] = [
     initials: 'DR',
     color: '#06b6d4',
     stars: 5,
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
   },
   {
     quote: 'The attention to detail and personalized approach sets them apart. Our brand went from unknown to industry-recognized. Their team really cares about their clients.',
@@ -45,6 +48,7 @@ export const testimonials: Testimonial[] = [
     initials: 'SM',
     color: '#10b981',
     stars: 5,
+    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face',
   },
   {
     quote: 'Working with SocialSpaceBar has been a game-changer for us. Their understanding of social media trends and how to position our brand was outstanding. We\'ve gone from inconsistent posting to a fully managed, professional online presence.',

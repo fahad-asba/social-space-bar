@@ -68,14 +68,6 @@ export default function ContactForm({
         transition: 'background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease',
       }}
     >
-    
-      <div style={{
-        position: 'absolute', top: 0, left: 0, right: 0,
-        height: '3px',
-        background: 'linear-gradient(90deg, #7c3aed, #66C7C0, #06b6d4)',
-        borderRadius: compact ? '20px 20px 0 0' : '24px 24px 0 0',
-      }} />
-
       <div className="cf-body">
         <div className="cf-badge">{subtitle}</div>
           <h2 className="cf-title">{title}</h2>

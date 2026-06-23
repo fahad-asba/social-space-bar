@@ -104,6 +104,8 @@ export default function HeroContent({ onOpenModal }: HeroContentProps) {
           font-family: var(--font-display);
           font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 800; line-height: 1.08;
           color: var(--hero-heading-color); margin-bottom: 24px;
+          text-shadow: var(--hero-heading-shadow);
+          background: rgba(102,199,192,0.1); padding: 8px 14px; border-radius: 12px;
         }
         .hero-gradient-text {
           background: linear-gradient(135deg, #66C7C0, #a78bfa);
@@ -113,10 +115,13 @@ export default function HeroContent({ onOpenModal }: HeroContentProps) {
           display: block; margin-top: 12px;
           font-size: clamp(0.85rem, 2.5vw, 1.1rem); font-weight: 500;
           letter-spacing: 0.15em; text-transform: uppercase; color: var(--hero-premier-color);
+          text-shadow: var(--hero-premier-shadow);
         }
         .hero-subtitle {
           font-size: 1.1rem; line-height: 1.75; color: var(--hero-subtitle-color);
           margin-bottom: 40px; max-width: 520px;
+          text-shadow: var(--hero-subtitle-shadow);
+          background: rgba(102,199,192,0.08); padding: 6px 14px; border-radius: 10px;
         }
         .hero-stats { display: flex; gap: 40px; margin-bottom: 40px; flex-wrap: wrap; }
         .hero-stat-value { font-size: 2rem; font-weight: 800; color: #66C7C0; font-family: var(--font-display); cursor: default; }

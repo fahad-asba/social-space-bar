@@ -115,6 +115,7 @@ export default function Solutions() {
         .solution-icon { font-size: 1.4rem; flex-shrink: 0; }
         .solution-item-title { font-weight: 700; color: var(--foreground); font-size: 0.95rem; }
         .solution-item-desc { font-size: 0.82rem; color: var(--foreground-muted); margin-top: 2px; }
+        [data-theme="dark"] .solution-item-desc { color: rgba(255,255,255,0.85); }
         .solution-arrow { margin-left: auto; color: #66C7C0; opacity: 0.4; flex-shrink: 0; font-size: 1.1rem; }
 
         @media (max-width: 1100px) { .solutions-section { padding: 80px 0; } .solutions-grid { gap: 50px; } }

@@ -7,18 +7,18 @@ import PhoneLinkEnhancer from './components/PhoneLinkEnhancer';
 import SmoothScrollAnchor from './components/SmoothScrollAnchor';
 import "@/app/components/theme/phone-input.css";
 
-export const inter = Inter({
+const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
 });
 
-export const playfair = Playfair_Display({
+const playfair = Playfair_Display({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-playfair",
 });
 
-export const SITE_URL = "https://www.socialspacebar.com";
+const SITE_URL = "https://www.socialspacebar.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

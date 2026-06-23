@@ -74,7 +74,7 @@ export default function Testimonials() {
                     </div>
                   </div>
 
-                  <img src="https://sm.socialspacebar.com/wp-content/uploads/2025/06/Asset-1@300x-9-02-1.png" alt="SocialSpaceBar" className="testimonial-brand-logo" loading="lazy" />
+                  <img src="/footer-logo.webp" alt="SocialSpaceBar" className="testimonial-brand-logo" loading="lazy" />
                 </div>
               </motion.div>
             </AnimatePresence>
