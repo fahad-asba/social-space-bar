@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { PhoneInput } from 'react-international-phone';
 import 'react-international-phone/style.css';
 import ModalOverlay from '@/components/ui/ModalOverlay';
+import { submitContactForm } from '@/lib/submitContactForm';
 
 interface HeroModalProps {
   isOpen: boolean;
@@ -23,19 +24,20 @@ export default function HeroModal({ isOpen, onClose }: HeroModalProps) {
     if (formLoading) return;
     setFormLoading(true);
     const form = e.currentTarget;
-    const data = new FormData(form);
-    data.set('phone', phone);
+    const formData = new FormData(form);
 
     try {
-      await fetch('https://formsubmit.co/ajax/info@socialspacebar.com', {
-        method: 'POST',
-        body: data,
+      await submitContactForm({
+        name: formData.get('name') as string,
+        email: formData.get('email') as string,
+        phone,
+        message: (formData.get('message') as string) || undefined,
+        source: 'Hero Modal',
       });
       onClose();
       router.push('/thank-you');
     } catch {
-      onClose();
-      router.push('/thank-you');
+      alert('Something went wrong. Please try again.');
     } finally {
       setFormLoading(false);
     }

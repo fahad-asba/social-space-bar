@@ -20,11 +20,21 @@ const ContactSection = dynamic(() => import('./components/ContactSection'));
 const Footer = dynamic(() => import('./components/Footer'));
 
 export const metadata: Metadata = {
-  title: 'Social Space Bar - Expert Social Media Marketing Services',
+  title: 'Premier Social Media Marketing Agency | Social Space Bar',
   description:
-    'Professional social media marketing services to grow your brand, boost engagement, and build your online presence. Expert Facebook, Instagram, LinkedIn, Twitter, YouTube & TikTok marketing.',
+    'Grow your brand with expert social media marketing on Facebook, Instagram, LinkedIn, TikTok & YouTube. Boost engagement, drive real results & get 30% off today.',
   alternates: { canonical: 'https://www.socialspacebar.com/' },
-  openGraph: { url: 'https://www.socialspacebar.com/' },
+  openGraph: {
+    title: 'Premier Social Media Marketing Agency | Social Space Bar',
+    description:
+      'Professional social media strategies to grow your brand, boost engagement, and build your online presence across every major platform. Get 30% off today.',
+    url: 'https://www.socialspacebar.com/',
+  },
+  twitter: {
+    title: 'Premier Social Media Marketing Agency | Social Space Bar',
+    description:
+      'Grow your brand with expert social media marketing. Facebook, Instagram, LinkedIn, TikTok & YouTube. Get 30% off today.',
+  },
 };
 
 export default function Home() {

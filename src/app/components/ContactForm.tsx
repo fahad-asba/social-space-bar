@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { PhoneInput } from 'react-international-phone';
 import 'react-international-phone/style.css';
+import { submitContactForm } from '@/lib/submitContactForm';
 
 interface ContactFormProps {
   compact?: boolean;
@@ -35,17 +36,19 @@ export default function ContactForm({
 
     setLoading(true);
     const form = e.currentTarget;
-    const data = new FormData(form);
-    data.set('phone', phone);
+    const formData = new FormData(form);
 
     try {
-      await fetch('https://formsubmit.co/ajax/info@socialspacebar.com', {
-        method: 'POST',
-        body: data,
+      await submitContactForm({
+        name: formData.get('name') as string,
+        email: formData.get('email') as string,
+        phone,
+        message: (formData.get('message') as string) || undefined,
+        source: 'Contact Form',
       });
       router.push('/thank-you');
     } catch {
-      router.push('/thank-you');
+      alert('Something went wrong. Please try again.');
     } finally {
       setLoading(false);
     }
