@@ -57,7 +57,8 @@ export const testimonials: Testimonial[] = [
     initials: 'VR',
     color: '#f59e0b',
     stars: 5,
-    image: 'https://sm.socialspacebar.com/wp-content/uploads/2025/10/team_8.jpg',
+        image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
+
   },
   {
     quote: 'The team at SocialSpaceBar truly knows how to deliver results. They designed campaigns that not only looked amazing but also brought in real business. Their professionalism and communication were top-notch.',
@@ -66,7 +67,7 @@ export const testimonials: Testimonial[] = [
     initials: 'EL',
     color: '#ef4444',
     stars: 5,
-    image: 'https://sm.socialspacebar.com/wp-content/uploads/2025/10/team_5.jpg',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
   },
   {
     quote: 'SocialSpaceBar transformed our online presence completely. From strategy to execution, everything was handled with precision and creativity. Our engagement rates have never been higher.',
@@ -75,7 +76,7 @@ export const testimonials: Testimonial[] = [
     initials: 'JC',
     color: '#8b5cf6',
     stars: 5,
-    image: 'https://sm.socialspacebar.com/wp-content/uploads/2025/10/team_8.jpg',
+        image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
   },
 ];
 
