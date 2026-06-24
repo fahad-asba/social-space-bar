@@ -1,5 +1,6 @@
 import type { ElementType } from 'react';
 import { createElement } from 'react';
+import { PHONE_DISPLAY, PHONE_HREF } from '@/lib/phone';
 
 export interface FooterLink {
   label: string;
@@ -40,7 +41,7 @@ export const footerColumns: FooterColumn[] = [
   {
     title: 'Contact',
     items: [
-      { label: '+1 (210) 493-8277', href: 'tel:+12104938277' },
+      { label: PHONE_DISPLAY, href: PHONE_HREF },
       { label: 'info@socialspacebar.com', href: 'mailto:info@socialspacebar.com' },
       { label: 'Office Hours: 8 AM - 6 PM PST', href: '#' },
     ],

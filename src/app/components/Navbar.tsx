@@ -6,10 +6,9 @@ import ThemeToggle from './ThemeToggle';
 import { useScrollPosition } from '@/hooks/useScrollPosition';
 import { navLinks } from '@/data/navigation';
 import { Menu, X } from 'lucide-react';
-import ArrowIcon from '@/components/ui/ArrowIcon';
-import { useModal } from './ModalProvider';
+import PhoneLink from '@/components/ui/PhoneLink';
+
 export default function Navbar() {
-  const { openScheduleModal } = useModal();
   const scrolled = useScrollPosition(40);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
@@ -70,10 +69,7 @@ export default function Navbar() {
             ))}
           </ul>
           <ThemeToggle />
-          <button type="button" onClick={openScheduleModal} className="btn-primary nav-cta-btn">
-            Schedule Appointment
-            <ArrowIcon />
-          </button>
+          <PhoneLink className="btn-outline nav-cta-btn" iconSize={14} />
         </div>
 
         <div className="nav-mobile-right">
@@ -97,7 +93,7 @@ export default function Navbar() {
             width={120}
             height={32}
             className="nav-logo-img"
-            priority
+            loading="lazy"
           />
           <button
             className="mobile-menu-close"
@@ -121,10 +117,9 @@ export default function Navbar() {
           ))}
         </ul>
         <div className="mobile-menu-footer">
-          <button type="button" onClick={() => { openScheduleModal(); setMenuOpen(false); }} className="btn-primary mobile-menu-cta" style={{ display: 'inline-flex', justifyContent: 'center' }}>
-            Schedule Appointment
-            <ArrowIcon />
-          </button>
+          <div onClick={() => setMenuOpen(false)}>
+            <PhoneLink className="btn-outline mobile-menu-cta" iconSize={14} />
+          </div>
         </div>
       </div>
 
@@ -227,10 +222,7 @@ export default function Navbar() {
           border-radius: var(--radius-sm); transition: all 0.2s;
         }
         .mobile-menu-phone:hover { background: rgba(102,199,192,0.08); color: #66C7C0; }
-        .mobile-menu-cta { width: 100%; justify-content: center; }
-        .mobile-menu-cta.btn-primary { background: #66C7C0; color: #0d1526; }
-        .mobile-menu-cta.btn-primary:hover { background: #4db8b0; }
-        .mobile-menu-cta { width: 100%; justify-content: center; }
+        .mobile-menu-cta { width: 100%; justify-content: center; display: inline-flex; }
 
         @media (max-width: 1100px) { .nav-links { gap: 24px; } }
         @media (max-width: 1024px) {

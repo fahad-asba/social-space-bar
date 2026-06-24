@@ -268,7 +268,7 @@ export default function ScheduleModal({ isOpen, onClose }: ScheduleModalProps) {
           background: linear-gradient(135deg, #0d1526, #080d1a);
           padding: 32px 28px;
           display: flex; flex-direction: column;
-          position: relative; overflow: hidden;
+          position: relative; overflow-y: auto;
         }
         .sch-cal-glow {
           position: absolute; top: -80px; left: -80px;
@@ -329,6 +329,25 @@ export default function ScheduleModal({ isOpen, onClose }: ScheduleModalProps) {
         .sch-cal-slot:hover { background: #66C7C0; color: #0d1526; }
         .sch-modal-form-side {
           padding: 24px 28px 28px; position: relative; overflow-y: auto;
+          scrollbar-width: thin;
+          scrollbar-color: var(--gold) transparent;
+        }
+        .sch-modal-form-side::-webkit-scrollbar { width: 5px; }
+        .sch-modal-form-side::-webkit-scrollbar-track { background: transparent; }
+        .sch-modal-form-side::-webkit-scrollbar-thumb {
+          background: var(--gold);
+          border-radius: 10px;
+        }
+        .sch-modal-cal-side {
+          overflow-y: auto;
+          scrollbar-width: thin;
+          scrollbar-color: rgba(102,199,192,0.3) transparent;
+        }
+        .sch-modal-cal-side::-webkit-scrollbar { width: 4px; }
+        .sch-modal-cal-side::-webkit-scrollbar-track { background: transparent; }
+        .sch-modal-cal-side::-webkit-scrollbar-thumb {
+          background: rgba(102,199,192,0.3);
+          border-radius: 10px;
         }
         .sch-badge {
           display: inline-block; padding: 4px 12px; border-radius: 100px;
@@ -344,33 +363,47 @@ export default function ScheduleModal({ isOpen, onClose }: ScheduleModalProps) {
           font-size: 0.85rem; color: var(--foreground-muted); margin-bottom: 10px;
           line-height: 1.5;
         }
+        @media (max-width: 1200px) {
+          .sch-modal-cal-side { padding: 24px 20px; }
+          .sch-cal-slots { gap: 4px; }
+          .sch-cal-slot { padding: 5px 10px; font-size: 0.68rem; }
+        }
+        @media (max-width: 1024px) {
+          .mo-content { max-height: 90vh; }
+          .sch-modal-form-side { max-height: 90vh; }
+        }
         @media (max-width: 900px) {
+          .mo-content { max-width: 560px; }
           .sch-modal-cal-side { display: none; }
           .sch-modal-form-side { padding: 24px 28px 28px; }
         }
+        @media (max-width: 768px) {
+          .sch-modal-form-side { padding: 20px 24px 24px; max-height: 85vh; }
+        }
         @media (max-width: 600px) {
-          .sch-modal-form-side { padding: 20px 20px 28px; }
-          .sch-heading { font-size: 1.3rem; }
+          .sch-modal-form-side { padding: 20px 20px 24px; max-height: 88vh; }
+          .sch-heading { font-size: 1.2rem; }
+          .sch-subheading { font-size: 0.83rem; margin-bottom: 14px; }
           .modal-phone-input { padding: 12px 14px !important; font-size: 0.9rem !important; height: 44px !important; }
           .modal-country-btn { padding: 0 10px !important; height: 44px !important; min-height: 44px !important; }
         }
         @media (max-width: 480px) {
-          .sch-modal-form-side { padding: 18px 18px 28px; }
-          .sch-heading { font-size: 1.15rem; }
-          .sch-subheading { font-size: 0.82rem; }
-          .modal-form { gap: 10px; }
-          .modal-form .form-input { padding: 12px 14px; font-size: 0.9rem; }
-          .modal-phone-input { padding: 10px 12px !important; font-size: 0.9rem !important; height: 44px !important; }
-          .modal-country-btn { padding: 0 8px !important; min-width: 48px !important; height: 44px !important; min-height: 44px !important; }
-          .modal-privacy { font-size: 0.7rem; margin-top: 14px; }
+          .sch-modal-form-side { padding: 16px 16px 20px; max-height: 90vh; }
+          .sch-heading { font-size: 1.1rem; }
+          .sch-subheading { font-size: 0.8rem; margin-bottom: 12px; }
+          .modal-form .form-input { padding: 11px 12px; font-size: 0.88rem; }
+          .modal-phone-input { padding: 10px 12px !important; font-size: 0.88rem !important; height: 42px !important; }
+          .modal-country-btn { padding: 0 8px !important; min-width: 46px !important; height: 42px !important; min-height: 42px !important; }
+          .modal-privacy { font-size: 0.68rem; margin-top: 10px; }
         }
         @media (max-width: 380px) {
-          .sch-modal-form-side { padding: 16px 14px 24px; }
-          .sch-heading { font-size: 1.05rem; }
-          .modal-form .form-input { padding: 10px 12px; font-size: 0.85rem; }
-          .modal-phone-input { padding: 8px 10px !important; font-size: 0.85rem !important; height: 40px !important; }
-          .modal-country-btn { padding: 0 6px !important; min-width: 42px !important; height: 40px !important; min-height: 40px !important; }
-          .sch-subheading { font-size: 0.78rem; }
+          .sch-modal-form-side { padding: 14px 12px 18px; }
+          .sch-heading { font-size: 1rem; }
+          .sch-subheading { font-size: 0.76rem; margin-bottom: 10px; }
+          .modal-form .form-input { padding: 10px 10px; font-size: 0.83rem; }
+          .modal-phone-input { padding: 8px 10px !important; font-size: 0.83rem !important; height: 38px !important; }
+          .modal-country-btn { padding: 0 6px !important; min-width: 40px !important; height: 38px !important; min-height: 38px !important; }
+          .modal-privacy { font-size: 0.65rem; }
         }
       `}</style>
     </>
