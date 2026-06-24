@@ -6,7 +6,7 @@ import ArrowIcon from '@/components/ui/ArrowIcon';
 import SectionHeader from '@/components/ui/SectionHeader';
 import FadeInView from '@/components/ui/FadeInView';
 import { useModal } from './ModalProvider';
-import { copyPhoneNumber } from './PhoneLinkEnhancer';
+import { callPhoneNumber } from '@/lib/phone';
 
 const faqs = [
   {
@@ -39,7 +39,7 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const { openModal, openLiveChat } = useModal();
   const handleLiveChat = () => {
-    if (window.innerWidth <= 600) { copyPhoneNumber(); }
+    if (window.innerWidth <= 600) { callPhoneNumber(); }
     else { openLiveChat(); }
   };
 

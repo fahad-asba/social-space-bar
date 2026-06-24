@@ -2,7 +2,7 @@
 import { MessageCircle, Phone, ArrowUp } from 'lucide-react';
 import Link from 'next/link';
 import { useModal } from '@/app/components/ModalProvider';
-import { copyPhoneNumber } from '@/app/components/PhoneLinkEnhancer';
+import { callPhoneNumber } from '@/lib/phone';
 
 const sections = [
   {
@@ -38,7 +38,7 @@ const sections = [
 export default function PolicyContent() {
   const { openLiveChat } = useModal();
   const handleLiveChat = () => {
-    if (window.innerWidth <= 600) { copyPhoneNumber(); }
+    if (window.innerWidth <= 600) { callPhoneNumber(); }
     else { openLiveChat(); }
   };
   return (

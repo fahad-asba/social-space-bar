@@ -3,8 +3,10 @@ import { Inter, Playfair_Display } from "next/font/google";
 import { ThemeProvider } from "@/context/ThemeContext";
 import "./globals.css";
 import ScrollToTop from './components/ScrollToTop';
-import PhoneLinkEnhancer from './components/PhoneLinkEnhancer';
 import SmoothScrollAnchor from './components/SmoothScrollAnchor';
+import TawkChat from './components/TawkChat';
+import CalendlyBadge from './components/CalendlyBadge';
+import { PHONE_SCHEMA } from '@/lib/phone';
 import "@/app/components/theme/phone-input.css";
 
 const inter = Inter({
@@ -98,7 +100,7 @@ const jsonLd = {
   logo: `${SITE_URL}/footer-logo.webp`,
   description:
     "Professional social media marketing strategies to grow your brand, boost engagement, and build your online presence across every major platform.",
-  telephone: "+1-210-493-8277",
+  telephone: PHONE_SCHEMA,
   sameAs: [
     "https://www.facebook.com/socialspacebar",
     "https://www.instagram.com/socialspacebar",
@@ -109,7 +111,7 @@ const jsonLd = {
   ],
   contactPoint: {
     "@type": "ContactPoint",
-    telephone: "+1-210-493-8277",
+    telephone: PHONE_SCHEMA,
     contactType: "customer service",
     areaServed: "US",
     availableLanguage: "English",
@@ -130,6 +132,7 @@ export default function RootLayout({
       <head>
         <link rel="preload" href="/hero-img4.webp" as="image" fetchPriority="high" />
         <link rel="manifest" href="/manifest.json" />
+        <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -140,8 +143,9 @@ export default function RootLayout({
       <body>
         <ThemeProvider>{children}</ThemeProvider>
         <ScrollToTop />
-        <PhoneLinkEnhancer />
         <SmoothScrollAnchor />
+        <TawkChat />
+        <CalendlyBadge />
       </body>
     </html>
   );

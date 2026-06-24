@@ -46,7 +46,7 @@ export default function ThankYouCTA() {
             <Link href="/" className="btn-primary">
               <Home size={16} /> Back To Home
             </Link>
-            <PhoneLink className="btn-outline" label="Call Now" iconSize={16} />
+            <PhoneLink className="btn-outline" iconSize={16} />
           </motion.div>
         </motion.div>
 

@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import Footer from '@/app/components/Footer';
 import ThankYouHero from '@/app/components/ThankYouHero';
 import ThankYouSteps from '@/app/components/ThankYouSteps';
-import ThankYouConsultation from '@/app/components/ThankYouConsultation';
 import ThankYouTrust from '@/app/components/ThankYouTrust';
 import ThankYouCTA from '@/app/components/ThankYouCTA';
 import ThankYouNavbar from '@/app/components/ThankYouNavbar';
@@ -29,7 +28,6 @@ export default function ThankYouPage() {
       <div className="ty-page">
         <ThankYouHero />
         <ThankYouSteps />
-        <ThankYouConsultation />
         <ThankYouTrust />
         <ThankYouCTA />
       </div>
@@ -185,6 +183,16 @@ export default function ThankYouPage() {
           animation: float 3s ease-in-out infinite;
           transition: color 0.3s ease;
         }
+        .ty-calendly-wrap {
+          width: 100%;
+          max-width: 900px;
+          margin-top: 40px;
+        }
+        .ty-calendly-inline {
+          width: 100%;
+          border-radius: 16px;
+          overflow: hidden;
+        }
 
         .ty-section-header {
           text-align: center;
@@ -288,192 +296,6 @@ export default function ThankYouPage() {
           color: var(--foreground-muted);
           line-height: 1.65;
           transition: color 0.3s ease;
-        }
-
-        .ty-cal-section {
-          padding: 80px 0;
-          background: var(--section-gradient);
-          position: relative;
-          overflow: hidden;
-          transition: background 0.3s ease;
-        }
-        .ty-cal-bg-glow {
-          position: absolute;
-          top: 50%; left: 50%;
-          transform: translate(-50%, -50%);
-          width: 700px; height: 700px;
-          background: radial-gradient(circle, rgba(102,199,192,0.05) 0%, transparent 65%);
-          pointer-events: none;
-        }
-        .ty-cal-inner {
-          position: relative;
-          z-index: 1;
-        }
-        .ty-cal-card {
-          position: relative;
-          overflow: hidden;
-        }
-        .ty-cal-topbar {
-          position: absolute;
-          top: 0; left: 0; right: 0;
-          height: 3px;
-          background: linear-gradient(90deg, #7c3aed, #66C7C0, #06b6d4);
-        }
-        .ty-cal-body {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 60px;
-          align-items: center;
-          padding: 56px 52px;
-        }
-        .ty-cal-icon-wrap {
-          width: 64px; height: 64px;
-          border-radius: 18px;
-          background: linear-gradient(135deg, rgba(102,199,192,0.18), rgba(102,199,192,0.05));
-          border: 1px solid rgba(102,199,192,0.25);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin-bottom: 20px;
-          color: var(--gold);
-        }
-        .ty-cal-heading {
-          font-family: var(--font-display);
-          font-size: clamp(1.6rem, 3vw, 2.2rem);
-          font-weight: 700;
-          color: var(--foreground);
-          margin-bottom: 16px;
-          line-height: 1.25;
-          transition: color 0.3s ease;
-        }
-        .ty-cal-desc {
-          font-size: 1rem;
-          color: var(--foreground-secondary);
-          line-height: 1.75;
-          margin-bottom: 28px;
-          transition: color 0.3s ease;
-        }
-        .ty-cal-features {
-          list-style: none;
-          display: flex;
-          flex-direction: column;
-          gap: 10px;
-          margin-bottom: 32px;
-        }
-        .ty-cal-feature {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          font-size: 0.9rem;
-          color: var(--foreground-secondary);
-          transition: color 0.3s ease;
-        }
-        .ty-cal-check {
-          width: 20px; height: 20px;
-          border-radius: 50%;
-          background: rgba(16,185,129,0.15);
-          border: 1px solid rgba(16,185,129,0.3);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: #10b981;
-          flex-shrink: 0;
-        }
-        .ty-cal-btn {
-          padding: 15px 32px;
-          font-size: 0.95rem;
-        }
-
-        .ty-cal-preview {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-        .ty-cal-preview-card {
-          background: var(--card-bg);
-          border: 1px solid var(--border);
-          border-radius: 20px;
-          padding: 24px;
-          width: 100%;
-          max-width: 320px;
-          box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-          transition: background 0.3s ease, border-color 0.3s ease;
-        }
-        .ty-cal-preview-header {
-          margin-bottom: 16px;
-        }
-        .ty-cal-preview-month {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          font-weight: 700;
-          font-size: 0.95rem;
-          color: var(--foreground);
-          transition: color 0.3s ease;
-        }
-        .ty-cal-preview-month svg {
-          color: var(--foreground-muted);
-          cursor: pointer;
-        }
-        .ty-cal-days-header {
-          display: grid;
-          grid-template-columns: repeat(7, 1fr);
-          gap: 4px;
-          margin-bottom: 8px;
-        }
-        .ty-cal-day-name {
-          text-align: center;
-          font-size: 0.68rem;
-          font-weight: 600;
-          letter-spacing: 0.04em;
-          color: var(--foreground-muted);
-          padding: 4px 0;
-          transition: color 0.3s ease;
-        }
-        .ty-cal-grid {
-          display: grid;
-          grid-template-columns: repeat(7, 1fr);
-          gap: 4px;
-        }
-        .ty-cal-day {
-          aspect-ratio: 1;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 0.8rem;
-          border-radius: 8px;
-          color: var(--foreground-muted);
-          cursor: default;
-          transition: all 0.2s ease;
-        }
-        .ty-cal-day-empty {
-          color: transparent;
-        }
-        .ty-cal-day-available {
-          color: var(--gold);
-          background: rgba(102,199,192,0.08);
-          cursor: pointer;
-          font-weight: 600;
-        }
-        .ty-cal-day-available:hover {
-          background: rgba(102,199,192,0.18);
-        }
-        .ty-cal-day-active {
-          background: var(--gold) !important;
-          color: #0d1526 !important;
-          font-weight: 800;
-          box-shadow: 0 4px 12px rgba(102,199,192,0.4);
-        }
-        .ty-cal-preview-footer {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          margin-top: 16px;
-          padding-top: 16px;
-          border-top: 1px solid var(--border);
-          font-size: 0.82rem;
-          color: var(--foreground-muted);
-          transition: color 0.3s ease, border-color 0.3s ease;
         }
 
         .ty-trust-header {
@@ -611,13 +433,6 @@ export default function ThankYouPage() {
         }
         @media (max-width: 900px) {
           .ty-hero { padding: 120px 0 70px; }
-          .ty-cal-body {
-            grid-template-columns: 1fr;
-            gap: 40px;
-            padding: 44px 36px;
-          }
-          .ty-cal-preview { order: -1; }
-          .ty-cal-preview-card { max-width: 100%; }
           .ty-trust-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
           .ty-cta-card { padding: 48px 36px; }
         }
@@ -633,11 +448,6 @@ export default function ThankYouPage() {
           .ty-section-header { margin-bottom: 40px; }
           .ty-timeline { grid-template-columns: 1fr; gap: 16px; }
           .ty-step-card { padding: 28px 20px; }
-          .ty-cal-section { padding: 60px 0; }
-          .ty-cal-body { padding: 36px 24px; gap: 32px; }
-          .ty-cal-heading { font-size: 1.5rem; }
-          .ty-cal-desc { font-size: 0.93rem; }
-          .ty-cal-btn { width: 100%; justify-content: center; }
           .ty-trust-grid { grid-template-columns: 1fr; max-width: 360px; }
           .ty-trust-card { padding: 32px 24px; }
           .ty-trust-value { font-size: 2.4rem; }
@@ -692,8 +502,6 @@ export default function ThankYouPage() {
           .ty-hero-heading { font-size: 1.6rem; }
           .ty-hero-sub { font-size: 0.88rem; }
           .ty-success-badge { font-size: 0.7rem; padding: 6px 14px; }
-          .ty-cal-icon-wrap { width: 52px; height: 52px; }
-          .ty-cal-body { padding: 28px 18px; }
         }
       `}</style>
     </>

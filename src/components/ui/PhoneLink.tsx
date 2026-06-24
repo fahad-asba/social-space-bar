@@ -1,6 +1,5 @@
 import { Phone, MessageCircle } from 'lucide-react';
-import { copyPhoneNumber } from '@/app/components/PhoneLinkEnhancer';
-
+import { callPhoneNumber, PHONE_ARIA_LABEL, PHONE_DISPLAY, PHONE_HREF } from '@/lib/phone';
 interface PhoneLinkProps {
   label?: string;
   mobileLabel?: string;
@@ -11,16 +10,13 @@ interface PhoneLinkProps {
   onClick?: () => void;
 }
 
-const PHONE = '+1 (210) 493-8277';
-const PHONE_HREF = 'tel:+12104938277';
-
 export default function PhoneLink({
-  label = PHONE,
+  label = PHONE_DISPLAY,
   mobileLabel,
   className = 'btn-ghost',
   iconSize = 16,
   showIcon = true,
-  ariaLabel,
+  ariaLabel = PHONE_ARIA_LABEL,
   onClick,
 }: PhoneLinkProps) {
   const content = (
@@ -47,9 +43,8 @@ export default function PhoneLink({
   const handleClick = onClick && mobileLabel
     ? () => {
         if (window.innerWidth <= 600) {
-          copyPhoneNumber();
-        } else {
-          onClick();
+          callPhoneNumber();
+        } else {          onClick();
         }
       }
     : onClick;

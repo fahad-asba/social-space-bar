@@ -4,7 +4,7 @@ import { MessageCircle, Phone, CalendarDays } from 'lucide-react';
 import SectionHeader from '@/components/ui/SectionHeader';
 import FadeInView from '@/components/ui/FadeInView';
 import { useModal } from './ModalProvider';
-import { copyPhoneNumber } from './PhoneLinkEnhancer';
+import { callPhoneNumber } from '@/lib/phone';
 
 const platforms = [
   { name: 'Facebook', src: '/facebook_icon.webp', w: 100, h: 100 },
@@ -19,7 +19,7 @@ const platforms = [
 export default function SocialMediaPlatforms() {
   const { openModal, openScheduleModal, openLiveChat } = useModal();
   const handleLiveChat = () => {
-    if (window.innerWidth <= 600) { copyPhoneNumber(); }
+    if (window.innerWidth <= 600) { callPhoneNumber(); }
     else { openLiveChat(); }
   };
   return (
