@@ -4,14 +4,14 @@ import { CalendarDays, MessageCircle, Phone } from 'lucide-react';
 import ArrowIcon from '@/components/ui/ArrowIcon';
 import Image from 'next/image';
 import { useModal } from './ModalProvider';
-import { copyPhoneNumber } from './PhoneLinkEnhancer';
+import { callPhoneNumber } from '@/lib/phone';
 
 interface HeroContentProps { onOpenModal: () => void; }
 
 export default function HeroContent({ onOpenModal }: HeroContentProps) {
   const { openScheduleModal, openLiveChat } = useModal();
   const handleLiveChat = () => {
-    if (window.innerWidth <= 600) { copyPhoneNumber(); }
+    if (window.innerWidth <= 600) { callPhoneNumber(); }
     else { openLiveChat(); }
   };
   return (

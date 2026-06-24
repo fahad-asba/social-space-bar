@@ -1,11 +1,10 @@
 'use client';
 import { createContext, useContext, useState, ReactNode } from 'react';
 import dynamic from 'next/dynamic';
+import { openCalendlySchedule } from '@/lib/calendly';
+import { openTawkChat } from '@/lib/tawk';
 
 const HeroModal = dynamic(() => import('./HeroModal'));
-const ScheduleModal = dynamic(() => import('./ScheduleModal'));
-const LiveChatModal = dynamic(() => import('./LiveChatModal'));
-
 interface ModalContextType {
   openModal: () => void;
   openScheduleModal: () => void;
@@ -20,15 +19,11 @@ export function useModal() {
 
 export default function ModalProvider({ children }: { children: ReactNode }) {
   const [modalOpen, setModalOpen] = useState(false);
-  const [scheduleOpen, setScheduleOpen] = useState(false);
-  const [chatOpen, setChatOpen] = useState(false);
 
   return (
-    <ModalContext.Provider value={{ openModal: () => setModalOpen(true), openScheduleModal: () => setScheduleOpen(true), openLiveChat: () => setChatOpen(true) }}>
+    <ModalContext.Provider value={{ openModal: () => setModalOpen(true), openScheduleModal: openCalendlySchedule, openLiveChat: openTawkChat }}>
       {children}
       <HeroModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
-      <ScheduleModal isOpen={scheduleOpen} onClose={() => setScheduleOpen(false)} />
-      <LiveChatModal isOpen={chatOpen} onClose={() => setChatOpen(false)} />
     </ModalContext.Provider>
   );
 }

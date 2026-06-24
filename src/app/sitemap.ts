@@ -10,10 +10,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     {
-      url: "https://www.socialspacebar.com/thank-you",
+      url: "https://www.socialspacebar.com/privacy-policy",
       lastModified: now,
       changeFrequency: "monthly",
-      priority: 0.3,
+      priority: 0.5,
+    },
+    {
+      url: "https://www.socialspacebar.com/terms-conditions",
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.5,
     },
   ];
 }

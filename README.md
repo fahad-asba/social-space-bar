@@ -1,78 +1,68 @@
-# 📚 Triverse Book Marketing
+# Social Space Bar
 
-Professional book marketing platform built with Next.js to help authors grow their audience, increase book sales, and build a strong author brand.
-
----
-
-## 🚀 Features
-
-* Modern Responsive UI
-* Author Marketing Landing Page
-* Portfolio Showcase
-* Testimonials Section
-* Pricing Packages
-* Contact Form Integration
-* Dark / Light Theme Support
-* Fully Mobile Responsive
-* Optimized Next.js Performance
+Professional social media marketing agency website built with Next.js. Grow your brand across Facebook, Instagram, LinkedIn, Twitter, YouTube, and TikTok.
 
 ---
 
-## 🛠 Tech Stack
+## Live Demo
 
-* Next.js
-* TypeScript
-* React
-* CSS / Inline Styling
-* Vercel Deployment
+**[https://www.socialspacebar.com](https://www.socialspacebar.com)** — Deployed on Vercel
 
 ---
 
-## 📂 Project Setup
+## Features
 
-Clone the repository:
+- Social media marketing showcase (Facebook, Instagram, LinkedIn, Twitter, YouTube, TikTok)
+- Portfolio & case studies gallery
+- Pricing packages section
+- Contact form with email notifications (nodemailer)
+- Schedule appointment booking
+- Dark / light theme
+- Fully responsive design
+- SEO optimized with structured data (JSON-LD), sitemap & robots
+
+---
+
+## Tech Stack
+
+- **Framework:** Next.js 16 (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS 4 + CSS
+- **Animation:** Motion (Framer Motion)
+- **Email:** nodemailer (Gmail SMTP)
+- **Carousel:** Swiper
+- **Phone Input:** react-international-phone
+- **Icons:** Lucide React
+- **Deployment:** Vercel
+
+---
+
+## Project Setup
 
 ```bash
-git clone https://github.com/AnasIsmail8996/book-marketing.git
-```
-
-Install dependencies:
-
-```bash
+git clone <repo-url>
+cd social-space-bar
 npm install
-```
-
-Run development server:
-
-```bash
-npm run dev
-```
-
-Build project:
-
-```bash
-npm run build
+npm run dev       # http://localhost:3000
+npm run build     # production build
 ```
 
 ---
 
-## 🌐 Live Demo
+## Environment Variables
 
-Add your deployed Vercel link here.
+Create a `.env.local`:
+
+```env
+SMTP_USER=your-email@gmail.com
+SMTP_PASS=your-gmail-app-password
+NOTIFICATION_EMAIL=where-to-receive-leads@example.com
+```
 
 ---
 
-## 👨‍💻 Developer
+## Developer
 
 **Anas Ismail**
 
-* GitHub: https://github.com/AnasIsmail8996
-* Email: [your-email@example.com](mailto:your-email@example.com)
-
----
-
-## 📄 License
-
-This project is licensed for personal and commercial use.
-
----
+- GitHub: [@AnasIsmail8996](https://github.com/AnasIsmail8996)
