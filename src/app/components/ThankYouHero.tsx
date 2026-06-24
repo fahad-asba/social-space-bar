@@ -44,7 +44,7 @@ export default function ThankYouHero() {
           <Link href="/" className="btn-primary">
             <Home size={16} /> Back To Home
           </Link>
-          <a href="mailto:info@socialspacebar.com" className="btn-outline">
+          <a href="mailto:kyle@socialspacebar.com" className="btn-outline">
             <Mail size={16} /> Contact Support
           </a>
         </motion.div>
