@@ -25,6 +25,7 @@ export default function OurGuarantee() {
               width={460}
               height={280}
               className="dist-tablet-img"
+              loading="lazy"
             />
           </motion.div>
 
@@ -56,7 +57,7 @@ export default function OurGuarantee() {
         .dist-cta-section { background: var(--background); border-top: 1px solid var(--border-light); }
         .dist-cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; padding: 80px 0; }
         .dist-cta-image { display: flex; justify-content: center; animation: float 4s ease-in-out infinite; }
-        .dist-tablet-img { object-fit: contain; max-width: 100%; height: auto; filter: drop-shadow(0 20px 40px rgba(102,199,192,0.2)); }
+        .dist-tablet-img { object-fit: contain; max-width: 100%; height: auto; border-radius: 12px; filter: drop-shadow(0 20px 40px rgba(102,199,192,0.2)); }
         .dist-cta-content { text-align: left; }
         .dist-cta-title { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; color: var(--foreground-secondary); margin-bottom: 20px; line-height: 1.2; }
         .dist-cta-desc { color: var(--foreground-secondary); line-height: 1.8; margin-bottom: 32px; }

@@ -115,9 +115,14 @@ export default function WhyUs() {
         }
         .whyus-card:hover { background: var(--card-hover); border-color: rgba(102,199,192,0.3); box-shadow: var(--shadow-md); cursor: pointer; }
         .whyus-card-icon {
-          width: 52px; height: 52px; border-radius: 14px; flex-shrink: 0;
-          background: rgba(102,199,192,0.08); border: 1px solid rgba(102,199,192,0.2);
-          display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
+          width: 56px; height: 56px; border-radius: 16px; flex-shrink: 0;
+          background: rgba(102,199,192,0.07); border: 1px solid rgba(102,199,192,0.15);
+          display: flex; align-items: center; justify-content: center;
+          transition: all 0.3s ease;
+        }
+        .whyus-card:hover .whyus-card-icon {
+          background: rgba(102,199,192,0.12); border-color: rgba(102,199,192,0.35);
+          box-shadow: 0 0 20px rgba(102,199,192,0.1);
         }
         .whyus-card-title { font-weight: 700; font-size: 1rem; color: var(--foreground); margin-bottom: 8px; }
         .whyus-card-desc { font-size: 0.87rem; color: var(--foreground-muted); line-height: 1.7; }

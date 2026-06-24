@@ -20,7 +20,7 @@ const ContactSection = dynamic(() => import('./components/ContactSection'));
 const Footer = dynamic(() => import('./components/Footer'));
 
 export const metadata: Metadata = {
-  title: 'Premier Social Media Marketing Agency | Social Space Bar',
+  title: 'Social Space Bar | Premier Social Media Marketing Agency | Facebook, Instagram, LinkedIn, TikTok & YouTube, Twitter, Pinterest, Snapchat, Reddit, Quora, Discord & More768 ',
   description:
     'Grow your brand with expert social media marketing on Facebook, Instagram, LinkedIn, TikTok & YouTube. Boost engagement, drive real results & get 30% off today.',
   alternates: { canonical: 'https://www.socialspacebar.com/' },

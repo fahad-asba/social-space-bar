@@ -22,7 +22,7 @@ export default function Portfolio() {
         <div className="portfolio-track">
           {[...books, ...books].map((src, i) => (
             <div key={i} className="portfolio-marquee-book">
-              <Image src={src} alt={`Portfolio ${i + 1}`} fill sizes="(max-width: 600px) 160px, (max-width: 1024px) 220px, 260px" style={{ objectFit: 'cover' }} />
+              <Image src={src} alt={`Portfolio ${i + 1}`} fill sizes="(max-width: 600px) 160px, (max-width: 1024px) 220px, 260px" style={{ objectFit: 'cover' }} loading="lazy" />
             </div>
           ))}
         </div>
@@ -34,7 +34,7 @@ export default function Portfolio() {
         <div className="portfolio-track portfolio-track-reverse">
           {[...newBooks, ...newBooks].map((src, i) => (
             <div key={i} className="portfolio-marquee-book">
-              <Image src={src} alt={`Portfolio ${i + 1}`} fill sizes="(max-width: 600px) 160px, (max-width: 1024px) 220px, 260px" style={{ objectFit: 'cover' }} />
+              <Image src={src} alt={`Portfolio ${i + 1}`} fill sizes="(max-width: 600px) 160px, (max-width: 1024px) 220px, 260px" style={{ objectFit: 'cover' }} loading="lazy" />
             </div>
           ))}
         </div>
@@ -46,7 +46,7 @@ export default function Portfolio() {
         <div className="portfolio-track portfolio-track-pulse">
           {[...books, ...newBooks, ...books, ...newBooks].map((src, i) => (
             <div key={i} className="portfolio-marquee-book">
-              <Image src={src} alt={`Portfolio ${i + 1}`} fill sizes="(max-width: 600px) 160px, (max-width: 1024px) 220px, 260px" style={{ objectFit: 'cover' }} />
+              <Image src={src} alt={`Portfolio ${i + 1}`} fill sizes="(max-width: 600px) 160px, (max-width: 1024px) 220px, 260px" style={{ objectFit: 'cover' }} loading="lazy" />
             </div>
           ))}
         </div>

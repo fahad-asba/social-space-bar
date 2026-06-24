@@ -1,8 +1,8 @@
 'use client';
 import { motion } from 'motion/react';
-import { Check, ChevronDown, Home, Mail } from 'lucide-react';
-import Link from 'next/link';
+import { Check, ChevronDown } from 'lucide-react';
 import ParticlesBackground from './ParticlesBackground';
+import CalendlyInlineWidget from './CalendlyInlineWidget';
 
 const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.12 } } };
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' as const } } };
@@ -39,13 +39,8 @@ export default function ThankYouHero() {
           <strong style={{ color: 'var(--gold)', fontWeight: 700 }}>24 hours</strong>.
         </motion.p>
 
-        <motion.div className="ty-hero-actions" variants={fadeUp}>
-          <Link href="/" className="btn-primary">
-            <Home size={16} /> Back To Home
-          </Link>
-          <a href="mailto:info@socialspacebar.com" className="btn-outline">
-            <Mail size={16} /> Contact Support
-          </a>
+        <motion.div id="consultation" className="ty-calendly-wrap" variants={fadeUp}>
+          <CalendlyInlineWidget />
         </motion.div>
 
         <motion.div className="ty-scroll-hint" variants={fadeUp}>

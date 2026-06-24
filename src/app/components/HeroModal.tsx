@@ -140,7 +140,6 @@ export default function HeroModal({ isOpen, onClose }: HeroModalProps) {
 
       <style>{`
         .mo-content { display: grid; grid-template-columns: 1fr 1fr; }
-        @media (max-width: 900px) { .mo-content { grid-template-columns: 1fr; } }
         .modal-image-side {
           position: relative; display: flex; flex-direction: column;
           align-items: center; justify-content: center; padding: 32px;
@@ -162,13 +161,21 @@ export default function HeroModal({ isOpen, onClose }: HeroModalProps) {
         .modal-tablet-wrap {
           position: relative; z-index: 1; animation: float 4s ease-in-out infinite;
         }
-        .modal-tablet-img { object-fit: contain; filter: drop-shadow(0 20px 40px rgba(102,199,192,0.2)); max-height: 260px; width: auto; border-radius: 12px; }
+        .modal-tablet-img { object-fit: contain; filter: drop-shadow(0 20px 40px rgba(102,199,192,0.2)); max-height: 360px; width: auto ; border-radius: 12px; }
         .modal-brand {
           margin-top: 24px; color: rgba(255,255,255,0.3); font-size: 0.75rem;
           letter-spacing: 0.15em; text-transform: uppercase;
         }
         .modal-form-side {
           padding: 24px 28px 28px; position: relative; overflow-y: auto;
+          scrollbar-width: thin;
+          scrollbar-color: var(--gold) transparent;
+        }
+        .modal-form-side::-webkit-scrollbar { width: 5px; }
+        .modal-form-side::-webkit-scrollbar-track { background: transparent; }
+        .modal-form-side::-webkit-scrollbar-thumb {
+          background: var(--gold);
+          border-radius: 10px;
         }
         .modal-top-bar {
           position: absolute; top: 0; left: 0; right: 0; height: 3px;
@@ -311,36 +318,48 @@ export default function HeroModal({ isOpen, onClose }: HeroModalProps) {
           }
         }
 
+        @media (max-width: 1200px) { .modal-image-side { padding: 24px; } }
+        @media (max-width: 1024px) {
+          .mo-content { max-height: 90vh; }
+          .modal-form-side { max-height: 90vh; }
+        }
         @media (max-width: 900px) {
+          .mo-content { grid-template-columns: 1fr; }
           .modal-image-side { display: none; }
           .modal-form-side { padding: 24px 28px 28px; }
         }
+        @media (max-width: 768px) {
+          .modal-form-side { padding: 20px 24px 24px; max-height: 85vh; }
+        }
         @media (max-width: 600px) {
-          .modal-form-side { padding: 20px 20px 28px; }
-          .modal-heading { font-size: 1.3rem; }
-          .modal-form { gap: 12px; }
-          .modal-subheading { font-size: 0.85rem; margin-bottom: 20px; }
+          .modal-form-side { padding: 20px 20px 24px; max-height: 88vh; }
+          .modal-heading { font-size: 1.25rem; }
+          .modal-subheading { font-size: 0.83rem; margin-bottom: 14px; }
+          .modal-form { gap: 10px; }
           .modal-phone-input { padding: 12px 14px !important; font-size: 0.9rem !important; height: 44px !important; }
           .modal-country-btn { padding: 0 10px !important; height: 44px !important; min-height: 44px !important; }
+          .modal-form textarea.form-input { rows: 2; }
         }
         @media (max-width: 480px) {
-          .modal-form-side { padding: 18px 18px 28px; }
-          .modal-heading { font-size: 1.15rem; }
-          .modal-subheading { font-size: 0.82rem; margin-bottom: 16px; }
-          .modal-badge { font-size: 0.65rem; padding: 3px 10px; }
-          .modal-form { gap: 10px; }
-          .modal-form .form-input { padding: 12px 14px; font-size: 0.9rem; }
-          .modal-phone-input { padding: 10px 12px !important; font-size: 0.9rem !important; height: 44px !important; }
-          .modal-country-btn { padding: 0 8px !important; min-width: 48px !important; height: 44px !important; min-height: 44px !important; }
-          .modal-privacy { font-size: 0.7rem; margin-top: 14px; }
+          .modal-form-side { padding: 16px 16px 20px; max-height: 90vh; }
+          .modal-heading { font-size: 1.1rem; }
+          .modal-subheading { font-size: 0.8rem; margin-bottom: 12px; }
+          .modal-badge { font-size: 0.62rem; padding: 3px 8px; }
+          .modal-form .form-input { padding: 11px 12px; font-size: 0.88rem; }
+          .modal-phone-input { padding: 10px 12px !important; font-size: 0.88rem !important; height: 42px !important; }
+          .modal-country-btn { padding: 0 8px !important; min-width: 46px !important; height: 42px !important; min-height: 42px !important; }
+          .modal-privacy { font-size: 0.68rem; margin-top: 10px; }
+          .modal-form textarea.form-input { min-height: 56px; }
         }
         @media (max-width: 380px) {
-          .modal-form-side { padding: 16px 14px 24px; }
-          .modal-heading { font-size: 1.05rem; }
-          .modal-form .form-input { padding: 10px 12px; font-size: 0.85rem; }
-          .modal-phone-input { padding: 8px 10px !important; font-size: 0.85rem !important; height: 40px !important; }
-          .modal-country-btn { padding: 0 6px !important; min-width: 42px !important; height: 40px !important; min-height: 40px !important; }
-          .modal-subheading { font-size: 0.78rem; }
+          .modal-form-side { padding: 14px 12px 18px; }
+          .modal-heading { font-size: 1rem; }
+          .modal-subheading { font-size: 0.76rem; margin-bottom: 10px; }
+          .modal-form .form-input { padding: 10px 10px; font-size: 0.83rem; }
+          .modal-phone-input { padding: 8px 10px !important; font-size: 0.83rem !important; height: 38px !important; }
+          .modal-country-btn { padding: 0 6px !important; min-width: 40px !important; height: 38px !important; min-height: 38px !important; }
+          .modal-badge { font-size: 0.58rem; padding: 2px 6px; margin-bottom: 6px; }
+          .modal-privacy { font-size: 0.65rem; }
         }
       `}</style>
     </>
