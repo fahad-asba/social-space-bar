@@ -97,7 +97,7 @@ export default function Navbar() {
             width={120}
             height={32}
             className="nav-logo-img"
-            priority
+            loading="lazy"
           />
           <button
             className="mobile-menu-close"

@@ -8,37 +8,37 @@ import { useModal } from './ModalProvider';
 
 const processSteps = [
   {
-    icon: <Search size={24} />,
+    icon: <Search size={24} strokeWidth={1.8} color="#66C7C0" />,
     step: 'Step 1',
     title: 'Discovery Call',
     desc: 'We learn about your brand, goals, and target audience to craft the perfect strategy.',
   },
   {
-    icon: <ClipboardCheck size={24} />,
+    icon: <ClipboardCheck size={24} strokeWidth={1.8} color="#7C5CFC" />,
     step: 'Step 2',
     title: 'Strategy Development',
     desc: 'Our team builds a custom marketing plan tailored to your brand&apos;s unique needs.',
   },
   {
-    icon: <Users size={24} />,
+    icon: <Users size={24} strokeWidth={1.8} color="#F59E0B" />,
     step: 'Step 3',
     title: 'Campaign Launch',
     desc: 'We execute your campaign across all relevant platforms and channels.',
   },
   {
-    icon: <BarChart3 size={24} />,
+    icon: <BarChart3 size={24} strokeWidth={1.8} color="#3B82F6" />,
     step: 'Step 4',
     title: 'Monitoring & Optimization',
     desc: 'Real-time tracking and adjustments ensure maximum ROI for your campaign.',
   },
   {
-    icon: <Rocket size={24} />,
+    icon: <Rocket size={24} strokeWidth={1.8} color="#EF4444" />,
     step: 'Step 5',
     title: 'Growth & Scaling',
     desc: 'We scale what works, expanding your reach and driving more engagement.',
   },
   {
-    icon: <Star size={24} />,
+    icon: <Star size={24} strokeWidth={1.8} color="#10B981" />,
     step: 'Step 6',
     title: 'Dominate Market',
     desc: 'Achieve sustained visibility, engagement, and ongoing brand growth.',
@@ -140,12 +140,15 @@ export default function Process() {
         }
         .process-step-icon {
           width: 56px; height: 56px; margin: 0 auto 16px;
-          border-radius: 16px; background: linear-gradient(135deg, rgba(102,199,192,0.12), rgba(102,199,192,0.04));
-          border: 1px solid rgba(102,199,192,0.2); display: flex;
-          align-items: center; justify-content: center; color: var(--gold);
+          border-radius: 16px;
+          background: rgba(102,199,192,0.06); border: 1px solid rgba(102,199,192,0.12);
+          display: flex; align-items: center; justify-content: center;
           transition: all 0.3s ease;
         }
-        .process-step-card:hover .process-step-icon { background: linear-gradient(135deg, rgba(102,199,192,0.2), rgba(102,199,192,0.08)); box-shadow: 0 8px 20px rgba(102,199,192,0.15); }
+        .process-step-card:hover .process-step-icon {
+          background: rgba(102,199,192,0.1); border-color: rgba(102,199,192,0.3);
+          box-shadow: 0 0 0 4px rgba(102,199,192,0.06);
+        }
         .process-step-label {
           font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em;
           text-transform: uppercase; color: var(--gold); margin-bottom: 8px;

@@ -38,7 +38,7 @@ export default function SocialMediaPlatforms() {
               <div key={`${p.name}-${i}`} className="smp-card">
                 <div className="smp-card-inner">
                   <div className="smp-logo-wrap">
-                    <Image src={p.src} alt={p.name} width={p.w} height={p.h} className="smp-logo" />
+                    <Image src={p.src} alt={p.name} width={p.w} height={p.h} className="smp-logo" loading="lazy" />
                   </div>
                   <span className="smp-name">{p.name}</span>
                 </div>

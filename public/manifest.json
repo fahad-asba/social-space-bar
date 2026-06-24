@@ -1,0 +1,16 @@
+{
+  "name": "Social Space Bar",
+  "short_name": "SSB",
+  "description": "Professional social media marketing agency. Grow your brand across Facebook, Instagram, LinkedIn, Twitter, YouTube & TikTok.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0d1526",
+  "theme_color": "#0d1526",
+  "icons": [
+    {
+      "src": "/footer-logo.webp",
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ]
+}

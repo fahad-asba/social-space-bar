@@ -234,16 +234,37 @@ export default function LiveChatModal({ isOpen, onClose }: LiveChatModalProps) {
         .chat-send-btn:hover { background: #4fb8b0; }
         .chat-send-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
+        @media (max-width: 768px) {
+          .chat-body { padding: 16px; max-height: 60vh; }
+          .chat-quick-replies { gap: 6px; }
+          .chat-quick-btn { padding: 6px 12px; font-size: 0.76rem; }
+        }
         @media (max-width: 600px) {
           .chat-modal { max-width: 100%; max-height: 90vh; border-radius: 18px; margin: 0 8px; }
           .chat-header { padding: 14px 16px; }
-          .chat-body { padding: 16px; }
+          .chat-body { padding: 14px; }
           .chat-footer { padding: 12px 16px; }
+          .chat-input { font-size: 0.85rem; padding: 8px 14px; }
         }
         @media (max-width: 480px) {
           .chat-modal { border-radius: 16px 16px 0 0; max-height: 92vh; margin: 0; }
+          .chat-header { padding: 12px 14px; }
           .chat-close-btn { width: 28px; height: 28px; font-size: 1.1rem; }
-          .chat-agent-name { font-size: 0.88rem; }
+          .chat-agent-name { font-size: 0.85rem; }
+          .chat-body { padding: 12px; gap: 10px; }
+          .chat-footer { padding: 10px 14px; gap: 8px; }
+          .chat-send-btn { width: 36px; height: 36px; }
+          .chat-msg-text { font-size: 0.84rem; padding: 8px 12px; }
+        }
+        @media (max-width: 380px) {
+          .chat-header { padding: 10px 12px; }
+          .chat-body { padding: 10px; }
+          .chat-footer { padding: 8px 12px; }
+          .chat-input { font-size: 0.82rem; padding: 7px 12px; }
+          .chat-agent-name { font-size: 0.82rem; }
+          .chat-avatar { width: 34px; height: 34px; }
+          .chat-msg-text { font-size: 0.82rem; padding: 7px 10px; }
+          .chat-quick-btn { padding: 5px 10px; font-size: 0.72rem; }
         }
       `}</style>
     </>

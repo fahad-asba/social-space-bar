@@ -11,7 +11,7 @@ export default function Footer() {
       <div className="container">
         <div className="footer-grid">
           <div className="footer-brand">
-            <Image src="/footer-logo.webp" alt="Social Space Bar" width={170} height={96} className="footer-logo-img" />
+            <Image src="/footer-logo.webp" alt="Social Space Bar" width={170} height={96} className="footer-logo-img" loading="lazy" />
             <p className="footer-desc">
               Professional social media marketing strategies to grow your brand, boost engagement, and build your online presence.
             </p>

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import { ThemeProvider } from "@/context/ThemeContext";
 import "./globals.css";
@@ -19,6 +19,15 @@ const playfair = Playfair_Display({
 });
 
 const SITE_URL = "https://www.socialspacebar.com";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0d1526" },
+  ],
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -100,7 +109,7 @@ const jsonLd = {
   ],
   contactPoint: {
     "@type": "ContactPoint",
-telephone: "+1-210-493-8277",
+    telephone: "+1-210-493-8277",
     contactType: "customer service",
     areaServed: "US",
     availableLanguage: "English",
@@ -120,23 +129,11 @@ export default function RootLayout({
     >
       <head>
         <link rel="preload" href="/hero-img4.webp" as="image" fetchPriority="high" />
+        <link rel="manifest" href="/manifest.json" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
-          }}
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(){
-                try {
-                  var t = localStorage.getItem('smm-theme');
-                  if (!t) { t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
-                  document.documentElement.setAttribute('data-theme', t);
-                } catch(e) {}
-              })();
-            `,
           }}
         />
       </head>
