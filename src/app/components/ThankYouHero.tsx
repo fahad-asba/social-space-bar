@@ -1,6 +1,7 @@
 'use client';
 import { motion } from 'motion/react';
-import { Check, ChevronDown } from 'lucide-react';
+import Link from 'next/link';
+import { Check, ChevronDown, Home, Mail } from 'lucide-react';
 import ParticlesBackground from './ParticlesBackground';
 import CalendlyInlineWidget from './CalendlyInlineWidget';
 
