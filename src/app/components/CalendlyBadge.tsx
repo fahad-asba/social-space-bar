@@ -1,6 +1,7 @@
 'use client';
 
 import Script from 'next/script';
+import { CALENDLY_URL } from '@/lib/calendly';
 import { initCalendlyBadgeWidget } from '@/lib/calendly';
 
 export default function CalendlyBadge() {
@@ -9,7 +10,17 @@ export default function CalendlyBadge() {
       <Script
         src="https://assets.calendly.com/assets/external/widget.js"
         strategy="afterInteractive"
-        onLoad={initCalendlyBadgeWidget}
+        onLoad={() => {
+          const initBadgeWidget = window.Calendly?.initBadgeWidget;
+          if (!initBadgeWidget) return;
+          initBadgeWidget({
+            url: CALENDLY_URL,
+            text: 'Schedule time with me',
+            color: '#0069ff',
+            textColor: '#ffffff',
+            branding: true,
+          });
+        }}
       />
       <style>{`
         .calendly-badge-widget {

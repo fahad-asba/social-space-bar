@@ -39,13 +39,22 @@ export default function ThankYouHero() {
           <strong style={{ color: 'var(--gold)', fontWeight: 700 }}>24 hours</strong>.
         </motion.p>
 
-        <motion.div id="consultation" className="ty-calendly-wrap" variants={fadeUp}>
-          <CalendlyInlineWidget />
+        <motion.div className="ty-hero-actions" variants={fadeUp}>
+          <Link href="/" className="btn-primary">
+            <Home size={16} /> Back To Home
+          </Link>
+          <a href="mailto:kyle@socialspacebar.com" className="btn-outline">
+            <Mail size={16} /> Contact Support
+          </a>
         </motion.div>
 
         <motion.div className="ty-scroll-hint" variants={fadeUp}>
           <span>See what happens next</span>
           <ChevronDown size={16} />
+        </motion.div>
+
+        <motion.div id="consultation" className="ty-calendly-wrap" variants={fadeUp}>
+          <CalendlyInlineWidget />
         </motion.div>
       </motion.div>
     </section>

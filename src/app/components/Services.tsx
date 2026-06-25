@@ -16,7 +16,7 @@ import { useModal } from './ModalProvider';
 export default function Services() {
   const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
 
-  const { openModal } = useModal();
+  const { openModal, openLiveChat } = useModal();
 
   return (
     <section id="services" className="services-section">
@@ -105,7 +105,7 @@ export default function Services() {
           <button type="button" onClick={openModal} className="btn-primary">
             Get Started Today <ArrowIcon />
           </button>
-          <PhoneLink className="btn-ghost" iconSize={16} />
+          <PhoneLink className="btn-ghost" label="Live Chat" mobileLabel="Call Now" iconSize={16} onClick={openLiveChat} />
         </div>
       </div>
 
