@@ -1,7 +1,6 @@
 'use client';
 import { motion } from 'motion/react';
-import { Check, ChevronDown, Home, Mail } from 'lucide-react';
-import Link from 'next/link';
+import { Check, ChevronDown } from 'lucide-react';
 import ParticlesBackground from './ParticlesBackground';
 import CalendlyInlineWidget from './CalendlyInlineWidget';
 
@@ -40,22 +39,13 @@ export default function ThankYouHero() {
           <strong style={{ color: 'var(--gold)', fontWeight: 700 }}>24 hours</strong>.
         </motion.p>
 
-        <motion.div className="ty-hero-actions" variants={fadeUp}>
-          <Link href="/" className="btn-primary">
-            <Home size={16} /> Back To Home
-          </Link>
-          <a href="mailto:kyle@socialspacebar.com" className="btn-outline">
-            <Mail size={16} /> Contact Support
-          </a>
+        <motion.div id="consultation" className="ty-calendly-wrap" variants={fadeUp}>
+          <CalendlyInlineWidget />
         </motion.div>
 
         <motion.div className="ty-scroll-hint" variants={fadeUp}>
           <span>See what happens next</span>
           <ChevronDown size={16} />
-        </motion.div>
-
-        <motion.div id="consultation" className="ty-calendly-wrap" variants={fadeUp}>
-          <CalendlyInlineWidget />
         </motion.div>
       </motion.div>
     </section>

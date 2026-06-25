@@ -42,7 +42,7 @@ export const footerColumns: FooterColumn[] = [
     title: 'Contact',
     items: [
       { label: PHONE_DISPLAY, href: PHONE_HREF },
-      { label: 'kyle@socialspacebar.com', href: 'mailto:kyle@socialspacebar.com' },
+      { label: 'info@socialspacebar.com', href: 'mailto:info@socialspacebar.com' },
       { label: 'Office Hours: 8 AM - 6 PM PST', href: '#' },
     ],
   },

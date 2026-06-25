@@ -1,9 +1,10 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { CALENDLY_URL } from '@/lib/calendly';
+import { CALENDLY_INLINE_STYLE, CALENDLY_URL } from '@/lib/calendly';
 
-export default function CalendlyInlineWidget() {  const containerRef = useRef<HTMLDivElement>(null);
+export default function CalendlyInlineWidget() {
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const parent = containerRef.current;
@@ -38,7 +39,7 @@ export default function CalendlyInlineWidget() {  const containerRef = useRef<HT
       ref={containerRef}
       className="calendly-inline-widget ty-calendly-inline"
       data-url={CALENDLY_URL}
-      style={{ minWidth: '620px', height: '700px' }}
+      style={CALENDLY_INLINE_STYLE}
     />
   );
 }
