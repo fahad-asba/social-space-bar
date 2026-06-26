@@ -8,7 +8,7 @@ import { useModal } from './ModalProvider';
 export default function Solutions() {
   const { openModal } = useModal();
   return (
-    <section id="about" className="solutions-section">
+    <section id="services" className="solutions-section">
       <div className="solutions-grid-bg" />
       <div className="solutions-glow" />
 
