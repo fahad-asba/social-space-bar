@@ -23,7 +23,7 @@ export const footerColumns: FooterColumn[] = [
   {
     title: 'Company',
     items: [
-      { label: 'About Us', href: '#services' },
+      { label: 'About Us', href: '#about' },
       { label: 'Services', href: '#services' },
       { label: 'Portfolio', href: '#portfolio' },
       { label: 'Why Choose Us', href: '#why-us' },
@@ -42,7 +42,7 @@ export const footerColumns: FooterColumn[] = [
     title: 'Contact',
     items: [
       { label: PHONE_DISPLAY, href: PHONE_HREF },
-      { label: 'info@socialspacebar.com', href: 'mailto:info@socialspacebar.com' },
+      { label: 'kyle@socialspacebar.com', href: 'mailto:kyle@socialspacebar.com' },
       { label: 'Office Hours: 8 AM - 6 PM PST', href: '#' },
     ],
   },
