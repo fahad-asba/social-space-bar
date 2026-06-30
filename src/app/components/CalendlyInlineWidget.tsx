@@ -1,12 +1,18 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { CALENDLY_INLINE_STYLE, CALENDLY_URL } from '@/lib/calendly';
 
 export default function CalendlyInlineWidget() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
     const parent = containerRef.current;
     if (!parent || parent.querySelector('iframe')) return;
 
@@ -32,7 +38,26 @@ export default function CalendlyInlineWidget() {
     }, 100);
 
     return () => window.clearInterval(interval);
-  }, []);
+  }, [mounted]);
+
+  if (!mounted) {
+    return (
+      <div
+        style={{
+          ...CALENDLY_INLINE_STYLE,
+          background: 'var(--card-bg, #1a1a2e)',
+          borderRadius: 16,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: 'var(--foreground-secondary, #888)',
+          fontSize: '0.9rem',
+        }}
+      >
+        Loading calendar...
+      </div>
+    );
+  }
 
   return (
     <div
