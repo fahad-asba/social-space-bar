@@ -6,6 +6,7 @@ import ScrollToTop from './components/ScrollToTop';
 import SmoothScrollAnchor from './components/SmoothScrollAnchor';
 import TawkChat from './components/TawkChat';
 import CalendlyBadge from './components/CalendlyBadge';
+import GclidCapture from './components/GclidCapture';
 import { PHONE_SCHEMA } from '@/lib/phone';
 import "@/app/components/theme/phone-input.css";
 
@@ -148,6 +149,7 @@ export default function RootLayout({
       <body>
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K7RHJNZ8" height="0" width="0" style={{ display: "none", visibility: "hidden" }}></iframe></noscript>
         <ThemeProvider>{children}</ThemeProvider>
+        <GclidCapture />
         <ScrollToTop />
         <SmoothScrollAnchor />
         <TawkChat />
