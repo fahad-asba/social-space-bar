@@ -4,6 +4,7 @@ export interface ContactFormPayload {
   phone: string;
   message?: string;
   source: string;
+  gclid?: string;
 }
 
 function escapeHtml(text: string): string {
@@ -36,6 +37,9 @@ export function buildContactEmailHtml(
     ? escapeHtml(data.message.trim()).replace(/\n/g, '<br>')
     : '<span style="color:#94a3b8;font-style:italic;">No message provided</span>';
   const time = escapeHtml(submittedAt);
+  const gclid = data.gclid?.trim()
+    ? escapeHtml(data.gclid.trim())
+    : '<span style="color:#94a3b8;font-style:italic;">Not available</span>';
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -108,11 +112,19 @@ export function buildContactEmailHtml(
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding:16px 20px;background:#f8fafc;vertical-align:top;">
+                  <td style="padding:16px 20px;border-bottom:1px solid #e2e8f0;background:#f8fafc;vertical-align:top;">
                     <span style="font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#64748b;">Phone</span>
                   </td>
-                  <td style="padding:16px 20px;">
+                  <td style="padding:16px 20px;border-bottom:1px solid #e2e8f0;">
                     <a href="tel:${phone}" style="font-size:15px;color:#66C7C0;text-decoration:none;font-weight:600;">${phone}</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:16px 20px;background:#f8fafc;vertical-align:top;">
+                    <span style="font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#64748b;">GCLID</span>
+                  </td>
+                  <td style="padding:16px 20px;">
+                    <span style="font-size:13px;color:#334155;font-weight:600;word-break:break-all;font-family:'Courier New',monospace;">${gclid}</span>
                   </td>
                 </tr>
               </table>
@@ -166,6 +178,7 @@ export function buildContactEmailText(
   submittedAt: string,
 ): string {
   const message = data.message?.trim() || 'No message provided';
+  const gclid = data.gclid?.trim() || 'Not available';
 
   return [
     '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━',
@@ -176,6 +189,7 @@ export function buildContactEmailText(
     `Name:     ${data.name}`,
     `Email:    ${data.email}`,
     `Phone:    ${data.phone}`,
+    `GCLID:    ${gclid}`,
     '',
     'Message:',
     message,

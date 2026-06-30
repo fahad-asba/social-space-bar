@@ -9,17 +9,7 @@ export default function CalendlyBadge() {
       <Script
         src="https://assets.calendly.com/assets/external/widget.js"
         strategy="afterInteractive"
-        onLoad={() => {
-          const initBadgeWidget = window.Calendly?.initBadgeWidget;
-          if (!initBadgeWidget) return;
-          initBadgeWidget({
-            url: CALENDLY_URL,
-            text: 'Schedule time with me',
-            color: '#0069ff',
-            textColor: '#ffffff',
-            branding: true,
-          });
-        }}
+        onLoad={initCalendlyBadgeWidget}
       />
       <style>{`
         .calendly-badge-widget {

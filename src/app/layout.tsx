@@ -6,6 +6,7 @@ import ScrollToTop from './components/ScrollToTop';
 import SmoothScrollAnchor from './components/SmoothScrollAnchor';
 import TawkChat from './components/TawkChat';
 import CalendlyBadge from './components/CalendlyBadge';
+import GclidCapture from './components/GclidCapture';
 import { PHONE_SCHEMA } from '@/lib/phone';
 import "@/app/components/theme/phone-input.css";
 
@@ -139,9 +140,16 @@ export default function RootLayout({
             __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
           }}
         />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-K7RHJNZ8');`,
+          }}
+        />
       </head>
       <body>
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K7RHJNZ8" height="0" width="0" style={{ display: "none", visibility: "hidden" }}></iframe></noscript>
         <ThemeProvider>{children}</ThemeProvider>
+        <GclidCapture />
         <ScrollToTop />
         <SmoothScrollAnchor />
         <TawkChat />

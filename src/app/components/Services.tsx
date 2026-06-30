@@ -19,7 +19,7 @@ export default function Services() {
   const { openModal, openLiveChat } = useModal();
 
   return (
-    <section id="services" className="services-section">
+    <section id="about" className="services-section">
       <div className="services-glow" />
       <div className="services-grid-bg" />
 

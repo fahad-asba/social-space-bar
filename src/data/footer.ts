@@ -23,7 +23,7 @@ export const footerColumns: FooterColumn[] = [
   {
     title: 'Company',
     items: [
-      { label: 'About Us', href: '#services' },
+      { label: 'About Us', href: '#about' },
       { label: 'Services', href: '#services' },
       { label: 'Portfolio', href: '#portfolio' },
       { label: 'Why Choose Us', href: '#why-us' },
