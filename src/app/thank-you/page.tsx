@@ -27,6 +27,22 @@ export default function ThankYouPage() {
       <ThankYouNavbar />
       <div className="ty-page">
         <ThankYouHero />
+        <section className="ty-calendly-section">
+          <div className="container">
+            <div className="ty-calendly-wrap">
+              <div
+                className="calendly-inline-widget ty-calendly-inline"
+                data-url="https://calendly.com/socialspacebar-30min-introductory-call/30min"
+                style={{ minWidth: 320, height: 700 }}
+              />
+              <script
+                type="text/javascript"
+                src="https://assets.calendly.com/assets/external/widget.js"
+                async
+              />
+            </div>
+          </div>
+        </section>
         <ThankYouSteps />
         <ThankYouTrust />
         <ThankYouCTA />
@@ -183,10 +199,15 @@ export default function ThankYouPage() {
           animation: float 3s ease-in-out infinite;
           transition: color 0.3s ease;
         }
+        .ty-calendly-section {
+          padding: 80px 0;
+          background: var(--background);
+          transition: background 0.3s ease;
+        }
         .ty-calendly-wrap {
           width: 100%;
           max-width: 900px;
-          margin-top: 40px;
+          margin: 0 auto;
         }
         .ty-calendly-inline {
           width: 100%;

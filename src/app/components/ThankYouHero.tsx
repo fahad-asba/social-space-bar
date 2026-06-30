@@ -30,7 +30,7 @@ export default function ThankYouHero() {
         </motion.div>
 
         <motion.h1 className="ty-hero-heading" variants={fadeUp}>
-          Thank You For{' '}
+          Thank You For
           <span className="gradient-text">Reaching Out!</span>
         </motion.h1>
 
