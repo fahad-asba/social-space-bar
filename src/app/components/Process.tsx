@@ -1,10 +1,11 @@
 'use client';
 import { motion } from 'motion/react';
-import { Search, ClipboardCheck, Users, BarChart3, Rocket, Star, CalendarDays } from 'lucide-react';
+import { Search, ClipboardCheck, Users, BarChart3, Rocket, Star, MessageCircle, Phone } from 'lucide-react';
 import ArrowIcon from '@/components/ui/ArrowIcon';
 import SectionHeader from '@/components/ui/SectionHeader';
 import FadeInView from '@/components/ui/FadeInView';
 import { useModal } from './ModalProvider';
+import { callPhoneNumber } from '@/lib/phone';
 
 const processSteps = [
   {
@@ -46,7 +47,7 @@ const processSteps = [
 ];
 
 export default function Process() {
-  const { openModal, openScheduleModal } = useModal();
+  const { openModal, openLiveChat } = useModal();
   return (
     <section className="process-section">
       <div className="process-glow" />
@@ -90,9 +91,11 @@ export default function Process() {
             <button type="button" onClick={openModal} className="btn-primary">
               Start Your Journey <ArrowIcon />
             </button>
-            <button type="button" onClick={openScheduleModal} className="btn-outline">
-              <CalendarDays size={16} />
-              Schedule Appointment
+            <button type="button" onClick={() => { if (window.innerWidth <= 600) { callPhoneNumber(); } else { openLiveChat(); } }} aria-label="Live Chat" className="btn-outline process-chat-btn">
+              <MessageCircle size={16} className="process-chat-icon" />
+              <Phone size={16} className="process-call-icon" />
+              <span className="process-chat-text">Live Chat</span>
+              <span className="process-call-text">Call Now</span>
             </button>
           </div>
         </FadeInView>
@@ -157,6 +160,10 @@ export default function Process() {
         .process-step-desc { font-size: 0.84rem; color: var(--foreground-muted); line-height: 1.65; }
         .process-cta { text-align: center; margin-top: 56px; }
         .process-cta-buttons { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+        .process-chat-icon { display: inline; }
+        .process-call-icon { display: none; }
+        .process-chat-text { display: inline; }
+        .process-call-text { display: none; }
 
         @media (min-width: 901px) {
           .process-step:nth-child(3n) .process-step-connector { display: none; }
@@ -181,6 +188,10 @@ export default function Process() {
           .process-cta-buttons { flex-direction: column; align-items: center; width: 100%; }
           .process-cta-buttons a, .process-cta-buttons button { width: 100%; max-width: 300px; justify-content: center; }
           .process-step-connector { display: none !important; }
+          .process-chat-icon { display: none; }
+          .process-call-icon { display: inline; }
+          .process-chat-text { display: none; }
+          .process-call-text { display: inline; }
         }
         @media (max-width: 420px) {
           .process-section { padding: 40px 0; }

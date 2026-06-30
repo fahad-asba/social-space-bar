@@ -5,7 +5,7 @@ import "./globals.css";
 import ScrollToTop from './components/ScrollToTop';
 import SmoothScrollAnchor from './components/SmoothScrollAnchor';
 import TawkChat from './components/TawkChat';
-import CalendlyBadge from './components/CalendlyBadge';
+
 import GclidCapture from './components/GclidCapture';
 import { PHONE_SCHEMA } from '@/lib/phone';
 import "@/app/components/theme/phone-input.css";
@@ -153,7 +153,6 @@ export default function RootLayout({
         <ScrollToTop />
         <SmoothScrollAnchor />
         <TawkChat />
-        <CalendlyBadge />
       </body>
     </html>
   );
