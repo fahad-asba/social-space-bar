@@ -41,7 +41,7 @@ export default function Hero() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, delay: 0.4, ease: 'easeOut' }}
         >
-          <ContactForm compact title="Start your social media marketing Today" description="Fill in your details and we'll create a custom social media marketing plan for your brand." />
+          <ContactForm compact title="Start Your Social Media Marketing Today" description="Fill in your details and we'll create a custom social media marketing plan for your brand." />
         </motion.div>
       </div>
 
