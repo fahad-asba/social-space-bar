@@ -1,8 +1,8 @@
 'use client';
 import { motion } from 'motion/react';
 import { ChevronDown } from 'lucide-react';
+import Script from 'next/script';
 import ParticlesBackground from './ParticlesBackground';
-import CalendlyInlineWidget from './CalendlyInlineWidget';
 
 const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.12 } } };
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' as const } } };
@@ -27,7 +27,15 @@ export default function ThankYouHero() {
         </motion.p>
 
         <motion.div id="consultation" className="ty-calendly-wrap" variants={fadeUp}>
-          <CalendlyInlineWidget />
+          <div
+            className="calendly-inline-widget ty-calendly-inline"
+            data-url="https://calendly.com/socialspacebar-30min-introductory-call/30min"
+            style={{ minWidth: 320, height: 700 }}
+          />
+          <Script
+            src="https://assets.calendly.com/assets/external/widget.js"
+            strategy="afterInteractive"
+          />
         </motion.div>
 
         <motion.div className="ty-scroll-hint" variants={fadeUp}>

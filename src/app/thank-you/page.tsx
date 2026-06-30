@@ -190,7 +190,7 @@ export default function ThankYouPage() {
         .ty-calendly-wrap {
           width: 100%;
           max-width: 900px;
-          margin: 0 auto;
+          margin: 40px auto 0;
         }
         .ty-calendly-inline {
           width: 100%;
