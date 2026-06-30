@@ -75,7 +75,7 @@ export default function HeroModal({ isOpen, onClose }: HeroModalProps) {
             <>
               <div className="modal-badge">GET 30% OFF - Limited Time</div>
 
-              <h2 className="modal-heading">Start your social media Journey Today</h2>
+              <h2 className="modal-heading">Start Your Social Media Marketing Journey Today</h2>
               <p className="modal-subheading">Fill in your details and we&apos;ll create a custom social media marketing plan for your brand.</p>
 
               <form onSubmit={handleSubmit} className="modal-form">
@@ -188,7 +188,7 @@ export default function HeroModal({ isOpen, onClose }: HeroModalProps) {
           text-transform: uppercase; color: #66C7C0; margin-bottom: 8px;
         }
         .modal-heading {
-          font-family: var(--font-display); font-size: 1.2rem;
+          font-family: var(--font-display); font-size: 1.1rem;
           font-weight: 800; color: var(--foreground); margin-bottom: 1px;
         }
         .modal-subheading {
