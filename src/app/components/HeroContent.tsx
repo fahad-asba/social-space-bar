@@ -1,6 +1,6 @@
 'use client';
 import { motion } from 'motion/react';
-import { CalendarDays, MessageCircle, Phone } from 'lucide-react';
+import { MessageCircle, Phone } from 'lucide-react';
 import ArrowIcon from '@/components/ui/ArrowIcon';
 import Image from 'next/image';
 import { useModal } from './ModalProvider';
@@ -9,7 +9,7 @@ import { callPhoneNumber } from '@/lib/phone';
 interface HeroContentProps { onOpenModal: () => void; }
 
 export default function HeroContent({ onOpenModal }: HeroContentProps) {
-  const { openScheduleModal, openLiveChat } = useModal();
+  const { openLiveChat } = useModal();
   const handleLiveChat = () => {
     if (window.innerWidth <= 600) { callPhoneNumber(); }
     else { openLiveChat(); }
@@ -63,10 +63,6 @@ export default function HeroContent({ onOpenModal }: HeroContentProps) {
           Get Started Today
           <ArrowIcon />
         </motion.button>
-        <button type="button" onClick={openScheduleModal} className="btn-outline">
-          <CalendarDays size={16} />
-          Schedule Appointment
-        </button>
         <button type="button" onClick={handleLiveChat} aria-label="Live Chat" className="btn-outline hero-chat-btn">
           <MessageCircle size={16} className="hero-chat-icon" />
           <Phone size={16} className="hero-call-icon" />
