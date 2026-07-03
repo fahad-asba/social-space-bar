@@ -5,8 +5,6 @@ import { ThemeProvider } from "@/context/ThemeContext";
 import "./globals.css";
 import ScrollToTop from './components/ScrollToTop';
 import SmoothScrollAnchor from './components/SmoothScrollAnchor';
-import TawkChat from './components/TawkChat';
-
 import GclidCapture from './components/GclidCapture';
 import {
   GoogleTagManagerHead,
@@ -154,7 +152,6 @@ export default function RootLayout({
         <GclidCapture />
         <ScrollToTop />
         <SmoothScrollAnchor />
-        <TawkChat />
       </body>
     </html>
   );

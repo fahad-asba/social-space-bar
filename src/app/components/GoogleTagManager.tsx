@@ -1,4 +1,4 @@
-const GTM_ID = 'GTM-K7RHJNZ8';
+const GTM_ID = 'GTM-5GNN3F43';
 
 export function GoogleTagManagerHead() {
   return (

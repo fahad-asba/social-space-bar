@@ -11,8 +11,7 @@ interface HeroContentProps { onOpenModal: () => void; }
 export default function HeroContent({ onOpenModal }: HeroContentProps) {
   const { openLiveChat } = useModal();
   const handleLiveChat = () => {
-    if (window.innerWidth <= 600) { callPhoneNumber(); }
-    else { openLiveChat(); }
+    openLiveChat();
   };
   return (
     <div className="hero-content">
@@ -77,7 +76,7 @@ export default function HeroContent({ onOpenModal }: HeroContentProps) {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.5 }}
       >
-        <Image src="/testimonial-logo.webp" alt="Clients" width={80} height={36} style={{ borderRadius: '100px', objectFit: 'contain' }} />
+        <Image src="/testimonial-logo.webp" alt="Clients" width={101} height={36} className="testimonial-logo" />
         <div>
           <div className="gold" style={{ fontSize: '0.95rem', letterSpacing: '0.05em' }}>★★★★★</div>
           <div style={{ fontSize: '0.8rem', color: 'var(--gold)' }}>Trusted by 500+ clients worldwide</div>
@@ -126,6 +125,7 @@ export default function HeroContent({ onOpenModal }: HeroContentProps) {
         .hero-cta-row .btn-outline { color: #ffffff; border-color: rgba(255,255,255,0.25); }
         .hero-cta-row .btn-outline:hover { border-color: #66C7C0; color: #66C7C0; }
         .hero-trust-row { display: flex; align-items: center; gap: 14px; margin-top: 40px; }
+        .testimonial-logo { border-radius: 100px; }
         .hero-chat-icon { display: inline-block; }
         .hero-call-icon { display: none; }
         .hero-chat-text { display: inline; }

@@ -1,4 +1,4 @@
-import { getGclid } from './gclid';
+import { getGclid, getLandingUrl } from './gclid';
 
 interface SubmitContactFormInput {
   name: string;
@@ -12,7 +12,11 @@ export async function submitContactForm(data: SubmitContactFormInput) {
   const response = await fetch('/api/contact', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ ...data, gclid: getGclid() }),
+    body: JSON.stringify({
+      ...data,
+      gclid: getGclid(),
+      landingUrl: getLandingUrl(),
+    }),
   });
 
   if (!response.ok) {

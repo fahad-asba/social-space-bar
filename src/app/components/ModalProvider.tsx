@@ -2,7 +2,7 @@
 import { createContext, useContext, useState, ReactNode } from 'react';
 import dynamic from 'next/dynamic';
 import { openCalendlySchedule } from '@/lib/calendly';
-import { openTawkChat } from '@/lib/tawk';
+import { openLiveChat } from '@/lib/livechat';
 
 const HeroModal = dynamic(() => import('./HeroModal'));
 interface ModalContextType {
@@ -21,7 +21,7 @@ export default function ModalProvider({ children }: { children: ReactNode }) {
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
-    <ModalContext.Provider value={{ openModal: () => setModalOpen(true), openScheduleModal: openCalendlySchedule, openLiveChat: openTawkChat }}>
+    <ModalContext.Provider value={{ openModal: () => setModalOpen(true), openScheduleModal: openCalendlySchedule, openLiveChat }}>
       {children}
       <HeroModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
     </ModalContext.Provider>

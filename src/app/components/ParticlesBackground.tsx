@@ -15,12 +15,22 @@ export default function ParticlesBackground({ particleCount = 80, speed = 0.3 }:
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     const resize = () => {
       canvas.width = canvas.offsetWidth;
       canvas.height = canvas.offsetHeight;
     };
     resize();
     window.addEventListener('resize', resize);
+
+    if (prefersReducedMotion) {
+      ctx.fillStyle = 'rgba(102,199,192,0.12)';
+      ctx.beginPath();
+      ctx.arc(canvas.width / 2, canvas.height / 2, 2, 0, Math.PI * 2);
+      ctx.fill();
+      return () => { window.removeEventListener('resize', resize); };
+    }
 
     const particles: { x: number; y: number; r: number; vx: number; vy: number; alpha: number }[] = [];
     for (let i = 0; i < particleCount; i++) {
