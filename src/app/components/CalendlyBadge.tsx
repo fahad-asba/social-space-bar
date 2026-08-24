@@ -1,7 +1,7 @@
 'use client';
 
 import Script from 'next/script';
-import { CALENDLY_URL } from '@/lib/calendly';
+import { CALENDLY_URL, initCalendlyBadgeWidget } from '@/lib/calendly';
 
 export default function CalendlyBadge() {
   return (
