@@ -5,6 +5,7 @@ import Hero from './components/Hero';
 import ServicesMarquee from './components/ServicesMarquee';
 import ModalProvider from './components/ModalProvider';
 import FloatingChatButton from './components/FloatingChatButton';
+import LiveChat from './components/LiveChat';
 
 const Services = dynamic(() => import('./components/Services'));
 const Solutions = dynamic(() => import('./components/Solutions'));
@@ -20,7 +21,7 @@ const ContactSection = dynamic(() => import('./components/ContactSection'));
 const Footer = dynamic(() => import('./components/Footer'));
 
 export const metadata: Metadata = {
-  title: 'Social Space Bar | Premier Social Media Marketing Agency | Facebook, Instagram, LinkedIn, TikTok & YouTube, Twitter, Pinterest, Snapchat, Reddit, Quora, Discord & More768 ',
+  title: 'Social Space Bar | Premier Social Media Marketing Agency',
   description:
     'Grow your brand with expert social media marketing on Facebook, Instagram, LinkedIn, TikTok & YouTube. Boost engagement, drive real results & get 30% off today.',
   alternates: { canonical: 'https://www.socialspacebar.com/' },
@@ -58,6 +59,7 @@ export default function Home() {
         <ContactSection />
       </main>
       <FloatingChatButton />
+      <LiveChat />
       </ModalProvider>
       <Footer />
 

@@ -10,6 +10,7 @@ export async function POST(request: Request) {
     const phone = body.phone?.trim();
     const source = body.source?.trim() || 'Website Contact Form';
     const gclid = body.gclid?.trim() || undefined;
+    const landingUrl = body.landingUrl?.trim() || undefined;
 
     if (!name || !email || !phone) {
       return NextResponse.json(
@@ -33,6 +34,7 @@ export async function POST(request: Request) {
       message: body.message?.trim(),
       source,
       gclid,
+      landingUrl,
     });
 
     return NextResponse.json({ success: true });

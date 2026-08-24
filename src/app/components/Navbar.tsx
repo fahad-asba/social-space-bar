@@ -164,7 +164,8 @@ export default function Navbar() {
           text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.3s;
         }
         .nav-phone:hover { color: var(--gold); }
-        .nav-cta-btn { padding: 10px 22px; font-size: 0.85rem; }
+        .nav-cta-btn { padding: 10px 22px; font-size: 0.85rem; color: var(--cyan); }
+        .nav-cta-btn:hover { color: var(--gold); }
         .nav-mobile-right { display: none; align-items: center; gap: 10px; }
         .hamburger-btn {
           display: none; align-items: center; justify-content: center;
@@ -222,7 +223,8 @@ export default function Navbar() {
           border-radius: var(--radius-sm); transition: all 0.2s;
         }
         .mobile-menu-phone:hover { background: rgba(102,199,192,0.08); color: #66C7C0; }
-        .mobile-menu-cta { width: 100%; justify-content: center; display: inline-flex; }
+        .mobile-menu-cta { width: 100%; justify-content: center; display: inline-flex; color: var(--mobile-menu-foreground); border-color: rgba(255,255,255,0.15); }
+        .mobile-menu-cta:hover { color: var(--gold); border-color: #66C7C0; }
 
         @media (max-width: 1100px) { .nav-links { gap: 24px; } }
         @media (max-width: 1024px) {

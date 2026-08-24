@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import { MessageCircle, Phone, CalendarDays } from 'lucide-react';
+import { MessageCircle, Phone } from 'lucide-react';
 import SectionHeader from '@/components/ui/SectionHeader';
 import FadeInView from '@/components/ui/FadeInView';
 import { useModal } from './ModalProvider';
@@ -17,7 +17,7 @@ const platforms = [
 ];
 
 export default function SocialMediaPlatforms() {
-  const { openModal, openScheduleModal, openLiveChat } = useModal();
+  const { openModal, openLiveChat } = useModal();
   const handleLiveChat = () => {
     if (window.innerWidth <= 600) { callPhoneNumber(); }
     else { openLiveChat(); }
@@ -57,10 +57,6 @@ export default function SocialMediaPlatforms() {
               <Phone size={16} className="smp-call-icon" />
               <span className="smp-chat-text">Live Chat</span>
               <span className="smp-call-text">Call Now</span>
-            </button>
-            <button type="button" onClick={openScheduleModal} className="btn-outline">
-              <CalendarDays size={16} />
-              Schedule Appointment
             </button>
           </div>
         </FadeInView>

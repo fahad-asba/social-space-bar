@@ -145,8 +145,8 @@ export default function ThankYouPage() {
 
         .ty-hero-heading {
           font-family: var(--font-display);
-          font-size: clamp(2.2rem, 5vw, 3.8rem);
-          font-weight: 800;
+          font-size: clamp(2rem, 5vw, 3.8rem);
+          font-weight: 600;
           line-height: 1.15;
           color: var(--foreground);
           margin-bottom: 18px;
@@ -160,10 +160,10 @@ export default function ThankYouPage() {
         }
         .ty-hero-sub {
           font-size: 1.1rem;
-          line-height: 1.75;
+          line-height: 1.5;
           color: var(--foreground-secondary);
           max-width: 500px;
-          margin-bottom: 40px;
+          margin-bottom: 20px;
           transition: color 0.3s ease;
         }
         .ty-hero-actions {
@@ -183,10 +183,14 @@ export default function ThankYouPage() {
           animation: float 3s ease-in-out infinite;
           transition: color 0.3s ease;
         }
+        .ty-steps-section {
+          padding-top: 0 !important;
+          margin-top: 40px;
+        }
         .ty-calendly-wrap {
           width: 100%;
           max-width: 900px;
-          margin-top: 40px;
+          margin: 40px auto 0;
         }
         .ty-calendly-inline {
           width: 100%;
