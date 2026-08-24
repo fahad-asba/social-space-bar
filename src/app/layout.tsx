@@ -10,6 +10,7 @@ import {
   GoogleTagManagerHead,
   GoogleTagManagerNoScript,
 } from './components/GoogleTagManager';
+import { MetaPixelHead, MetaPixelNoScript } from './components/MetaPixel';
 import { PHONE_SCHEMA } from '@/lib/phone';
 import "@/app/components/theme/phone-input.css";
 
@@ -106,12 +107,9 @@ const jsonLd = {
     "Professional social media marketing strategies to grow your brand, boost engagement, and build your online presence across every major platform.",
   telephone: PHONE_SCHEMA,
   sameAs: [
-    "https://www.facebook.com/socialspacebar",
-    "https://www.instagram.com/socialspacebar",
-    "https://www.linkedin.com/company/socialspacebar",
-    "https://twitter.com/socialspacebar",
-    "https://www.youtube.com/@socialspacebar",
-    "https://www.tiktok.com/@socialspacebar",
+    "https://www.facebook.com/profile.php?id=61593842817422",
+    "https://www.instagram.com/social_spacebar_llc",
+    "https://www.linkedin.com/company/social-spacebar-llc/",
   ],
   contactPoint: {
     "@type": "ContactPoint",
@@ -135,6 +133,7 @@ export default function RootLayout({
     >
       <head>
         <GoogleTagManagerHead />
+        <MetaPixelHead />
         <link rel="preload" href="/hero-img4.webp" as="image" fetchPriority="high" />
         <link rel="manifest" href="/manifest.json" />
         <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
@@ -148,6 +147,7 @@ export default function RootLayout({
       </head>
       <body>
         <GoogleTagManagerNoScript />
+        <MetaPixelNoScript />
         <ThemeProvider>{children}</ThemeProvider>
         <GclidCapture />
         <ScrollToTop />

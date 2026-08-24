@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import { footerColumns, type FooterLink } from '@/data/footer';
+import { footerColumns, socials, type FooterLink } from '@/data/footer';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -15,7 +15,20 @@ export default function Footer() {
             <p className="footer-desc">
               Professional social media marketing strategies to grow your brand, boost engagement, and build your online presence.
             </p>
-
+            <div className="footer-socials">
+              {socials.map(({ label, icon: Icon, href }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="footer-social-link"
+                >
+                  <Icon />
+                </a>
+              ))}
+            </div>
           </div>
 
           {footerColumns.map(col => (
