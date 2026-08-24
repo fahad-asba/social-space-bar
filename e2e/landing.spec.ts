@@ -61,7 +61,7 @@ test('Google Tag Manager scripts present', async ({ page }) => {
   await page.goto('/');
   await page.waitForLoadState('domcontentloaded');
   const html = await page.content();
-  expect(html).toContain('GTM-K7RHJNZ8');
+  expect(html).toContain('GTM-5GNN3F43');
   expect(html).toContain('googletagmanager.com');
 });
 

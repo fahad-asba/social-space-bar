@@ -5,6 +5,7 @@ import Hero from './components/Hero';
 import ServicesMarquee from './components/ServicesMarquee';
 import ModalProvider from './components/ModalProvider';
 import FloatingChatButton from './components/FloatingChatButton';
+import LiveChat from './components/LiveChat';
 
 const Services = dynamic(() => import('./components/Services'));
 const Solutions = dynamic(() => import('./components/Solutions'));
@@ -58,6 +59,7 @@ export default function Home() {
         <ContactSection />
       </main>
       <FloatingChatButton />
+      <LiveChat />
       </ModalProvider>
       <Footer />
 

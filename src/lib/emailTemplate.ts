@@ -5,6 +5,7 @@ export interface ContactFormPayload {
   message?: string;
   source: string;
   gclid?: string;
+  landingUrl?: string;
 }
 
 function escapeHtml(text: string): string {
@@ -37,8 +38,9 @@ export function buildContactEmailHtml(
     ? escapeHtml(data.message.trim()).replace(/\n/g, '<br>')
     : '<span style="color:#94a3b8;font-style:italic;">No message provided</span>';
   const time = escapeHtml(submittedAt);
-  const gclid = data.gclid?.trim()
-    ? escapeHtml(data.gclid.trim())
+  const landingUrlRaw = data.landingUrl?.trim();
+  const landingUrl = landingUrlRaw
+    ? `<a href="${escapeHtml(landingUrlRaw)}" style="font-size:13px;color:#66C7C0;text-decoration:none;font-weight:600;word-break:break-all;font-family:'Courier New',monospace;">${escapeHtml(landingUrlRaw)}</a>`
     : '<span style="color:#94a3b8;font-style:italic;">Not available</span>';
 
   return `<!DOCTYPE html>
@@ -121,10 +123,10 @@ export function buildContactEmailHtml(
                 </tr>
                 <tr>
                   <td style="padding:16px 20px;background:#f8fafc;vertical-align:top;">
-                    <span style="font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#64748b;">GCLID</span>
+                    <span style="font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#64748b;">Landing URL</span>
                   </td>
                   <td style="padding:16px 20px;">
-                    <span style="font-size:13px;color:#334155;font-weight:600;word-break:break-all;font-family:'Courier New',monospace;">${gclid}</span>
+                    <span style="font-size:13px;color:#334155;font-weight:600;word-break:break-all;font-family:'Courier New',monospace;">${landingUrl}</span>
                   </td>
                 </tr>
               </table>
@@ -178,7 +180,7 @@ export function buildContactEmailText(
   submittedAt: string,
 ): string {
   const message = data.message?.trim() || 'No message provided';
-  const gclid = data.gclid?.trim() || 'Not available';
+  const landingUrl = data.landingUrl?.trim() || 'Not available';
 
   return [
     '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━',
@@ -189,7 +191,7 @@ export function buildContactEmailText(
     `Name:     ${data.name}`,
     `Email:    ${data.email}`,
     `Phone:    ${data.phone}`,
-    `GCLID:    ${gclid}`,
+    `Landing URL: ${landingUrl}`,
     '',
     'Message:',
     message,

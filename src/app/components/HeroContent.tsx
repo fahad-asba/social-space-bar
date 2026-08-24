@@ -11,8 +11,7 @@ interface HeroContentProps { onOpenModal: () => void; }
 export default function HeroContent({ onOpenModal }: HeroContentProps) {
   const { openLiveChat } = useModal();
   const handleLiveChat = () => {
-    if (window.innerWidth <= 600) { callPhoneNumber(); }
-    else { openLiveChat(); }
+    openLiveChat();
   };
   return (
     <div className="hero-content">
